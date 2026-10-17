@@ -36,6 +36,34 @@ return [
         'envoyer' => 'Créer mon compte',
     ],
 
+    'espace' => [
+        'titre_menu' => 'Mon espace client',
+        'membre_depuis' => 'Membre depuis le :date',
+        'bienvenue' => 'Bienvenue',
+        'accroche' => 'Votre espace client, tout simplement.',
+        'merci' => 'Merci de faire partie de la famille :marque',
+        'aide_titre' => 'Besoin d’aide ?',
+        'aide_texte' => 'Notre équipe vous répond sur WhatsApp.',
+        'aide_bouton' => 'Nous contacter',
+        'menu' => [
+            'tableau' => 'Tableau de bord',
+            'commandes' => 'Mes commandes',
+            'favoris' => 'Mes favoris',
+            'points' => 'Mes points fidélité',
+            'retours' => 'Mes retours et réclamations',
+            'avis' => 'Mes avis',
+            'profil' => 'Mon profil',
+        ],
+    ],
+
+    'profil' => [
+        'titre' => 'Mon profil',
+        'modifier' => 'Modifier',
+        'telephone_aide' => 'Ce numéro sert à vous connecter. Pour le changer, contactez le service client : le nouveau numéro sera vérifié par un code.',
+        'enregistrer' => 'Enregistrer',
+        'enregistre' => 'Vos informations sont enregistrées.',
+    ],
+
     'mon_compte' => [
         'titre' => 'Mon compte',
         'bonjour' => 'Bonjour :prenom',

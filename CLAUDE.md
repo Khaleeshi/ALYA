@@ -5,7 +5,7 @@ Boutique en ligne d'AMANI Cosmetics, première marque beauté d'ALYA Group, à D
 ## Documents de référence
 
 - `docs/Cahier des charges AMANI Cosmetics - 2026-10-17.docx` (et sa version texte `.md`) : **la référence**. « cahier §n » désigne sa section n. Les points marqués « à valider » ou listés en §21 ne sont pas des règles finales : ne pas les trancher sans la propriétaire.
-- `docs/maquettes-amani/` : les cinq maquettes du thème choisi (accueil, fiche produit, collections, panier, livraison et paiement). Elles fixent le rendu ; les chiffres qu'elles affichent (notes, prix, nombre d'avis) sont des exemples.
+- `docs/maquettes-amani/` : les huit maquettes du thème choisi (accueil, fiche produit, collections, panier, livraison et paiement, tableau de bord de l'administration, À propos et Contact, espace client). Elles fixent le rendu ; les chiffres, coordonnées et textes qu'elles affichent (notes, prix, avis, téléphone, adresse, email, chiffres de ventes) sont des exemples.
 - `docs/AUDIT ALYA COSMETIC - 2026-09-07.html` : audit de l'ancien cahier ALYA. Il reste utile pour les règles techniques que le nouveau cahier reprend (pas de commande ni de stock sans paiement confirmé, webhooks signés, réservation pendant le paiement, numérotation sans trou), pas pour la marque ni le design.
 - `docs/archives-alya/` : ancien cahier et anciennes maquettes ALYA, pour mémoire.
 
@@ -29,7 +29,9 @@ Ordre de priorité en cas de contradiction : le cahier AMANI, puis les maquettes
 - Rôles et permissions : `App\Support\Acces\Roles` (propriétaire, administrateur, livreur) et `Permissions` ; la propriétaire a tout par `Gate::before`. Après un ajout de permission, relancer `RolesEtPermissionsSeeder`.
 - Journal des actions sensibles en ajout seul : `JournalActivite::consigner(action, description, sujet, données)`. Le modèle et des déclencheurs en base refusent toute modification (MySQL : `log_bin_trust_function_creators = 1`).
 - Langues : les routes de la vitrine se déclarent dans `Langues::routes()` (routes/web.php), morceaux d'adresse dans `lang/{fr,en}/chemins.php`, liens avec `route_langue('nom')`. Mêmes clés de texte en français et en anglais (un test le vérifie).
-- Navigation : `config/boutique.php` (menu, aide, réseaux) ; un lien n'apparaît que si sa page existe.
+- Navigation : `config/boutique.php` (menu, aide, espace client, réseaux) ; un lien n'apparaît que si sa page existe.
+- Espace client : les pages connectées utilisent `<x-layouts.espace-client>` (menu latéral, avatar, encart `cote` à droite). Le profil (`ProfilController`) ne change jamais le numéro de téléphone, qui sert à se connecter.
+- Administration : tableau de bord `App\Filament\Pages\TableauDeBord`, actions rapides dans le widget `Raccourcis` (n'y mettre que des actions qui existent et que la personne a le droit de faire), menu latéral sombre dans `resources/css/filament/administration/theme.css`.
 - Photos : un modèle qui porte des photos implémente `HasMedia` et utilise le trait `App\Models\Concerns\AvecPhotos` ; l'affichage passe par `<x-amani.image>`.
 - Système de design : jetons dans `resources/css/amani/jetons.css`, composants dans `resources/views/components/amani/`, vitrine des composants sur `/systeme-de-design` (hors production).
 

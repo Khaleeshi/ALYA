@@ -10,12 +10,13 @@ Le cahier des charges et les maquettes du thème choisi sont dans [`docs/`](docs
 |---|---|
 | Laravel 12, MySQL 8, Redis, files de travaux (Horizon sur `/administration/files`) | `config/`, `bootstrap/` |
 | Compte cliente par téléphone sénégalais et code SMS : code à 6 chiffres valable 10 minutes, usage unique, envois limités, verrouillage 15 minutes après 5 codes faux, création du compte au premier passage | `app/Http/Controllers/Comptes/`, `app/Support/Comptes/`, `resources/views/comptes/` |
-| Administration (`/administration`) : double authentification obligatoire, rôles propriétaire / administrateur / livreur, permissions fines, gestion du personnel | `app/Filament/`, `app/Support/Acces/` |
+| Espace cliente (`/fr/mon-compte`) : accueil, menu latéral, modification du profil (le numéro de téléphone ne change pas depuis le profil) | `resources/views/components/layouts/espace-client.blade.php`, `app/Http/Controllers/Comptes/ProfilController.php` |
+| Administration (`/administration`) : double authentification obligatoire, rôles propriétaire / administrateur / livreur, permissions fines, gestion du personnel, tableau de bord avec actions rapides, menu latéral sombre de la maquette | `app/Filament/`, `app/Support/Acces/` |
 | Journal des actions sensibles, impossible à modifier ou supprimer (même en base) | `app/Models/JournalActivite.php` |
 | Chaîne d'images : chaque photo déclinée en 5 largeurs (400 à 2400 px), en AVIF et en WebP | `app/Support/Medias/DeclinaisonsImages.php` |
 | Français au lancement, anglais prêt mais fermé (`BOUTIQUE_LANGUES`) | `app/Support/Langues.php`, `lang/` |
-| Système de design AMANI d'après les maquettes : couleurs, polices auto-hébergées, 31 composants Blade | `resources/css/amani/`, `resources/views/components/amani/`, page `/systeme-de-design` |
-| 82 tests automatiques, rejoués sur GitHub à chaque envoi | `tests/`, `.github/workflows/tests.yml` |
+| Système de design AMANI d'après les maquettes : couleurs, polices auto-hébergées, 38 composants Blade | `resources/css/amani/`, `resources/views/components/amani/`, page `/systeme-de-design` |
+| 91 tests automatiques, rejoués sur GitHub à chaque envoi | `tests/`, `.github/workflows/tests.yml` |
 
 ## Installer le projet sur un poste de développement
 

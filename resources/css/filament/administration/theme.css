@@ -4,6 +4,7 @@
 @source '../../../../app/Filament/**/*';
 @source '../../../../resources/views/filament/**/*';
 @source '../../../../resources/views/components/amani/logo.blade.php';
+@source '../../../../resources/views/components/amani/icone.blade.php';
 
 /*
  * Thème AMANI de l'administration : même palette et mêmes polices que la
@@ -40,4 +41,96 @@
 /* Chiffres alignés dans les tableaux. */
 .fi-ta-cell {
     font-variant-numeric: tabular-nums;
+}
+
+/*
+ * Menu latéral brun foncé (maquette 6) : logo doré en haut, rubriques en
+ * crème, rubrique active en dégradé bronze, « Voir ma boutique » en bas.
+ * Sur ordinateur, le menu prend toute la hauteur, à gauche de la barre du haut.
+ */
+.fi-main-sidebar {
+    background-color: #2a1a11;
+}
+
+.fi-main-sidebar .fi-sidebar-header {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.fi-main-sidebar .fi-logo .text-brun {
+    color: #e2c48f;
+}
+
+.fi-main-sidebar .fi-sidebar-item-label {
+    color: #f3e7d8;
+}
+
+.fi-main-sidebar .fi-sidebar-item-btn > .fi-icon,
+.fi-main-sidebar .fi-sidebar-group-btn .fi-icon,
+.fi-main-sidebar .fi-sidebar-group-label {
+    color: #c3ab90;
+}
+
+.fi-main-sidebar .fi-sidebar-item.fi-sidebar-item-has-url > .fi-sidebar-item-btn:hover,
+.fi-main-sidebar .fi-sidebar-item.fi-sidebar-item-has-url > .fi-sidebar-item-btn:focus-visible {
+    background-color: rgb(255 255 255 / 0.07);
+}
+
+.fi-main-sidebar .fi-sidebar-item.fi-active > .fi-sidebar-item-btn {
+    background-image: linear-gradient(100deg, #85552c 0%, #9c6b3f 60%, #b98a50 100%);
+}
+
+.fi-main-sidebar .fi-sidebar-item.fi-active > .fi-sidebar-item-btn > .fi-sidebar-item-label,
+.fi-main-sidebar .fi-sidebar-item.fi-active > .fi-sidebar-item-btn > .fi-icon {
+    color: #fffdfa;
+}
+
+@media (width >= 64rem) {
+    .fi-body-has-topbar .fi-main-sidebar {
+        top: 0;
+        z-index: 31;
+        height: 100dvh;
+        margin-top: calc(var(--topbar-height) * -1);
+    }
+
+    .fi-body-has-topbar .fi-main-sidebar .fi-sidebar-header {
+        display: flex;
+        height: auto;
+        padding: 1.75rem 1rem 1.5rem;
+    }
+
+    .fi-topbar-start .fi-logo {
+        display: none;
+    }
+}
+
+.amani-pied-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1rem 1rem 1.5rem;
+}
+
+.amani-pied-menu-lien {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0.6rem;
+    background-color: rgb(255 255 255 / 0.07);
+    padding: 0.7rem 1rem;
+    font-size: 0.875rem;
+    color: #f3e7d8;
+}
+
+.amani-pied-menu-lien:hover {
+    background-color: rgb(255 255 255 / 0.12);
+}
+
+.amani-pied-menu-signature {
+    text-align: center;
+    font-family: var(--font-titre);
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.35;
+    color: #e2c48f;
 }

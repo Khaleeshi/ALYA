@@ -236,6 +236,51 @@
             </x-amani.tiroir-panier>
         </section>
 
+        {{-- Pages de contenu et espace client --}}
+        <section data-apparition>
+            <x-amani.titre-section titre="Pages et espace client" />
+            <div class="mt-8 overflow-hidden rounded-bloc shadow-carte">
+                <x-amani.bandeau-page titre="Contactez-nous" sous-titre="Notre équipe est là pour vous aider !" />
+            </div>
+
+            <div class="mt-8 grid gap-6 lg:grid-cols-3">
+                <x-amani.bloc titre="Mon profil" icone="compte" lien="#" libelle-lien="Modifier">
+                    <div class="flex items-center gap-4">
+                        <x-amani.avatar nom="Princesse Ba" taille="grande" />
+                        <div class="text-sm">
+                            <p class="font-semibold text-brun">Princesse Ba</p>
+                            <p class="chiffres text-taupe">+221 77 123 45 67</p>
+                        </div>
+                    </div>
+                </x-amani.bloc>
+
+                <x-amani.bloc titre="Nos coordonnées">
+                    <div class="flex flex-col gap-5">
+                        <x-amani.coordonnee icone="casque" titre="Service client"><p>Horaires à fournir par AMANI</p></x-amani.coordonnee>
+                        <x-amani.coordonnee icone="enveloppe" titre="Email"><p>Adresse à fournir par AMANI</p></x-amani.coordonnee>
+                        <x-amani.coordonnee icone="position" titre="Notre adresse"><p>Dakar, Sénégal</p></x-amani.coordonnee>
+                    </div>
+                </x-amani.bloc>
+
+                <div class="flex flex-col gap-3">
+                    <x-amani.raccourci icone="recu" titre="Mes commandes" valeur="5 commandes" lien="#" libelle-lien="Voir l'historique" />
+                    <x-amani.raccourci icone="boite" titre="Mes points fidélité" valeur="320 points" lien="#" libelle-lien="Voir mes points" />
+                </div>
+            </div>
+
+            <div class="mt-8 grid gap-6 lg:grid-cols-[260px_1fr]">
+                <div class="rounded-carte bg-blanc p-4 shadow-carte">
+                    <x-amani.menu-lateral libelle="Exemple de menu" :liens="collect(config('boutique.espace_client'))->map(fn (array $ligne, string $cle): array => ['libelle' => __('comptes.espace.menu.'.$cle), 'url' => '#', 'icone' => $ligne[1], 'actif' => $cle === 'tableau'])->values()->all()" />
+                </div>
+                <div class="flex flex-col gap-3">
+                    <h3 class="titre text-2xl text-brun">Questions fréquentes</h3>
+                    <x-amani.accordeon question="Quels sont les délais de livraison ?" :ouvert="true">Réponse à fournir par AMANI, d'après sa politique de livraison.</x-amani.accordeon>
+                    <x-amani.accordeon question="Quels sont les moyens de paiement ?">Wave et Orange Money.</x-amani.accordeon>
+                    <x-amani.accordeon question="Puis-je retourner un produit ?">Réponse à fournir par AMANI, d'après sa politique de retour.</x-amani.accordeon>
+                </div>
+            </div>
+        </section>
+
         {{-- Tableau --}}
         <section data-apparition>
             <x-amani.titre-section titre="Tableau" />

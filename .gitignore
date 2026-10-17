@@ -38,3 +38,6 @@ desktop.ini
 /public/css/filament
 /public/js/filament
 /public/fonts/filament
+
+# Sauvegarde locale de Redis
+dump.rdb

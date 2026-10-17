@@ -27,6 +27,34 @@ final class Navigation
     }
 
     /**
+     * Menu de l'espace client, limité aux pages déjà construites.
+     *
+     * @return list<array{cle: string, libelle: string, url: string, icone: string, actif: bool}>
+     */
+    public static function espaceClient(): array
+    {
+        $langue = app()->getLocale();
+        $courante = request()->route()?->getName();
+        $liens = [];
+
+        foreach ((array) config('boutique.espace_client') as $cle => [$route, $icone]) {
+            if (! Route::has($langue.'.'.$route)) {
+                continue;
+            }
+
+            $liens[] = [
+                'cle' => $cle,
+                'libelle' => __('comptes.espace.menu.'.$cle),
+                'url' => route_langue($route),
+                'icone' => $icone,
+                'actif' => $courante === $langue.'.'.$route,
+            ];
+        }
+
+        return $liens;
+    }
+
+    /**
      * @return array<string, string> nom du réseau => adresse
      */
     public static function reseaux(): array

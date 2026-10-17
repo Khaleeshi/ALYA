@@ -19,6 +19,8 @@ class Consentement extends Model
 
     public const ORIGINE_INSCRIPTION = 'inscription';
 
+    public const ORIGINE_PROFIL = 'profil';
+
     public const UPDATED_AT = null;
 
     public const CREATED_AT = 'cree_le';

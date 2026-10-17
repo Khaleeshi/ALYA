@@ -44,6 +44,17 @@ return [
         'suivi' => 'suivi-commande',
     ],
 
+    // Menu de l'espace client (cahier §3, pages 15 à 21 ; maquette 8) : route et icône.
+    'espace_client' => [
+        'tableau' => ['mon-compte', 'maison'],
+        'commandes' => ['mes-commandes', 'recu'],
+        'favoris' => ['mes-favoris', 'coeur'],
+        'points' => ['mes-points', 'boite'],
+        'retours' => ['mes-retours', 'retour'],
+        'avis' => ['mes-avis', 'etoile'],
+        'profil' => ['mon-profil', 'compte'],
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Réseaux et contact

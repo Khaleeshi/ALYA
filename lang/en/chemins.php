@@ -8,4 +8,5 @@ return [
     'deconnexion' => 'logout',
     'inscription' => 'register',
     'mon-compte' => 'my-account',
+    'mon-profil' => 'my-account/profile',
 ];

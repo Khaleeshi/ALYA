@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Comptes\ConnexionController;
 use App\Http\Controllers\Comptes\InscriptionController;
+use App\Http\Controllers\Comptes\ProfilController;
 use App\Http\Middleware\DefinirLangue;
 use App\Support\Langues;
 use Illuminate\Http\Request;
@@ -43,6 +44,8 @@ Langues::routes(function (string $langue): void {
 
     Route::middleware('auth:web')->group(function () use ($chemin): void {
         Route::view($chemin('mon-compte'), 'comptes.mon-compte')->name('mon-compte');
+        Route::get($chemin('mon-profil'), [ProfilController::class, 'formulaire'])->name('mon-profil');
+        Route::put($chemin('mon-profil'), [ProfilController::class, 'enregistrer'])->name('mon-profil.enregistrer');
         Route::post($chemin('deconnexion'), [ConnexionController::class, 'deconnexion'])->name('deconnexion');
     });
 });

@@ -36,6 +36,34 @@ return [
         'envoyer' => 'Create my account',
     ],
 
+    'espace' => [
+        'titre_menu' => 'My customer area',
+        'membre_depuis' => 'Member since :date',
+        'bienvenue' => 'Welcome',
+        'accroche' => 'Your customer area, simply.',
+        'merci' => 'Thank you for being part of the :marque family',
+        'aide_titre' => 'Need help?',
+        'aide_texte' => 'Our team answers you on WhatsApp.',
+        'aide_bouton' => 'Contact us',
+        'menu' => [
+            'tableau' => 'Dashboard',
+            'commandes' => 'My orders',
+            'favoris' => 'My wishlist',
+            'points' => 'My loyalty points',
+            'retours' => 'My returns and claims',
+            'avis' => 'My reviews',
+            'profil' => 'My profile',
+        ],
+    ],
+
+    'profil' => [
+        'titre' => 'My profile',
+        'modifier' => 'Edit',
+        'telephone_aide' => 'This number is used to sign in. To change it, contact customer service: the new number will be verified with a code.',
+        'enregistrer' => 'Save',
+        'enregistre' => 'Your details have been saved.',
+    ],
+
     'mon_compte' => [
         'titre' => 'My account',
         'bonjour' => 'Hello :prenom',
