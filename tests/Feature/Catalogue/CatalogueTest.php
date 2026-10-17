@@ -10,6 +10,7 @@ use App\Models\Variante;
 use App\Support\Catalogue\Stock;
 use App\Support\Catalogue\StockInsuffisant;
 use App\Support\Montant;
+use Database\Seeders\CatalogueDemonstrationSeeder;
 use Database\Seeders\CategoriesSeeder;
 
 it("déduit l'adresse du nom français et la garde unique", function () {
@@ -151,4 +152,12 @@ it('crée les trois catégories du cahier sans toucher à celles qui existent', 
 
     expect(Categorie::orderBy('position')->pluck('slug')->all())->toEqualCanonicalizing(['gloss', 'skincare', 'maquillage'])
         ->and(Categorie::where('slug', 'gloss')->sole()->nom)->toBe('Gloss & Lip Oil');
+});
+
+it("remplit un catalogue d'essai hors production, jamais en production", function () {
+    $this->seed(CatalogueDemonstrationSeeder::class);
+    expect(Produit::visibles()->count())->toBe(10);
+
+    app()->detectEnvironment(fn () => 'production');
+    expect(fn () => app(CatalogueDemonstrationSeeder::class)->run())->toThrow(RuntimeException::class);
 });

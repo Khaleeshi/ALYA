@@ -32,6 +32,9 @@ Ordre de priorité en cas de contradiction : le cahier AMANI, puis les maquettes
 - Navigation : `config/boutique.php` (menu, aide, espace client, réseaux) ; un lien n'apparaît que si sa page existe.
 - Espace client : les pages connectées utilisent `<x-layouts.espace-client>` (menu latéral, avatar, encart `cote` à droite). Le profil (`ProfilController`) ne change jamais le numéro de téléphone, qui sert à se connecter.
 - Administration : tableau de bord `App\Filament\Pages\TableauDeBord`, actions rapides dans le widget `Raccourcis` (n'y mettre que des actions qui existent et que la personne a le droit de faire), menu latéral sombre dans `resources/css/filament/administration/theme.css`.
+- Catalogue : `Categorie`, `Gamme` (les « collections » : le mot Collection est pris par Laravel), `Produit`, `Variante` (couleur ou format ; un produit sans choix a une variante sans nom), `Ingredient`, `Effet`, `Atout`. Textes traduisibles en JSON (`nom.fr` dans les formulaires Filament, via `App\Filament\Support\ChampsTraduits`) ; adresses (slug) communes aux langues. Une cliente ne voit que `Produit::visibles()`.
+- Stock : ne change que par `App\Support\Catalogue\Stock::ajuster()` (mouvement noté, jamais négatif) ; modifier `variantes.stock` autrement lève une exception. Les prix, le stock et la mise en ligne vont au journal. Un produit déjà publié ne se supprime pas : il s'archive.
+- Données d'essai : `php artisan db:seed --class=CatalogueDemonstrationSeeder` (refusé en production).
 - Photos : un modèle qui porte des photos implémente `HasMedia` et utilise le trait `App\Models\Concerns\AvecPhotos` ; l'affichage passe par `<x-amani.image>`.
 - Système de design : jetons dans `resources/css/amani/jetons.css`, composants dans `resources/views/components/amani/`, vitrine des composants sur `/systeme-de-design` (hors production).
 

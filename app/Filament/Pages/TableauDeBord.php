@@ -3,13 +3,14 @@
 namespace App\Filament\Pages;
 
 use App\Filament\Widgets\Raccourcis;
+use App\Filament\Widgets\StockFaible;
 use Filament\Pages\Dashboard;
 use Illuminate\Contracts\Support\Htmlable;
 
 /**
  * Accueil de l'administration (maquette 6) : « Bienvenue Prénom ! ».
- * Les chiffres (ventes, commandes, clients, stock faible) apparaîtront avec
- * les commandes ; aucun chiffre n'est affiché avant d'exister.
+ * Les chiffres de ventes, de commandes et de clientes apparaîtront avec les
+ * commandes ; aucun chiffre n'est affiché avant d'exister.
  */
 class TableauDeBord extends Dashboard
 {
@@ -29,6 +30,7 @@ class TableauDeBord extends Dashboard
     {
         return [
             Raccourcis::class,
+            StockFaible::class,
         ];
     }
 

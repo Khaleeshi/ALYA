@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Support\Carbon;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -197,6 +198,16 @@ class Produit extends Model implements HasMedia
     public function variantes(): HasMany
     {
         return $this->hasMany(Variante::class)->orderBy('position')->orderBy('id')->chaperone();
+    }
+
+    /**
+     * Mouvements de stock de toutes les variantes, du plus récent au plus ancien.
+     *
+     * @return HasManyThrough<MouvementStock, Variante, $this>
+     */
+    public function mouvementsStock(): HasManyThrough
+    {
+        return $this->hasManyThrough(MouvementStock::class, Variante::class)->latest('mouvements_stock.cree_le')->latest('mouvements_stock.id');
     }
 
     /**
