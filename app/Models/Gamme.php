@@ -25,7 +25,7 @@ use Spatie\Translatable\HasTranslations;
  * @property ?string $accroche
  * @property ?string $description
  * @property int $position
- * @property bool $visible
+ * @property bool $en_ligne
  * @property ?Carbon $debut_le
  * @property ?Carbon $fin_le
  */
@@ -59,7 +59,7 @@ class Gamme extends Model implements HasMedia
         'accroche',
         'description',
         'position',
-        'visible',
+        'en_ligne',
         'debut_le',
         'fin_le',
     ];
@@ -80,7 +80,7 @@ class Gamme extends Model implements HasMedia
     {
         return [
             'position' => 'integer',
-            'visible' => 'boolean',
+            'en_ligne' => 'boolean',
             'debut_le' => 'datetime',
             'fin_le' => 'datetime',
         ];
@@ -110,7 +110,7 @@ class Gamme extends Model implements HasMedia
     {
         $maintenant = now();
 
-        $requete->where('visible', true)
+        $requete->where('en_ligne', true)
             ->where(fn (Builder $q) => $q->whereNull('debut_le')->orWhere('debut_le', '<=', $maintenant))
             ->where(fn (Builder $q) => $q->whereNull('fin_le')->orWhere('fin_le', '>=', $maintenant))
             ->orderBy('position')
@@ -119,7 +119,7 @@ class Gamme extends Model implements HasMedia
 
     public function estVisible(): bool
     {
-        return $this->visible
+        return $this->en_ligne
             && ($this->debut_le === null || $this->debut_le->isPast())
             && ($this->fin_le === null || $this->fin_le->isFuture());
     }

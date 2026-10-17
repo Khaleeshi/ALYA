@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Schema;
  * Les textes visibles par les clientes sont en JSON, une valeur par langue
  * ({"fr": "…", "en": "…"}). Les adresses (slug) sont communes aux langues.
  * Les prix sont des entiers en FCFA : le franc CFA n'a pas de centimes.
+ * « en_ligne » et non « visible » : Eloquent a déjà une propriété $visible,
+ * qui masquerait la colonne dans le code des modèles.
  */
 return new class extends Migration
 {
@@ -24,7 +26,7 @@ return new class extends Migration
             $table->string('slug', 120)->unique();
             $table->json('description')->nullable();
             $table->unsignedSmallInteger('position')->default(0);
-            $table->boolean('visible')->default(true);
+            $table->boolean('en_ligne')->default(true);
             $table->timestamps();
         });
 
@@ -37,13 +39,13 @@ return new class extends Migration
             $table->json('accroche')->nullable();
             $table->json('description')->nullable();
             $table->unsignedSmallInteger('position')->default(0);
-            $table->boolean('visible')->default(true);
+            $table->boolean('en_ligne')->default(true);
             // Dates d'affichage facultatives (collections saisonnières, éditions limitées).
             $table->timestamp('debut_le')->nullable();
             $table->timestamp('fin_le')->nullable();
             $table->timestamps();
 
-            $table->index(['type', 'visible', 'position']);
+            $table->index(['type', 'en_ligne', 'position']);
         });
 
         Schema::create('produits', function (Blueprint $table) {

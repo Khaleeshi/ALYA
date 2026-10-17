@@ -19,7 +19,7 @@ use Spatie\Translatable\HasTranslations;
  * @property string $slug
  * @property ?string $description
  * @property int $position
- * @property bool $visible
+ * @property bool $en_ligne
  */
 class Categorie extends Model implements HasMedia
 {
@@ -43,14 +43,14 @@ class Categorie extends Model implements HasMedia
         'slug',
         'description',
         'position',
-        'visible',
+        'en_ligne',
     ];
 
     protected function casts(): array
     {
         return [
             'position' => 'integer',
-            'visible' => 'boolean',
+            'en_ligne' => 'boolean',
         ];
     }
 
@@ -82,6 +82,6 @@ class Categorie extends Model implements HasMedia
      */
     public function scopeVisibles(Builder $requete): void
     {
-        $requete->where('visible', true)->orderBy('position')->orderBy('id');
+        $requete->where('en_ligne', true)->orderBy('position')->orderBy('id');
     }
 }

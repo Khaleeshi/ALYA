@@ -16,12 +16,12 @@ class CategorieFactory extends Factory
     {
         return [
             'nom' => ['fr' => ucfirst(fake()->unique()->word())],
-            'visible' => true,
+            'en_ligne' => true,
         ];
     }
 
     public function cachee(): static
     {
-        return $this->state(['visible' => false]);
+        return $this->state(['en_ligne' => false]);
     }
 }

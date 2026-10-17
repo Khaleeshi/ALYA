@@ -15,7 +15,7 @@ Ordre de priorité en cas de contradiction : le cahier AMANI, puis les maquettes
 
 - Marque : AMANI Cosmetics (ALYA Group). Signature : « Parce que vous méritez tous de briller. » L'emblème (lotus ou couronne) attend le logo officiel ; en attendant, le composant `<x-amani.logo>` écrit la marque en lettres.
 - Pile : Laravel 12, PHP 8.3, MySQL 8, Redis, vitrine Blade + Tailwind CSS 4 + Alpine.js, Livewire 3, administration Filament 4. Un seul dépôt, un seul déploiement.
-- Tables et code métier nommés en français. Les colonnes imposées par le framework gardent leur nom (`password`, `remember_token`, `created_at`…).
+- Tables et code métier nommés en français. Les colonnes imposées par le framework gardent leur nom (`password`, `remember_token`, `created_at`…). Jamais de colonne qui porte le nom d'une propriété d'Eloquent (`visible`, `hidden`, `table`, `casts`…) : elle serait masquée dans les modèles ; d'où `en_ligne` pour les catégories et collections.
 - Fuseau Africa/Dakar, FCFA (XOF) seule monnaie de paiement, Sénégal uniquement.
 - Français seul au lancement (cahier §1.2) ; l'anglais est prêt dans `lang/en` mais fermé (`BOUTIQUE_LANGUES=fr`).
 - Comptes clientes sans mot de passe : téléphone sénégalais + code SMS (cahier §6.2). Le compte est obligatoire pour commander.

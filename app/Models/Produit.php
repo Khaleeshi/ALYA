@@ -254,7 +254,7 @@ class Produit extends Model implements HasMedia
         $requete->where('statut', self::PUBLIE)
             ->where(fn (Builder $q) => $q->whereNull('campagne_debut_le')->orWhere('campagne_debut_le', '<=', $maintenant))
             ->where(fn (Builder $q) => $q->whereNull('campagne_fin_le')->orWhere('campagne_fin_le', '>=', $maintenant))
-            ->whereHas('categorie', fn (Builder $q) => $q->where('visible', true));
+            ->whereHas('categorie', fn (Builder $q) => $q->where('en_ligne', true));
     }
 
     /**
@@ -275,7 +275,7 @@ class Produit extends Model implements HasMedia
         return $this->statut === self::PUBLIE
             && ($this->campagne_debut_le === null || $this->campagne_debut_le->isPast())
             && ($this->campagne_fin_le === null || $this->campagne_fin_le->isFuture())
-            && $this->categorie->visible;
+            && $this->categorie->en_ligne;
     }
 
     public function estCoffret(): bool

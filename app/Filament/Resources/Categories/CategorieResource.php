@@ -72,7 +72,7 @@ class CategorieResource extends Resource
                     ->label('Photo de couverture')
                     ->collection(Categorie::COUVERTURE)
                     ->image(),
-                Toggle::make('visible')
+                Toggle::make('en_ligne')
                     ->label('Visible sur la boutique')
                     ->helperText('Cachée, la catégorie cache aussi ses produits.')
                     ->default(true),
@@ -97,7 +97,7 @@ class CategorieResource extends Resource
                     ->description(fn (Categorie $record): ?string => $record->description),
                 TextColumn::make('produits_count')
                     ->label('Produits'),
-                IconColumn::make('visible')
+                IconColumn::make('en_ligne')
                     ->label('Visible')
                     ->boolean(),
             ])

@@ -26,8 +26,8 @@ class EditProduit extends EditRecord
                 ->label('Voir sur la boutique')
                 ->icon(Heroicon::OutlinedArrowTopRightOnSquare)
                 ->color('gray')
-                ->url(fn (): string => route_langue('produit', ['produit' => $produit->slug]), shouldOpenInNewTab: true)
-                ->visible(fn (): bool => Route::has('fr.produit') && $produit->estVisible()),
+                ->url(fn (): string => route_langue('boutique.produit', ['produit' => $produit->slug]), shouldOpenInNewTab: true)
+                ->visible(fn (): bool => Route::has('fr.boutique.produit') && $produit->estVisible()),
             AjusterStockAction::make()
                 // Le stock affiché dans le formulaire suit le mouvement enregistré.
                 ->after(function (): void {

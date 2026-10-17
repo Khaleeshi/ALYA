@@ -109,7 +109,7 @@ class GammeResource extends Resource
                     ->alphaDash()
                     ->maxLength(120)
                     ->unique(ignoreRecord: true),
-                Toggle::make('visible')
+                Toggle::make('en_ligne')
                     ->label('Visible sur la boutique')
                     ->default(true),
             ]);
@@ -142,7 +142,7 @@ class GammeResource extends Resource
                     ->label('Jusqu’au')
                     ->dateTime()
                     ->placeholder('—'),
-                IconColumn::make('visible')
+                IconColumn::make('en_ligne')
                     ->label('Visible')
                     ->boolean(),
             ])

@@ -139,7 +139,7 @@ it('calcule le prix « à partir de », le stock et son état', function () {
 it('cache les collections hors de leurs dates', function () {
     $visible = Gamme::factory()->create();
     Gamme::factory()->create(['fin_le' => now()->subHour()]);
-    Gamme::factory()->create(['visible' => false]);
+    Gamme::factory()->create(['en_ligne' => false]);
 
     expect(Gamme::visibles()->pluck('id')->all())->toBe([$visible->id]);
 });

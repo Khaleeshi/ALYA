@@ -18,7 +18,7 @@ class GammeFactory extends Factory
             'nom' => ['fr' => 'Collection '.ucfirst(fake()->unique()->word())],
             'type' => Gamme::PERMANENTE,
             'accroche' => ['fr' => fake()->sentence(5)],
-            'visible' => true,
+            'en_ligne' => true,
         ];
     }
 

@@ -169,6 +169,15 @@ class Variante extends Model implements HasMedia
         return filled($this->nom) ? $produit.' – '.$this->nom : $produit;
     }
 
+    /**
+     * Couleur de la pastille, seulement si c'est bien un code #RRGGBB
+     * (elle va dans un attribut style de la fiche).
+     */
+    public function couleurCss(): ?string
+    {
+        return is_string($this->couleur) && preg_match('/^#[0-9a-fA-F]{6}$/', $this->couleur) === 1 ? $this->couleur : null;
+    }
+
     public function photo(): ?Media
     {
         return $this->getFirstMedia(self::PHOTO);
