@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Filament;
+
+use Filament\AvatarProviders\Contracts\AvatarProvider;
+use Illuminate\Database\Eloquent\Model;
+
+/**
+ * Avatar du personnel : ses initiales en or sur noir, générées sur place.
+ * Remplace le service externe de Filament (aucune donnée envoyée ailleurs,
+ * aucune photo de visage dans l'administration, audit 9.2).
+ */
+class AvatarInitiales implements AvatarProvider
+{
+    public function get(Model $record): string
+    {
+        $initiales = collect([$record->prenom ?? '', $record->nom ?? ''])
+            ->filter()
+            ->map(fn (string $morceau): string => mb_strtoupper(mb_substr($morceau, 0, 1)))
+            ->implode('');
+
+        $svg = <<<SVG
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                <rect width="64" height="64" fill="#111111"/>
+                <text x="32" y="41" text-anchor="middle" font-family="Georgia, serif" font-size="24" letter-spacing="1" fill="#c8a95a">{$initiales}</text>
+            </svg>
+            SVG;
+
+        return 'data:image/svg+xml;base64,'.base64_encode($svg);
+    }
+}
