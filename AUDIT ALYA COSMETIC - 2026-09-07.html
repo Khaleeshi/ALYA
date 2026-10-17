@@ -1,0 +1,875 @@
+<title>Audit ALYA Cosmetic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Jost:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#F6F2EA; --panel:#EDE7DA; --panel-2:#E4DCCB;
+  --ink:#17140F; --ink-2:#5C5446; --ink-3:#8A8172;
+  --line:#D8CFBD; --line-2:#C4B89F;
+  --gold:#96762A; --gold-2:#7A5F20; --gold-soft:#E9DDBB;
+  --danger:#9A2B21; --warn:#A46A10; --ok:#2F6A4E;
+  --danger-bg:#F3E1DE; --warn-bg:#F4E7CE; --ok-bg:#DFEBE3;
+  --display:"Bodoni Moda",Didot,"Bodoni 72",Georgia,serif;
+  --body:"Newsreader",Georgia,"Times New Roman",serif;
+  --ui:"Jost","Futura","Trebuchet MS",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F0E0B; --panel:#171511; --panel-2:#1F1C16;
+    --ink:#ECE4D3; --ink-2:#AAA08D; --ink-3:#7C7363;
+    --line:#2B2720; --line-2:#3B3529;
+    --gold:#CDAB5E; --gold-2:#E2C67E; --gold-soft:#332B1A;
+    --danger:#E3736A; --warn:#DBA24D; --ok:#7CB899;
+    --danger-bg:#2C1815; --warn-bg:#2B2113; --ok-bg:#15271E;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F0E0B; --panel:#171511; --panel-2:#1F1C16;
+  --ink:#ECE4D3; --ink-2:#AAA08D; --ink-3:#7C7363;
+  --line:#2B2720; --line-2:#3B3529;
+  --gold:#CDAB5E; --gold-2:#E2C67E; --gold-soft:#332B1A;
+  --danger:#E3736A; --warn:#DBA24D; --ok:#7CB899;
+  --danger-bg:#2C1815; --warn-bg:#2B2113; --ok-bg:#15271E;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;font-optical-sizing:auto}
+a{color:var(--gold);text-decoration-thickness:1px;text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.page{max-width:1180px;margin:0 auto;padding:40px 22px 96px}
+@media (min-width:1080px){
+  .page{display:grid;grid-template-columns:212px minmax(0,1fr);gap:64px;padding-top:56px}
+  .toc{position:sticky;top:28px;align-self:start;max-height:calc(100vh - 56px);overflow:auto}
+}
+.toc{font-family:var(--ui);font-size:12.5px;letter-spacing:.02em}
+.toc .k{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin:0 0 12px}
+.toc ol{list-style:none;margin:0;padding:0;border-left:1px solid var(--line)}
+.toc li a{display:block;padding:5px 0 5px 14px;color:var(--ink-2);text-decoration:none;border-left:1px solid transparent;margin-left:-1px}
+.toc li a:hover{color:var(--ink);border-left-color:var(--gold)}
+.toc li a b{font-family:var(--display);font-weight:400;color:var(--gold);margin-right:6px;font-variant-numeric:tabular-nums}
+@media (max-width:1079px){.toc{margin-bottom:40px}.toc ol{columns:2;column-gap:24px;border:0}.toc li a{border:0;padding-left:0}}
+
+header.hdr{margin-bottom:56px;padding-bottom:32px;border-bottom:1px solid var(--line-2)}
+.eyebrow{font-family:var(--ui);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:0 0 18px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(44px,6.4vw,76px);line-height:.98;letter-spacing:-.005em;margin:0 0 22px;text-wrap:balance}
+h1 em{font-style:italic;font-weight:400}
+.lede{font-size:21px;line-height:1.45;max-width:62ch;margin:0 0 28px;color:var(--ink)}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px 28px;font-family:var(--ui);font-size:13.5px;line-height:1.45}
+.meta dt{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+.meta dd{margin:0;color:var(--ink)}
+
+section{margin:0 0 72px}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(30px,3.6vw,40px);line-height:1.08;margin:0 0 22px;text-wrap:balance;display:flex;gap:16px;align-items:baseline}
+h2 .n{font-size:.62em;color:var(--gold);font-variant-numeric:tabular-nums;letter-spacing:.02em;min-width:1.6em}
+h3{font-family:var(--ui);font-weight:500;font-size:13.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin:40px 0 14px;padding-top:14px;border-top:1px solid var(--line)}
+h3:first-of-type{margin-top:28px}
+h4{font-family:var(--body);font-weight:600;font-size:18px;margin:26px 0 8px}
+p{margin:0 0 14px;max-width:70ch}
+ul,ol{margin:0 0 16px;padding-left:22px;max-width:72ch}
+li{margin:0 0 7px}
+li::marker{color:var(--gold)}
+strong{font-weight:600}
+.small{font-size:14.5px;color:var(--ink-2)}
+.note{border-left:2px solid var(--gold);padding:10px 18px;margin:18px 0 22px;background:var(--panel);max-width:76ch}
+.note p:last-child{margin-bottom:0}
+.verdict{background:var(--panel);border:1px solid var(--line);padding:26px 28px;margin:0 0 28px}
+.verdict .t{font-family:var(--display);font-size:26px;line-height:1.2;margin:0 0 12px}
+.verdict p{max-width:none}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:0;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);margin:22px 0 30px}
+.stats div{padding:16px 14px 14px;border-right:1px solid var(--line)}
+.stats div:last-child{border-right:0}
+.stats b{display:block;font-family:var(--display);font-weight:400;font-size:34px;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.stats span{display:block;font-family:var(--ui);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-top:8px;line-height:1.35}
+
+.tw{overflow-x:auto;margin:14px 0 26px;border-top:1px solid var(--line-2)}
+table{border-collapse:collapse;width:100%;font-family:var(--ui);font-size:13.5px;line-height:1.42;min-width:640px}
+th{text-align:left;font-weight:500;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);padding:12px 12px 10px 0;border-bottom:1px solid var(--line-2);vertical-align:bottom}
+td{padding:11px 12px 11px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink)}
+td:first-child{font-weight:500}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;padding-right:0}
+td .sub{display:block;color:var(--ink-2);font-size:12.5px;margin-top:2px}
+.tw.compact table{min-width:520px}
+
+.tag{display:inline-block;font-family:var(--ui);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding:2px 8px 1px;border:1px solid var(--line-2);color:var(--ink-2);vertical-align:middle;white-space:nowrap;margin-left:6px}
+.tag.b{color:var(--danger);border-color:var(--danger);background:var(--danger-bg)}
+.tag.m{color:var(--warn);border-color:var(--warn);background:var(--warn-bg)}
+.tag.ok{color:var(--ok);border-color:var(--ok);background:var(--ok-bg)}
+
+.gaps{list-style:none;padding:0;margin:0 0 8px;max-width:none}
+.gaps li{padding:14px 0;border-bottom:1px solid var(--line);margin:0;max-width:78ch}
+.gaps li b{font-weight:600}
+.gaps li .fix{display:block;margin-top:6px;color:var(--ink-2)}
+.gaps li .fix::before{content:"Correctif · ";font-family:var(--ui);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+
+.decisions{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:22px;margin:22px 0 10px}
+.dec{border-top:2px solid var(--gold);padding-top:14px;display:grid;grid-template-rows:auto auto 1fr;gap:8px}
+.dec .id{font-family:var(--display);font-size:22px;color:var(--gold);line-height:1;font-variant-numeric:tabular-nums}
+.dec .h{font-family:var(--ui);font-weight:500;font-size:14.5px;letter-spacing:.02em;line-height:1.35}
+.dec p{font-size:15px;line-height:1.5;margin:0;max-width:none;color:var(--ink-2)}
+.dec p.r{color:var(--ink)}
+.dec p.r::before{content:"Recommandation · ";font-family:var(--ui);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+
+.flow{display:flex;flex-wrap:wrap;gap:8px 0;align-items:stretch;margin:16px 0 24px;font-family:var(--ui);font-size:13px}
+.flow span{padding:10px 14px;border:1px solid var(--line-2);background:var(--panel);position:relative;line-height:1.35}
+.flow span+span{margin-left:22px}
+.flow span+span::before{content:"";position:absolute;left:-22px;top:50%;width:22px;height:1px;background:var(--line-2)}
+.flow span.k{border-color:var(--gold);background:var(--gold-soft)}
+
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin:14px 0 24px;padding:16px;background:#070707;border:1px solid var(--line-2)}
+.sw{font-family:var(--ui);font-size:12px;line-height:1.35}
+.sw i{display:block;height:54px;border:1px solid #2A2620;margin-bottom:8px}
+.sw b{display:block;font-weight:500;color:#F3EDE2}
+.sw span{display:block;color:#8E877B;font-variant-numeric:tabular-nums}
+.type-demo{border:1px solid var(--line-2);padding:22px 26px;margin:14px 0 26px;background:var(--panel)}
+.type-demo .d1{font-family:var(--display);font-size:40px;line-height:1.05;margin:0 0 4px;letter-spacing:.01em}
+.type-demo .d2{font-family:var(--display);font-style:italic;font-size:22px;margin:0 0 14px;color:var(--ink-2)}
+.type-demo .u1{font-family:var(--ui);font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 6px}
+.type-demo .u2{font-family:var(--ui);font-size:15px;margin:0;max-width:62ch}
+
+.screens{display:grid;gap:22px;margin:18px 0 8px}
+.scr{border:1px solid var(--line);padding:18px 22px 6px;display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+.scr .t{grid-column:1/-1;font-family:var(--ui);font-weight:500;font-size:14.5px;margin:0 0 12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.scr .t small{font-weight:400;color:var(--ink-3);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
+.scr h5{font-family:var(--ui);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 8px;color:var(--ink-3)}
+.scr h5.keep{color:var(--ok)}.scr h5.fix{color:var(--danger)}
+.scr ul{padding-left:18px;font-size:15px;max-width:none}
+.scr li{margin-bottom:5px;line-height:1.45}
+@media (max-width:720px){.scr{grid-template-columns:1fr}}
+
+.check{list-style:none;padding:0;max-width:none;columns:2;column-gap:32px}
+.check li{break-inside:avoid;padding:6px 0 6px 26px;position:relative;border-bottom:1px solid var(--line);margin:0;font-size:15.5px}
+.check li::before{content:"";position:absolute;left:0;top:12px;width:13px;height:13px;border:1px solid var(--line-2)}
+@media (max-width:720px){.check{columns:1}}
+
+.phase{border:1px solid var(--line);margin:0 0 16px;padding:18px 22px}
+.phase .ph{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline;margin-bottom:10px}
+.phase .ph b{font-family:var(--display);font-weight:400;font-size:24px}
+.phase .ph span{font-family:var(--ui);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.phase dl{display:grid;grid-template-columns:120px 1fr;gap:8px 18px;margin:0;font-size:15px}
+.phase dt{font-family:var(--ui);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);padding-top:4px}
+.phase dd{margin:0;max-width:74ch}
+@media (max-width:600px){.phase dl{grid-template-columns:1fr}}
+code{font-family:"JetBrains Mono",Consolas,monospace;font-size:.86em;background:var(--panel-2);padding:1px 5px}
+footer{border-top:1px solid var(--line-2);padding-top:22px;font-family:var(--ui);font-size:12.5px;color:var(--ink-3);letter-spacing:.02em}
+@media print{.toc{display:none}.page{display:block}section{break-inside:auto}.tw,.dec,.scr,.phase{break-inside:avoid}body{font-size:12pt}}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+
+<div class="page">
+<nav class="toc" aria-label="Sommaire">
+  <p class="k">Sommaire</p>
+  <ol>
+    <li><a href="#s1"><b>1</b>Synthèse</a></li>
+    <li><a href="#s2"><b>2</b>Ce qui est solide</a></li>
+    <li><a href="#s3"><b>3</b>Contradictions texte / maquettes</a></li>
+    <li><a href="#s4"><b>4</b>Manquements par domaine</a></li>
+    <li><a href="#s5"><b>5</b>Décisions pour la direction</a></li>
+    <li><a href="#s6"><b>6</b>Règles métier tranchées</a></li>
+    <li><a href="#s7"><b>7</b>Architecture et langages</a></li>
+    <li><a href="#s8"><b>8</b>Plan étape par étape</a></li>
+    <li><a href="#s9"><b>9</b>Direction artistique</a></li>
+    <li><a href="#s10"><b>10</b>Exigences mesurables</a></li>
+    <li><a href="#s11"><b>11</b>Recette</a></li>
+    <li><a href="#s12"><b>12</b>À fournir par ALYA</a></li>
+    <li><a href="#s13"><b>13</b>Risques</a></li>
+  </ol>
+</nav>
+
+<main>
+<header class="hdr">
+  <p class="eyebrow">Rapport d'audit · Cahier des charges et maquettes · 7 septembre 2026</p>
+  <h1>Audit <em>ALYA</em> Cosmetic</h1>
+  <p class="lede">Lecture critique du cahier des charges (63 sections) et des dix maquettes fournies, avec les manquements, les décisions techniques tranchées, le plan de développement étape par étape et la direction artistique pour atteindre le niveau d'une grande maison de cosmétiques, depuis Dakar.</p>
+  <dl class="meta">
+    <div><dt>Périmètre</dt><dd>Boutique en ligne, espace cliente, administration, espace livreur, paiements Wave et Orange Money, notifications WhatsApp</dd></div>
+    <div><dt>Posture</dt><dd>Ingénieur d'audit côté gestion, puis développement web et design</dd></div>
+    <div><dt>Base auditée</dt><dd>« Cahier des charges complet, ALYA Cosmetic » (texte) et 10 écrans (13 fichiers, 3 doublons)</dd></div>
+    <div><dt>Références du texte</dt><dd>« CDC §n » renvoie à la section n du cahier des charges</dd></div>
+  </dl>
+</header>
+
+<!-- 1 -->
+<section id="s1">
+  <h2><span class="n">1</span>Synthèse</h2>
+  <div class="verdict">
+    <p class="t">Le cahier des charges est riche et cohérent sur le métier. Il n'est pas encore une spécification : il décrit ce que le site fait, presque jamais ce qu'il fait quand les choses se passent mal.</p>
+    <p>La règle fondamentale (CDC §62 : pas de numéro, pas de stock retiré sans paiement confirmé) est la bonne et elle est déjà écrite. En revanche, le dernier article convoité par deux clientes en même temps, une confirmation de paiement reçue deux fois, une annulation après remise au livreur, une reprogrammation qui tombe un dimanche, une invitée qui veut suivre sa commande sans compte : aucun de ces cas n'a de réponse. Ce rapport les tranche, et ne remonte à la direction que les seize décisions qui lui appartiennent.</p>
+  </div>
+  <div class="stats">
+    <div><b>63</b><span>sections lues</span></div>
+    <div><b>10</b><span>écrans audités</span></div>
+    <div><b>15</b><span>contradictions texte / maquettes</span></div>
+    <div><b>9</b><span>domaines absents</span></div>
+    <div><b>16</b><span>décisions pour la direction</span></div>
+  </div>
+  <ul>
+    <li><strong>Les maquettes sont une bonne base de contenu et une mauvaise base de rendu.</strong> Elles portent les marques d'une génération automatique : chiffres inventés (« 5000+ clientes », « 98 % de satisfaction », « visibilité 78 % »), émojis et étincelles dans les noms de produits, badges sur chaque vignette, icônes génériques dans des cercles, bandeaux de félicitations. Elles servent à lister les contenus voulus, pas à être copiées. La section 9 fixe le système de design qui les remplace.</li>
+    <li><strong>Le nom de la marque est écrit de deux façons.</strong> Le dossier s'appelle « AYLA », le cahier des charges et toutes les maquettes disent « ALYA ». Ce rapport retient ALYA. C'est la première décision à confirmer, avant le dépôt du domaine et le logo.</li>
+    <li><strong>Neuf domaines manquent entièrement :</strong> variantes de teinte, grille tarifaire de livraison, cadre juridique sénégalais, marketing et acquisition, production du contenu et des traductions, exploitation et sauvegardes, pilotage du projet, preuve de livraison, identité de la cliente par téléphone.</li>
+    <li><strong>La pile technique est tranchée :</strong> un monolithe Laravel 12 (PHP 8.3) avec MySQL 8 et Redis, vitrine rendue côté serveur, back-office sur Filament, agrégateur de paiement sénégalais pour Wave et Orange Money, WhatsApp Cloud API pour les notifications, hébergement VPS derrière Cloudflare. La section 7 justifie chaque choix.</li>
+    <li><strong>Le développement tient en huit phases</strong> sur seize semaines pour un développeur senior à plein temps, un designer à mi-temps et une séance photo professionnelle, à condition que les démarches longues (vérification Meta pour WhatsApp, contrat de paiement, textes légaux, photos) démarrent dès la semaine 1.</li>
+  </ul>
+</section>
+
+<!-- 2 -->
+<section id="s2">
+  <h2><span class="n">2</span>Ce qui est solide dans le cahier des charges</h2>
+  <p>Avant les manques, ce qu'il faut préserver tel quel, parce que c'est rare dans un cahier des charges client.</p>
+  <ul>
+    <li><strong>La logique de commande (§62)</strong> : panier, paiement, confirmation réelle, puis seulement numéro, stock et livraison. C'est exactement l'ordre qu'un site marchand doit respecter et beaucoup de sites se trompent.</li>
+    <li><strong>Trois statuts seulement côté administration (§18)</strong>, les détails restant chez le livreur. Bonne décision d'ergonomie : une PDG qui gère seule n'a pas besoin de huit statuts.</li>
+    <li><strong>Des règles chiffrées</strong> : seuils de stock 5 et 3 (§21), paliers VIP (§24), retenue de 10 % (§19), remise précommande de 10 % (§22), retours 24 h (§45), réclamations 7 jours (§44). Un cahier des charges chiffré se teste.</li>
+    <li><strong>La précommande prioritaire au réassort (§22)</strong> avec un exemple concret (10 précommandes, 20 pièces reçues) : la règle est claire et implémentable telle quelle.</li>
+    <li><strong>Le journal d'activité (§54)</strong>, y compris pour les mouvements automatiques de stock, et l'espace achats réservé à la seule dirigeante (§42) : deux réflexes de gestion saine.</li>
+    <li><strong>Le partage de panier qui ne réserve rien (§11)</strong> et la rubrique VIP visible de toutes mais non achetable (§25) : deux mécaniques de désir bien pensées pour une marque de beauté.</li>
+  </ul>
+</section>
+
+<!-- 3 -->
+<section id="s3">
+  <h2><span class="n">3</span>Contradictions entre le texte et les maquettes</h2>
+  <p>Les maquettes ont été produites indépendamment du texte. Quand elles se contredisent, le texte l'emporte sauf mention contraire, et la colonne « Tranché » dit ce qui est retenu. Les lignes marquées D renvoient à une décision de la direction (section 5).</p>
+  <div class="tw">
+  <table>
+    <thead><tr><th>Sujet</th><th>Cahier des charges</th><th>Maquettes</th><th>Tranché</th></tr></thead>
+    <tbody>
+      <tr><td>Numéro de commande</td><td>001, 002… sans préfixe (§16)</td><td>#ALYA25051508</td><td>Le texte. Séquence sans trou, sans préfixe, affichée sur trois chiffres minimum puis 1000, 1001… <span class="sub">D3</span></td></tr>
+      <tr><td>Moyens de paiement</td><td>Wave et Orange Money (§15)</td><td>Visa, Mastercard, et « espèces à la livraison » dans la FAQ</td><td>Wave et Orange Money au lancement. Cartes en phase 2 via le même agrégateur. Espèces exclues : contraire à §62. <span class="sub">D2</span></td></tr>
+      <tr><td>Jours de livraison</td><td>Samedi sans nouvelle commande, dimanche fermé (§36)</td><td>« Nous livrons du lundi au dimanche », dimanche sélectionnable</td><td>Le texte. Le dimanche n'est jamais proposé. <span class="sub">D5</span></td></tr>
+      <tr><td>Délai de retour</td><td>24 heures après réception (§45)</td><td>« 7 jours après réception » (FAQ Contact)</td><td>Le texte : 24 h pour un retour, 7 jours pour une réclamation. La FAQ est réécrite. <span class="sub">D6</span></td></tr>
+      <tr><td>Statuts de commande</td><td>Reçu, En attente de livraison, Livrée (§18)</td><td>En cours, Payée, Expédiée, En attente, Livrée</td><td>Les trois du texte, plus Annulée (§53) et un drapeau « reprogrammée » visible sur la fiche.</td></tr>
+      <tr><td>Statuts de réclamation</td><td>En attente, En cours, Résolue (§44)</td><td>Ajoute Rejetée et une priorité Haute / Moyenne / Basse</td><td>Texte + « Rejetée » (une réclamation infondée doit pouvoir se clore). La priorité reste un champ interne, jamais montré à la cliente.</td></tr>
+      <tr><td>Types de réclamation</td><td>Produit, Remboursement, Échange, Autre</td><td>Produit, Livraison, Paiement, Commande, Service</td><td>Texte + « Livraison », motif le plus fréquent en pratique.</td></tr>
+      <tr><td>Livraison offerte</td><td>Absente</td><td>Barre de progression « plus que 6 850 FCFA », seuil 20 000 FCFA</td><td>Mécanique prévue mais désactivée par défaut ; le seuil est un réglage. <span class="sub">D7</span></td></tr>
+      <tr><td>Affichage des réductions</td><td>La réduction s'applique au seul produit concerné (§28)</td><td>« Réduction -10 % » sur tout le panier, « Vous économisez »</td><td>Le texte : prix barré ligne par ligne, puis une ligne « Réductions » totalisant les remises produit.</td></tr>
+      <tr><td>Canaux de notification</td><td>WhatsApp et email (§23, §50)</td><td>« SMS ou WhatsApp »</td><td>WhatsApp et email. Pas de SMS au lancement (coût par message, aucun apport face à WhatsApp au Sénégal).</td></tr>
+      <tr><td>Catalogue</td><td>10 formules de gloss permanentes (§7)</td><td>Coffrets, Soins, Sérums, Accessoires, Blog</td><td>Les coffrets sont les offres et packs du §30. Soins, sérums et blog sont hors périmètre du lancement ; la structure les permet plus tard.</td></tr>
+      <tr><td>Espace livreur</td><td>Commandes, téléphones, zones, créneaux, compteurs, statut (§32–33)</td><td>Gains du jour, distance, revenus, « nouvelle livraison », annonces, note 4,8/5</td><td>Le texte. Un livreur ne crée pas de livraison et n'est pas noté par les clientes. <span class="sub">D12</span></td></tr>
+      <tr><td>Nature d'une collection</td><td>Temporaire, ne remplace jamais les 10 produits (§9)</td><td>« Collections permanentes (3) »</td><td>Une collection est toujours datée. Les permanents sont des produits, pas une collection.</td></tr>
+      <tr><td>VIP</td><td>Cadeaux non achetables, jamais une remise (§24)</td><td>Code « VIP10 » valant 1 500 FCFA de réduction</td><td>Supprimé. Le VIP est un cadeau selon palier, pas un code promo.</td></tr>
+      <tr><td>Créneaux</td><td>Définis par l'administration, avec capacité (§31)</td><td>Un prix par créneau, badges « Populaire » et « Recommandé »</td><td>Le prix dépend de la zone, pas de l'heure. Les badges disparaissent.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- 4 -->
+<section id="s4">
+  <h2><span class="n">4</span>Manquements par domaine</h2>
+  <p>Chaque manque porte une gravité. <span class="tag b">Bloquant</span> empêche une mise en ligne sérieuse. <span class="tag m">Majeur</span> se paiera en litiges ou en reprise de code. <span class="tag">Mineur</span> se règle par un champ ou un texte.</p>
+
+  <h3>4.1 Catalogue et produits</h3>
+  <ul class="gaps">
+    <li><b>Variantes de teinte</b> <span class="tag m">Majeur</span><br>Le texte parle de 10 formules ; les maquettes montrent des teintes (Diamond Rose, Caramel Gold) avec pastille de couleur. Un gloss existe en plusieurs teintes, et c'est par teinte que se gèrent le stock, la photo, la rupture et la liste d'attente.<span class="fix">Une table de variantes dès le premier jour, même si chaque produit n'a qu'une teinte au lancement. L'ajouter après coup oblige à réécrire panier, stock, précommandes et bilans. Voir D9.</span></li>
+    <li><b>Fiche produit incomplète pour une marque de cosmétiques</b> <span class="tag">Mineur</span><br>Manquent la contenance (ml), le code interne (SKU), un code-barres facultatif, le prix de revient (pour la marge dans le bilan, en lien avec l'espace achats §42), les précautions d'emploi et le libellé INCI des ingrédients.<span class="fix">Champs ajoutés à la fiche ; le prix de revient n'est visible que de la dirigeante.</span></li>
+    <li><b>Coffrets et packs</b> <span class="tag m">Majeur</span><br>Le §30 permet des « packs » sans dire comment ils se vendent : prix du pack, composition, stock.<span class="fix">Un pack est une offre avec une composition (produit, teinte, quantité) et un prix propre ; son stock disponible est le minimum des composants ; au paiement, le stock sort composant par composant.</span></li>
+    <li><b>Section libre personnalisable (§7)</b> <span class="tag">Mineur</span><br>Non définie.<span class="fix">Des blocs de contenu ordonnables (titre, texte, image, vidéo) attachés à la fiche, en français et en anglais.</span></li>
+    <li><b>Calendrier commercial sénégalais</b> <span class="tag">Mineur</span><br>Le texte permet des dates de début et de fin mais aucune vision de l'année. Une marque de beauté à Dakar vit au rythme de la Korité, de la Tabaski, du Ramadan, de la Saint-Valentin, du 8 mars, de la fête des mères, de la rentrée, du Black Friday et des fêtes de fin d'année.<span class="fix">Un calendrier des collections et éditions planifiées dans l'administration, avec rappel automatique trois semaines avant chaque date.</span></li>
+  </ul>
+
+  <h3>4.2 Commande, paiement et stock</h3>
+  <ul class="gaps">
+    <li><b>Rien n'est réservé pendant le paiement</b> <span class="tag b">Bloquant</span><br>Entre le clic « Payer » et la confirmation de Wave ou d'Orange Money, il s'écoule d'une à dix minutes. Sans réservation, deux clientes peuvent payer la dernière pièce, et l'une sera remboursée à la main avec des excuses.<span class="fix">Une réservation de 15 minutes, posée à l'ouverture de la session de paiement et libérée à l'échec ou à l'expiration. Le stock comptable n'est retiré qu'à la confirmation : le §20 est respecté à la lettre, le panier ne réserve toujours rien.</span></li>
+    <li><b>Confirmations reçues en double ou en retard</b> <span class="tag b">Bloquant</span><br>Les prestataires de paiement renvoient parfois la même notification deux fois, ou une heure plus tard. Sans garde-fou : deux commandes, deux sorties de stock, deux messages WhatsApp.<span class="fix">Une clé unique par transaction du prestataire, un traitement dans une seule transaction de base de données, et un rejeu sans aucun effet. C'est le premier test de la recette (section 11).</span></li>
+    <li><b>Paiement confirmé après expiration de la réservation</b> <span class="tag m">Majeur</span><br>L'argent est encaissé, la réservation a sauté.<span class="fix">La commande est créée quand même (payé, c'est payé). Si le stock ne suffit plus, alerte rouge à l'administration et remboursement organisé.</span></li>
+    <li><b>Échecs et abandons de paiement</b> <span class="tag m">Majeur</span><br>Que voit la cliente, combien de temps le lien reste valide, y a-t-il relance ?<span class="fix">Page « paiement en attente » avec nouvel essai, expiration à 15 minutes, aucune commande ni numéro créés, rappel WhatsApp facultatif à 2 heures si la cliente a donné son numéro.</span></li>
+    <li><b>Remboursements</b> <span class="tag m">Majeur</span><br>Le §47 dit « sur le même moyen de paiement ». Un remboursement Wave ou Orange Money est un transfert que la dirigeante fait à la main depuis son compte marchand.<span class="fix">Écran « Remboursements à effectuer » : montant calculé (90 % en cas d'annulation, total ou partiel sinon), numéro de la cliente, moyen d'origine, bouton « Marquer remboursé » avec référence du transfert, trace au journal.</span></li>
+    <li><b>Aucune pièce comptable</b> <span class="tag m">Majeur</span><br>Pas de reçu ni de facture.<span class="fix">Reçu PDF par commande (numéro, date, identité ALYA avec NINEA et RCCM, lignes, remises, livraison, total, moyen, référence de transaction), téléchargeable par la cliente et l'administration.</span></li>
+    <li><b>Suivi de commande sans compte</b> <span class="tag m">Majeur</span><br>Le §12 rend le compte facultatif puis réserve « Ma commande » au compte : une invitée n'aurait aucun accès à sa commande.<span class="fix">Lien privé signé, envoyé par WhatsApp et email, qui ouvre la seule commande concernée. Aucune recherche publique par numéro, conformément au texte.</span></li>
+    <li><b>Fenêtre d'annulation</b> <span class="tag m">Majeur</span><br>Jusqu'à quel moment une cliente peut-elle annuler avec retenue de 10 % ? Après la remise au livreur, le produit est déjà en route.<span class="fix">Voir D8.</span></li>
+    <li><b>Cumul des réductions</b> <span class="tag m">Majeur</span><br>Promotion produit, code promo, offre spéciale, remise précommande, cadeau VIP : le texte dit « une seule réduction par commande » sans dire laquelle gagne.<span class="fix">Règle de priorité en section 6.5.</span></li>
+    <li><b>Précommandes : panier mixte, numéro, livraison</b> <span class="tag m">Majeur</span><br>Peut-on mêler produits disponibles et précommande dans un même paiement ? Quand livre-t-on ?<span class="fix">Voir D4.</span></li>
+    <li><b>Heure de référence</b> <span class="tag">Mineur</span><br>Comptes à rebours, fins de promotion et créneaux dépendent d'une horloge.<span class="fix">Fuseau Africa/Dakar (UTC+0, sans heure d'été), toutes les échéances calculées par le serveur, l'affichage du navigateur se recale sur lui.</span></li>
+  </ul>
+
+  <h3>4.3 Livraison</h3>
+  <ul class="gaps">
+    <li><b>Aucune grille tarifaire, aucune zone</b> <span class="tag b">Bloquant</span><br>Le §31 configure des créneaux, jamais des tarifs. Les maquettes affichent 1 000 puis 1 500 FCFA sans règle.<span class="fix">Zones de Dakar et de la banlieue avec tarif et délai (Plateau et centre, Médina-Fann-Point E-Mermoz-Sacré-Cœur, Almadies-Ngor-Yoff-Ouakam, Liberté-Dieuppeul-HLM-Grand Yoff, Parcelles-Cambérène-Patte d'Oie, Pikine-Guédiawaye, Keur Massar-Malika, Rufisque-Bargny, Diamniadio) ; régions par transporteur plus tard. Les montants appartiennent à la direction : D7.</span></li>
+    <li><b>Adresse dakaroise</b> <span class="tag m">Majeur</span><br>Le formulaire classique (rue, numéro, code postal) ne correspond pas à la réalité.<span class="fix">Quartier choisi dans une liste (qui fixe la zone et le tarif), point de repère en texte libre, téléphone joignable, position GPS facultative par partage de position. Le livreur reçoit le tout, plus un lien Maps si la position existe.</span></li>
+    <li><b>Promesse de délai</b> <span class="tag m">Majeur</span><br>« Livraison en 24 à 48 h partout à Dakar » est répété sur chaque maquette. C'est un engagement.<span class="fix">La promesse affichée dérive des créneaux réellement ouverts (« Livraison demain à partir de 10 h ») et n'est jamais un texte fixe.</span></li>
+    <li><b>Préparation physique</b> <span class="tag m">Majeur</span><br>Entre « Reçu » et le lot du livreur, quelqu'un prépare les colis ; le §31 l'évoque sans le décrire.<span class="fix">Liste de préparation par lot (produit, teinte, quantité, cadeaux VIP, note de la cliente) avec case « préparée » ; une commande non préparée ne peut pas entrer dans un lot.</span></li>
+    <li><b>Preuve de livraison</b> <span class="tag m">Majeur</span><br>Le livreur coche « Livrée » et c'est tout. En cas de litige, aucune trace.<span class="fix">Photo facultative au dépôt, heure et position enregistrées, message WhatsApp automatique à la cliente « Votre commande 001 a été remise à 16 h 40 ». La cliente dispose de 24 h pour contester, ce qui coïncide avec la fenêtre de retour.</span></li>
+    <li><b>Algorithme de reprogrammation (§35)</b> <span class="tag m">Majeur</span><br>« Jour suivant » et « créneau moins chargé » sont ambigus un vendredi soir.<span class="fix">Règle écrite en section 6.9 : jour ouvré suivant, samedi autorisé pour une reprogrammation, dimanche jamais, créneau de la même zone au taux de remplissage le plus bas, cliente prévenue avec lien pour changer.</span></li>
+    <li><b>Capacité</b> <span class="tag">Mineur</span><br>Capacité de quoi ?<span class="fix">Nombre de commandes par créneau et par zone, et nombre par livreur et par tournée.</span></li>
+    <li><b>Deuxième échec de livraison</b> <span class="tag">Mineur</span><br>Non prévu.<span class="fix">Au second échec, la commande passe « à contacter » : la direction appelle, aucune troisième reprogrammation automatique.</span></li>
+  </ul>
+
+  <h3>4.4 Clientes et identité</h3>
+  <ul class="gaps">
+    <li><b>Le téléphone est l'identité réelle</b> <span class="tag m">Majeur</span><br>Le texte ne prévoit que l'email (§12, mot de passe oublié par email). Au Sénégal, une part importante des clientes n'ouvre jamais sa boîte mail ; toutes ont WhatsApp.<span class="fix">Téléphone obligatoire au format international (+221), email facultatif pour une invitée, connexion par email et mot de passe ou par code à usage unique reçu sur WhatsApp. Voir D10.</span></li>
+    <li><b>Consentement</b> <span class="tag m">Majeur</span><br>Meta impose un accord explicite avant tout message WhatsApp marketing ; la newsletter des maquettes n'a pas de base légale dans le texte.<span class="fix">Deux cases distinctes au compte et à la commande : messages liés à ma commande (toujours), offres et nouveautés (choix), avec date et origine du consentement conservées.</span></li>
+    <li><b>Droits sur les données</b> <span class="tag">Mineur</span><br>Rien sur la suppression du compte ni l'export.<span class="fix">Suppression du compte par la cliente (les commandes restent, anonymisées après le délai légal), export sur demande.</span></li>
+    <li><b>Avis des invitées (§43)</b> <span class="tag">Mineur</span><br>Le prénom vient du compte ; une invitée n'en a pas.<span class="fix">Le lien d'avis part après « Livrée » sur le même lien privé signé que le suivi, pour toutes.</span></li>
+  </ul>
+
+  <h3>4.5 Marketing et acquisition</h3>
+  <ul class="gaps">
+    <li><b>Aucune mesure d'acquisition</b> <span class="tag m">Majeur</span><br>Une marque qui vend par Instagram et TikTok sans pixel ni API de conversions ne sait pas quelle publication vend.<span class="fix">Pixel Meta et pixel TikTok, plus l'événement « achat » envoyé par le serveur au moment du webhook de paiement (fiable, non bloqué par les navigateurs). Le tableau de bord montre le tunnel visite, panier, paiement, commande.</span></li>
+    <li><b>Newsletter</b> <span class="tag">Mineur</span><br>Présente sur toutes les maquettes, absente du texte.<span class="fix">Inscription à double confirmation, envoi par le service email transactionnel, désabonnement en un clic. Voir D11.</span></li>
+    <li><b>Flux catalogue</b> <span class="tag">Mineur</span><br>Pour vendre depuis Instagram Shopping et TikTok Shop, il faut un flux produits.<span class="fix">Flux CSV et XML généré automatiquement (nom, prix, disponibilité, image, lien).</span></li>
+    <li><b>Référencement</b> <span class="tag m">Majeur</span><br>Rien sur les URL, les langues, le partage.<span class="fix">URL lisibles par langue (/fr/produits/gloss-diamond-glow, /en/products/…), balises hreflang, plan de site, données structurées Product, Offer et AggregateRating, vignette de partage par produit, collection et panier partagé (le §14 en dépend), canonicals.</span></li>
+    <li><b>Preuve sociale</b> <span class="tag">Mineur</span><br>Les avis (§43) ne sont pas raccordés à la fiche produit.<span class="fix">Note moyenne et avis validés sur chaque fiche, photos des clientes dans une galerie modérée.</span></li>
+  </ul>
+
+  <h3>4.6 Contenu et langues</h3>
+  <ul class="gaps">
+    <li><b>Qui produit l'anglais ?</b> <span class="tag m">Majeur</span><br>Le §57 promet un site bilingue ; le §7 dit « je rédige moi-même », en français.<span class="fix">Chaque champ de contenu existe en français et en anglais dans l'administration, l'anglais retombe sur le français s'il est vide. Textes de marque, politiques et FAQ confiés à un traducteur.</span></li>
+    <li><b>Photographie</b> <span class="tag b">Bloquant</span><br>Le niveau « grande marque » tient à 80 % dans la photo. Le site ne peut pas rattraper des photos de téléphone.<span class="fix">Séance professionnelle selon le brief de la section 9.5, à commander en phase 0.</span></li>
+    <li><b>Textes légaux « rédigés après » (§61)</b> <span class="tag b">Bloquant</span><br>Sans CGV, politique de confidentialité et mentions légales, pas de mise en ligne.<span class="fix">Rédaction lancée en phase 0 avec un juriste ; le développement prévoit les pages, la case d'acceptation et l'horodatage de l'acceptation.</span></li>
+  </ul>
+
+  <h3>4.7 Cadre juridique sénégalais</h3>
+  <ul class="gaps">
+    <li><b>Données personnelles</b> <span class="tag b">Bloquant</span><br>La loi n° 2008-12 du 25 janvier 2008 encadre toute collecte ; le traitement se déclare auprès de la Commission de protection des Données Personnelles (CDP).<span class="fix">Déclaration CDP avant ouverture, politique de confidentialité, registre des traitements, durée de conservation, sous-traitants nommés (hébergeur, Meta, prestataire de paiement, service email).</span></li>
+    <li><b>Transactions électroniques</b> <span class="tag m">Majeur</span><br>La loi n° 2008-08 sur les transactions électroniques impose l'information précontractuelle et l'acceptation des conditions.<span class="fix">Case « J'ai lu et j'accepte les conditions générales et la politique d'annulation » obligatoire avant paiement, texte de la retenue de 10 % affiché à cet endroit (le §19 l'exige), acceptation horodatée et conservée avec la commande.</span></li>
+    <li><b>Mentions légales</b> <span class="tag m">Majeur</span><br>Absentes.<span class="fix">Raison sociale, RCCM, NINEA, adresse, téléphone, email, hébergeur, directeur de publication.</span></li>
+    <li><b>Étiquetage cosmétique</b> <span class="tag">Mineur</span><br>L'emplacement « ingrédients » existe (§7) sans format.<span class="fix">Liste INCI, précautions d'emploi, contenance, pays de fabrication ; à valider avec le fabricant.</span></li>
+    <li><b>Cookies et traceurs</b> <span class="tag">Mineur</span><br>Les pixels de la section 4.5 exigent un consentement.<span class="fix">Bandeau sobre, refus aussi simple que l'acceptation, pixels chargés seulement après accord ; la mesure d'audience sans cookie (Cloudflare Web Analytics) se passe de bandeau.</span></li>
+  </ul>
+
+  <h3>4.8 Sécurité et exploitation</h3>
+  <ul class="gaps">
+    <li><b>Sauvegardes</b> <span class="tag b">Bloquant</span><br>Aucune mention.<span class="fix">Base de données chaque nuit et photos chaque nuit vers un stockage distinct de l'hébergeur, rétention 30 jours, restauration testée chaque mois et consignée.</span></li>
+    <li><b>Environnements</b> <span class="tag m">Majeur</span><br>Une seule installation implicite.<span class="fix">Développement, recette (accessible à la direction pour valider) et production. Aucun test sur la production.</span></li>
+    <li><b>Supervision</b> <span class="tag m">Majeur</span><br>Aucune.<span class="fix">Erreurs applicatives remontées (Sentry), disponibilité surveillée de l'extérieur, file de travaux surveillée (Horizon), alertes WhatsApp à l'administrateur technique.</span></li>
+    <li><b>Durcissement</b> <span class="tag m">Majeur</span><br>Le §55 traite les comptes, pas le reste.<span class="fix">Webhooks vérifiés par signature, secrets hors du code, HTTPS forcé, en-têtes de sécurité, limitation de débit sur connexion, formulaires et paiement, pot de miel sur les formulaires publics, verrouillage après cinq essais, double authentification TOTP pour tout compte administrateur.</span></li>
+    <li><b>Journal immuable</b> <span class="tag">Mineur</span><br>Le §54 prévoit le journal sans dire qu'on ne peut pas l'effacer.<span class="fix">Ajout seul, horodatage serveur, aucune suppression même par la dirigeante.</span></li>
+    <li><b>Abus de l'annulation</b> <span class="tag">Mineur</span><br>La retenue dissuade ; rien ne détecte la répétition.<span class="fix">Compteur d'annulations par cliente visible sur sa fiche, alerte à la troisième.</span></li>
+  </ul>
+
+  <h3>4.9 Pilotage du projet</h3>
+  <ul class="gaps">
+    <li><b>Ni planning, ni recette, ni formation, ni maintenance</b> <span class="tag m">Majeur</span><br>Le texte s'arrête au périmètre.<span class="fix">Sections 8, 11 et 12 de ce rapport : phases, tests d'acceptation, contenus à fournir. À ajouter au contrat : formation de la direction (deux demi-journées) et des livreurs (une heure), documentation d'exploitation, maintenance corrective et mises à jour de sécurité, propriété du code et de tous les comptes (domaine, hébergeur, Meta, prestataire de paiement) au nom d'ALYA.</span></li>
+  </ul>
+</section>
+
+<!-- 5 -->
+<section id="s5">
+  <h2><span class="n">5</span>Décisions à faire prendre par la direction ALYA</h2>
+  <p>Le cahier des charges demande de « signaler uniquement les points nécessitant une décision ». Voici les seize, chacun avec la recommandation à défendre. Tout ce qui n'est pas ici est tranché techniquement dans ce rapport.</p>
+  <div class="decisions">
+    <div class="dec"><span class="id">D1</span><span class="h">Orthographe de la marque</span><p>Dossier « AYLA », cahier des charges et maquettes « ALYA ». Le domaine, le logo et le référencement en dépendent.</p><p class="r">ALYA, et dépôt immédiat de alyacosmetic.sn (NIC Sénégal) et alyacosmetic.com.</p></div>
+    <div class="dec"><span class="id">D2</span><span class="h">Moyens de paiement au lancement</span><p>Le texte dit Wave et Orange Money ; les maquettes ajoutent les cartes et les espèces.</p><p class="r">Wave et Orange Money par un agrégateur sénégalais (section 7). Cartes bancaires activables plus tard sur le même contrat. Jamais d'espèces : elles contredisent la règle « pas de commande sans paiement confirmé ».</p></div>
+    <div class="dec"><span class="id">D3</span><span class="h">Format du numéro de commande</span><p>001 sans préfixe (texte) ou #ALYA25051508 (maquettes).</p><p class="r">Séquence unique sans trou ni préfixe, affichée 001 à 999 puis 1000, 1001… Jamais remise à zéro. Le préfixe n'apporte rien à une marque unique.</p></div>
+    <div class="dec"><span class="id">D4</span><span class="h">Précommandes</span><p>Même série de numéros ou série à part ? Panier mixte autorisé ?</p><p class="r">Même série (une précommande est payée, donc c'est une commande, au statut « Précommande » jusqu'au réassort). Panier mixte interdit : un produit en rupture se précommande dans un paiement séparé, ce qui évite de bloquer la livraison des produits disponibles.</p></div>
+    <div class="dec"><span class="id">D5</span><span class="h">Jours d'activité</span><p>Le texte ferme le dimanche et bloque les nouvelles commandes le samedi ; les maquettes livrent tous les jours.</p><p class="r">Le texte. Précision : le samedi, le site accepte les paiements mais propose des créneaux à partir du lundi ; c'est ce que « pas de nouvelles commandes » doit vouloir dire, sinon la boutique ferme un jour de fort trafic.</p></div>
+    <div class="dec"><span class="id">D6</span><span class="h">Délais de retour et de réclamation</span><p>24 h de retour (texte) contre 7 jours (FAQ des maquettes). Les grandes marques donnent 14 à 30 jours, mais les cosmétiques ouverts ne se reprennent jamais.</p><p class="r">Garder 24 h pour un retour (produit abîmé, erreur de produit) et 7 jours pour une réclamation, et le dire ainsi partout, FAQ comprise.</p></div>
+    <div class="dec"><span class="id">D7</span><span class="h">Grille de livraison</span><p>Aucun tarif, aucune zone, et une livraison offerte au-delà de 20 000 FCFA dans les maquettes.</p><p class="r">Fournir la liste des zones avec tarif et délai (modèle en 4.3). Livraison offerte : mécanique prête, seuil à fixer ou à laisser désactivé.</p></div>
+    <div class="dec"><span class="id">D8</span><span class="h">Fenêtre d'annulation</span><p>Jusqu'à quand la cliente peut-elle annuler avec retenue de 10 % ?</p><p class="r">Jusqu'à la remise du lot au livreur. Ensuite, seul le circuit retour ou réclamation s'applique. Le bouton « Annuler ma commande » disparaît au moment exact de la remise.</p></div>
+    <div class="dec"><span class="id">D9</span><span class="h">Teintes</span><p>Les gloss existent-ils en plusieurs teintes ?</p><p class="r">Prévoir les variantes dès la conception, quelle que soit la réponse. Coût nul aujourd'hui, coût élevé dans six mois.</p></div>
+    <div class="dec"><span class="id">D10</span><span class="h">Identifiant de la cliente</span><p>Email seul (texte) ou téléphone ?</p><p class="r">Téléphone obligatoire, email facultatif pour les invitées. Connexion par email et mot de passe, ou par code à usage unique reçu sur WhatsApp. Récupération par email conservée.</p></div>
+    <div class="dec"><span class="id">D11</span><span class="h">Newsletter, pixels et flux catalogue</span><p>Absents du texte, présents dans les maquettes ou indispensables à la vente sur les réseaux.</p><p class="r">Oui aux trois. Comptes Meta Business et TikTok for Business à ouvrir au nom d'ALYA en phase 0.</p></div>
+    <div class="dec"><span class="id">D12</span><span class="h">Rémunération des livreurs</span><p>Les maquettes montrent « gains du jour » et « revenus ».</p><p class="r">Hors périmètre. Le site compte les livraisons par livreur (déjà dans le texte) ; la paie se fait ailleurs. Réévaluer après trois mois.</p></div>
+    <div class="dec"><span class="id">D13</span><span class="h">Écran d'entrée animé (§4)</span><p>Aucune grande marque ne bloque l'entrée de son site. Un écran bloquant coûte en conversion et en référencement.</p><p class="r">Le garder, contraint : une fois par session, deux secondes au plus, tap pour passer, jamais sur un lien direct vers un produit ou un panier partagé, jamais pour les robots des moteurs, désactivé si la cliente demande moins d'animations.</p></div>
+    <div class="dec"><span class="id">D14</span><span class="h">Vidéos dans les avis et réclamations</span><p>Le texte accepte « photo/vidéo ».</p><p class="r">Photos (5 au plus) et une vidéo de 30 secondes et 50 Mo au plus, sans retraitement au lancement. Les vidéos ne sont jamais publiées sur le site, seulement lues par la direction.</p></div>
+    <div class="dec"><span class="id">D15</span><span class="h">Devises affichées (§56)</span><p>« Toutes les devises disponibles » est illimité.</p><p class="r">FCFA officiel, conversions indicatives en euro, dollar américain, livre sterling et dollar canadien (diaspora). Liste modifiable dans l'administration.</p></div>
+    <div class="dec"><span class="id">D16</span><span class="h">Qui exécute les remboursements</span><p>Un remboursement Wave ou Orange Money est un transfert manuel.</p><p class="r">La dirigeante seule, depuis son compte marchand, avec saisie de la référence dans l'écran « Remboursements à effectuer ». Un administrateur secondaire ne voit cet écran que si on le lui accorde.</p></div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section id="s6">
+  <h2><span class="n">6</span>Règles métier tranchées</h2>
+  <p>Ce que le développement appliquera. Chaque règle est écrite pour être testée.</p>
+
+  <h3>6.1 Cycle de vie d'une commande</h3>
+  <div class="flow">
+    <span>Panier</span><span>Session de paiement<br><small>réservation 15 min</small></span><span class="k">Confirmation reçue</span><span>Reçue<br><small>numéro, stock, VIP, reçu</small></span><span>Préparée</span><span>En attente de livraison<br><small>lot, créneau, livreur</small></span><span>Livrée</span>
+  </div>
+  <ul>
+    <li>Branches : <strong>Annulée</strong> (jusqu'à la remise au livreur, retenue 10 %), <strong>Livraison impossible</strong> (reste « En attente de livraison » avec drapeau « reprogrammée » et motif), <strong>À contacter</strong> (second échec), <strong>Précommande</strong> (payée, en attente de réassort, devient « Reçue » au réassort).</li>
+    <li>La direction ne voit que Reçue, En attente de livraison, Livrée, Annulée. Préparée et les drapeaux sont des détails de la fiche.</li>
+    <li>Un statut ne recule jamais ; toute transition écrit une ligne au journal avec l'auteur (Système, ALYA, administrateur, livreur).</li>
+  </ul>
+
+  <h3>6.2 Numérotation</h3>
+  <ul>
+    <li>Un compteur unique en base, verrouillé pendant la transaction de confirmation ; le numéro est attribué dans la même transaction que la sortie de stock. Deux confirmations simultanées reçoivent deux numéros consécutifs, jamais le même, jamais de trou.</li>
+    <li>Le numéro n'existe pas avant la confirmation ; la session de paiement porte un identifiant technique que la cliente ne voit pas.</li>
+  </ul>
+
+  <h3>6.3 Le stock est un registre de mouvements</h3>
+  <ul>
+    <li>Chaque variation est une ligne typée : vente, annulation, réassort, ajustement manuel, réservation précommande, cadeau VIP, retour vérifié réintégré. Le stock affiché est une somme mise en cache.</li>
+    <li>Un ajustement manuel exige un motif. Le journal du §54 découle de ce registre sans code supplémentaire.</li>
+    <li>Seuils : 5 ou moins « stock faible », 3 ou moins « stock critique, à réapprovisionner en priorité », visibles sur la liste des produits et dans les alertes.</li>
+  </ul>
+
+  <h3>6.4 Réservation pendant le paiement</h3>
+  <ul>
+    <li>À l'ouverture de la session : vérification que chaque ligne est disponible hors réservations en cours, puis réservation de 15 minutes. Si une ligne manque, la cliente est prévenue avant de payer.</li>
+    <li>À l'échec ou à l'expiration : libération. À la confirmation : la réservation devient une vente. La réservation n'est pas un mouvement de stock : le stock vendable est stock moins réservations actives.</li>
+  </ul>
+
+  <h3>6.5 Cumul des réductions</h3>
+  <ol>
+    <li>La promotion produit (§27) est un prix, pas une réduction de commande : elle s'applique toujours, ligne par ligne.</li>
+    <li>Une seule réduction de commande parmi : code promo, offre spéciale, remise précommande. Le site applique la plus avantageuse pour la cliente et le dit (« Votre code n'a pas été appliqué : l'offre en cours est plus avantageuse »).</li>
+    <li>Le cadeau VIP n'est pas une réduction ; il se calcule après tout le reste sur le montant réellement payé, livraison comprise.</li>
+    <li>Les frais de livraison ne sont jamais réduits, sauf livraison offerte (D7).</li>
+  </ol>
+
+  <h3>6.6 VIP</h3>
+  <ul>
+    <li>Paliers modifiables (par défaut 50 000, 75 000, 100 000 FCFA) sur le montant payé après réductions, livraison comprise.</li>
+    <li>Choix immédiat après confirmation ; à défaut, attribution automatique au gloss VIP le plus en stock, sans doublon, jamais un VIP à zéro. Le cadeau est réservé dans le stock VIP dès l'attribution.</li>
+    <li>Annulation : les cadeaux retournent au stock VIP. Remboursement partiel après retour : les cadeaux restent acquis.</li>
+    <li>La rubrique VIP publique affiche le barème et les créations, sans bouton d'achat.</li>
+  </ul>
+
+  <h3>6.7 Précommandes</h3>
+  <ul>
+    <li>Produits permanents seulement, paiement immédiat, remise de 10 %, statut « Précommande », même série de numéros.</li>
+    <li>Au réassort de N pièces avec P précommandes en attente : min(N, P) pièces réservées dans l'ordre des paiements, le reste devient vendable, chaque précommande servie passe « Reçue » et entre dans le circuit de livraison ; les inscrites à la liste d'attente sont prévenues en même temps avec le nombre restant.</li>
+  </ul>
+
+  <h3>6.8 Annulation et remboursement</h3>
+  <ul>
+    <li>Bouton visible jusqu'à la remise au livreur (D8). Confirmation en deux temps avec le texte de la retenue et le montant exact remboursé.</li>
+    <li>Effets immédiats : statut Annulée, stock réintégré, cadeaux VIP restitués, ligne « à rembourser » de 90 % créée, notification WhatsApp à ALYA et à la cliente, journal.</li>
+    <li>Le remboursement est marqué fait par la dirigeante avec la référence du transfert ; le bilan distingue « à rembourser » et « remboursé ».</li>
+  </ul>
+
+  <h3>6.9 Livraison impossible et reprogrammation</h3>
+  <ul>
+    <li>Le livreur choisit un motif (injoignable, absente, accès, autre) et peut ajouter une photo.</li>
+    <li>Le système cherche le jour suivant ouvert (samedi accepté pour une reprogrammation, dimanche jamais), puis dans la même zone le créneau au taux de remplissage le plus bas ; à égalité, le plus tôt.</li>
+    <li>Cliente prévenue par WhatsApp avec le nouveau créneau et un lien pour en choisir un autre ; administration alertée en rouge avec accusé « J'ai pris connaissance » ; tout entre dans le bilan.</li>
+    <li>Second échec : statut « À contacter », plus de reprogrammation automatique.</li>
+  </ul>
+
+  <h3>6.10 Comptes à rebours, promotions, horloges</h3>
+  <ul>
+    <li>Une édition limitée ou une promotion est active si, et seulement si, l'heure serveur est entre son début et sa fin : la vérification se fait à chaque affichage, pas seulement par une tâche planifiée. À la fin, elle disparaît de la boutique à la seconde, reste en administration, se réactive avec de nouvelles dates.</li>
+    <li>Le compte à rebours affiché se recale sur l'heure du serveur ; une cliente ne peut pas le tromper en changeant l'heure de son téléphone.</li>
+  </ul>
+
+  <h3>6.11 Devises</h3>
+  <ul>
+    <li>Le FCFA (XOF) est à parité fixe avec l'euro (655,957 XOF pour 1 EUR). Les autres devises se calculent à partir des taux de la Banque centrale européenne, rafraîchis chaque jour, avec mention « conversion indicative ». Le paiement reste en FCFA.</li>
+  </ul>
+
+  <h3>6.12 Langues</h3>
+  <ul>
+    <li>Français par défaut, anglais complet (interface, contenus, messages WhatsApp et emails avec modèles approuvés dans les deux langues). Langue mémorisée par la cliente. Aucun texte français ne doit subsister en anglais : c'est un test de recette.</li>
+  </ul>
+</section>
+
+<!-- 7 -->
+<section id="s7">
+  <h2><span class="n">7</span>Architecture et langages</h2>
+  <h3>7.1 Le choix</h3>
+  <p><strong>Un monolithe Laravel 12 en PHP 8.3</strong>, base MySQL 8, Redis pour les files et le cache, vitrine rendue côté serveur (Blade, Tailwind CSS 4, Alpine.js), interactions riches en Livewire 3, back-office construit sur Filament 4 avec un thème ALYA, espace livreur en application web installable (PWA). Un seul dépôt, un seul déploiement, un seul langage principal pour toute la logique métier.</p>
+  <p>Pourquoi ce choix plutôt qu'un autre :</p>
+  <ul>
+    <li><strong>Shopify ou WooCommerce</strong> : pas de Wave ni d'Orange Money natifs, abonnement en devise étrangère, et des règles propres à ALYA (VIP par palier, précommandes prioritaires, retenue de 10 %, créneaux avec capacité, lots par zone) qui finiraient en dizaines d'extensions fragiles.</li>
+    <li><strong>Vitrine Next.js séparée avec API</strong> : deux bases de code, deux déploiements, une équipe. Le rendu côté serveur de Laravel donne le même référencement et la même vitesse pour un catalogue de dix à cinquante produits.</li>
+    <li><strong>Laravel</strong> : files d'attente, tâches planifiées, notifications multicanales, permissions, PDF, tests intégrés ; c'est la pile déjà maîtrisée sur les projets FPL, et le PHP se déploie sur le VPS existant sans nouvelle compétence.</li>
+  </ul>
+
+  <h3>7.2 Couches, technologies, langages</h3>
+  <div class="tw">
+  <table>
+    <thead><tr><th>Couche</th><th>Technologie</th><th>Langage</th><th>Rôle</th></tr></thead>
+    <tbody>
+      <tr><td>Serveur applicatif</td><td>Laravel 12, PHP 8.3, PHP-FPM</td><td>PHP</td><td>Toute la logique métier, routes, permissions, notifications, tâches planifiées</td></tr>
+      <tr><td>Base de données</td><td>MySQL 8 (InnoDB, utf8mb4)</td><td>SQL</td><td>Données, contraintes d'unicité, transactions, verrous de numérotation</td></tr>
+      <tr><td>Cache, files, sessions</td><td>Redis 7, Laravel Horizon</td><td>PHP</td><td>Webhooks traités en file, envois WhatsApp et email, conversions d'images, alertes</td></tr>
+      <tr><td>Vitrine</td><td>Blade, Tailwind CSS 4, Alpine.js 3, Vite</td><td>HTML, CSS, JavaScript</td><td>Pages rendues côté serveur, panier tiroir, galerie, compte à rebours, sélecteur de teinte</td></tr>
+      <tr><td>Interactions et back-office</td><td>Livewire 3, Filament 4</td><td>PHP, HTML</td><td>Panier, tunnel de commande, fiches d'administration, tableaux, exports, rôles</td></tr>
+      <tr><td>Espace livreur</td><td>Livewire + manifeste PWA + service worker</td><td>PHP, JavaScript</td><td>Liste du jour lisible hors ligne, boutons Livrée et Impossible, photo, position</td></tr>
+      <tr><td>Images</td><td>Spatie Media Library, GD (WebP et AVIF)</td><td>PHP</td><td>Conversions automatiques en cinq largeurs, srcset, chargement différé</td></tr>
+      <tr><td>Documents</td><td>laravel-dompdf</td><td>PHP, HTML</td><td>Reçus de commande, liste de préparation, export du bilan</td></tr>
+      <tr><td>Authentification</td><td>Laravel Fortify, spatie/laravel-permission</td><td>PHP</td><td>Comptes, TOTP pour les administrateurs, rôles et permissions fines</td></tr>
+      <tr><td>Traductions</td><td>spatie/laravel-translatable, fichiers de langue</td><td>PHP, JSON</td><td>Contenus FR/EN en base, interface FR/EN en fichiers</td></tr>
+      <tr><td>Tests</td><td>Pest, Laravel Dusk pour trois parcours</td><td>PHP</td><td>Règles métier, webhooks, numérotation, tunnel complet dans un navigateur</td></tr>
+      <tr><td>Hébergement</td><td>VPS Ubuntu 24.04, nginx, Cloudflare (DNS, CDN, TLS, pare-feu)</td><td>Bash, configuration nginx</td><td>Un serveur pour la recette, un pour la production ; images servies par le CDN</td></tr>
+      <tr><td>Intégration et déploiement</td><td>GitHub Actions, Deployer</td><td>YAML, PHP</td><td>Tests à chaque poussée, déploiement sans interruption, retour arrière en une commande</td></tr>
+      <tr><td>Supervision</td><td>Sentry, Laravel Pulse, sonde de disponibilité externe</td><td>—</td><td>Erreurs, lenteurs, files, disponibilité</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>7.3 Services externes</h3>
+  <div class="tw">
+  <table>
+    <thead><tr><th>Besoin</th><th>Service retenu</th><th>Pourquoi</th><th>Démarche (phase 0)</th></tr></thead>
+    <tbody>
+      <tr><td>Wave et Orange Money</td><td>Agrégateur sénégalais PayDunya (Wave, Orange Money, Free Money, cartes) derrière une interface de paiement interne</td><td>Un seul contrat, une seule notification de paiement, cartes activables plus tard. L'interface interne permet de brancher plus tard l'API Wave en direct si les frais le justifient.</td><td>Compte marchand au nom d'ALYA : RCCM, NINEA, pièce d'identité, RIB ou compte Wave Business</td></tr>
+      <tr><td>WhatsApp automatique</td><td>WhatsApp Business Platform (Cloud API de Meta)</td><td>Modèles de messages approuvés en FR et EN, envoi depuis le serveur, statut de remise</td><td>Meta Business Manager, vérification de l'entreprise, numéro dédié (pas celui de la dirigeante), modèles soumis à approbation : compter deux à quatre semaines</td></tr>
+      <tr><td>Email transactionnel</td><td>Resend (pilote officiel Laravel)</td><td>Confirmations, reçus, récupération de mot de passe, newsletter</td><td>Enregistrements SPF, DKIM et DMARC sur le domaine</td></tr>
+      <tr><td>Taux de change</td><td>API Frankfurter (taux BCE, gratuite, sans clé)</td><td>Parité fixe XOF/EUR puis conversions BCE</td><td>Aucune</td></tr>
+      <tr><td>Mesure d'audience</td><td>Cloudflare Web Analytics + tunnel interne</td><td>Sans cookie, gratuit, suffisant pour le tableau de bord</td><td>Compte Cloudflare pour le domaine</td></tr>
+      <tr><td>Publicité</td><td>Pixel et API de conversions Meta, pixel TikTok</td><td>Attribution des ventes aux publications</td><td>Comptes Meta Business et TikTok for Business</td></tr>
+      <tr><td>Sauvegardes</td><td>Stockage objet chez un autre fournisseur que le VPS (Cloudflare R2 ou Backblaze B2)</td><td>Une panne de l'hébergeur ne doit pas emporter les sauvegardes</td><td>Compte et clé d'accès</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>7.4 Modèle de données</h3>
+  <p>Quarante tables environ, nommées en français selon l'habitude des projets FPL. Les groupes :</p>
+  <ul>
+    <li><strong>Catalogue</strong> : produits, variantes, médias (photos ordonnées, photo principale), blocs de contenu, collections, éditions limitées (une collection avec compte à rebours), appartenance produit-collection, produits VIP.</li>
+    <li><strong>Prix</strong> : promotions et leurs produits, codes promo et leurs compteurs d'usage, offres spéciales et leurs compositions, paliers VIP, taux de change.</li>
+    <li><strong>Clientes</strong> : clientes, adresses (quartier, zone, repère, position), consentements, favoris, paniers et lignes, paniers partagés.</li>
+    <li><strong>Vente</strong> : sessions de paiement, réservations, transactions du prestataire (clé unique), compteur de commandes, commandes et lignes figées (nom, teinte, prix, remise au moment de l'achat), cadeaux VIP attribués, annulations, remboursements, précommandes, liste d'attente de réassort, reçus.</li>
+    <li><strong>Stock</strong> : mouvements de stock typés, seuils.</li>
+    <li><strong>Livraison</strong> : zones et tarifs, créneaux et capacités, jours fermés, livreurs et statuts, lots, livraisons (tentatives, motifs, photos, positions, reprogrammations).</li>
+    <li><strong>Après-vente</strong> : réclamations, retours, échanges, avis (validation, ordre, médias), collaborations.</li>
+    <li><strong>Gestion</strong> : achats et catégories d'achat, journal d'activité (ajout seul), notifications, utilisateurs administrateurs, rôles, permissions, pages de contenu, FAQ, bannières, réglages.</li>
+  </ul>
+
+  <h3>7.5 Flux de paiement</h3>
+  <div class="flow">
+    <span>Cliente clique « Payer »</span><span>Réservation 15 min</span><span>Session créée chez l'agrégateur</span><span>Cliente paie dans Wave ou Orange Money</span><span class="k">Webhook signé reçu</span><span>File : transaction unique, numéro, stock, VIP, reçu</span><span>WhatsApp + email cliente, WhatsApp ALYA, événement « achat » aux pixels</span>
+  </div>
+  <p class="small">Le retour de la cliente sur le site après paiement ne crée jamais la commande : seul le webhook le fait. La page « merci » attend la confirmation quelques secondes, puis affiche le numéro ou « paiement en cours de confirmation ».</p>
+</section>
+
+<!-- 8 -->
+<section id="s8">
+  <h2><span class="n">8</span>Plan de développement étape par étape</h2>
+  <p>Seize semaines pour un développeur senior à plein temps, un designer à mi-temps jusqu'à la semaine 6, une séance photo. Les phases 0 et 1 se chevauchent. Chaque phase se termine par une recette de la direction sur l'environnement de recette.</p>
+  <div class="tw compact">
+  <table>
+    <thead><tr><th>Phase</th><th>Semaines</th><th>Livrable de fin de phase</th></tr></thead>
+    <tbody>
+      <tr><td>0 · Cadrage et démarches</td><td class="num">1 – 2</td><td>Décisions D1 à D16 signées, comptes ouverts, brief photo lancé, textes légaux commandés</td></tr>
+      <tr><td>1 · Fondations et système de design</td><td class="num">1 – 3</td><td>Dépôt, environnements, authentification, rôles, images, bibliothèque de composants ALYA</td></tr>
+      <tr><td>2 · Catalogue et vitrine</td><td class="num">3 – 6</td><td>Boutique complète navigable en FR et EN, sans paiement</td></tr>
+      <tr><td>3 · Panier, paiement, commandes, stock</td><td class="num">6 – 9</td><td>Première commande réelle payée en recette avec Wave</td></tr>
+      <tr><td>4 · Livraison et espace livreur</td><td class="num">9 – 11</td><td>Un lot livré par un livreur depuis son téléphone</td></tr>
+      <tr><td>5 · Après-vente, VIP, précommandes, avis</td><td class="num">11 – 13</td><td>Annulation, retour, réclamation et cadeau VIP joués de bout en bout</td></tr>
+      <tr><td>6 · Administration et bilans</td><td class="num">12 – 14</td><td>Tableau de bord, comparaisons, achats, journal, exports</td></tr>
+      <tr><td>7 · Recette, sécurité, performance, mise en ligne</td><td class="num">15 – 16</td><td>Site public, formation faite, sauvegarde restaurée une fois</td></tr>
+      <tr><td>Accompagnement</td><td class="num">17 – 20</td><td>Quatre semaines de suivi rapproché après ouverture</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="phase">
+    <div class="ph"><b>Phase 0 · Cadrage et démarches</b><span>Semaines 1 – 2</span></div>
+    <dl>
+      <dt>Contenu</dt><dd>Atelier d'une demi-journée avec la direction sur les seize décisions. Ouverture des comptes : domaine .sn et .com, Cloudflare, hébergeur, agrégateur de paiement, Meta Business (vérification d'entreprise et numéro WhatsApp), TikTok for Business, Resend, stockage de sauvegarde. Commande des photos, des traductions et des textes légaux. Déclaration CDP préparée.</dd>
+      <dt>Langages</dt><dd>Aucun. Contrats, formulaires, brief.</dd>
+      <dt>Sortie</dt><dd>Compte rendu signé ; la spécification consolidée (ce rapport plus les décisions) devient le contrat fonctionnel.</dd>
+    </dl>
+  </div>
+  <div class="phase">
+    <div class="ph"><b>Phase 1 · Fondations et système de design</b><span>Semaines 1 – 3</span></div>
+    <dl>
+      <dt>Contenu</dt><dd>Dépôt Git, Laravel 12, MySQL, Redis, Horizon, environnements dev / recette / production, déploiement automatisé. Authentification clientes et administrateurs, double authentification, rôles et permissions. Chaîne d'images (conversions, tailles, CDN). Traductions. Journal d'activité. En parallèle, le designer livre le système de design de la section 9 sous forme de composants Blade : typographie, boutons, champs, vignette produit, tiroir de panier, en-tête, pied de page, tableaux d'administration.</dd>
+      <dt>Langages</dt><dd>PHP (Laravel), SQL (migrations), Bash et nginx (serveurs), YAML (GitHub Actions), HTML, CSS (Tailwind), JavaScript (Alpine).</dd>
+      <dt>Tests</dt><dd>Connexion, verrouillage, TOTP, permissions par rôle, conversion d'une photo 4K en cinq largeurs AVIF et WebP.</dd>
+    </dl>
+  </div>
+  <div class="phase">
+    <div class="ph"><b>Phase 2 · Catalogue et vitrine</b><span>Semaines 3 – 6</span></div>
+    <dl>
+      <dt>Contenu</dt><dd>Produits, variantes, photos ordonnées, blocs de contenu, collections, éditions limitées avec compte à rebours, promotions à dates, rupture et boutons associés, favoris, partage avec vignettes, devises, langues, écran d'entrée contraint, page d'accueil, à propos, VIP public, aide et FAQ, collaboration, référencement, pixels sous consentement.</dd>
+      <dt>Langages</dt><dd>PHP, HTML, CSS, JavaScript (compte à rebours recalé sur le serveur, galerie, sélecteur de teinte), SQL.</dd>
+      <dt>Tests</dt><dd>Édition qui disparaît à la seconde de fin, promotion qui s'éteint à l'heure, prix barré ligne par ligne, page anglaise sans résidu français, vignette de partage d'un produit.</dd>
+    </dl>
+  </div>
+  <div class="phase">
+    <div class="ph"><b>Phase 3 · Panier, paiement, commandes, stock</b><span>Semaines 6 – 9</span></div>
+    <dl>
+      <dt>Contenu</dt><dd>Panier invité et sauvegardé, partage et fusion, tunnel en trois étapes (coordonnées, livraison, paiement), acceptation des conditions horodatée, interface de paiement interne, adaptateur agrégateur, webhooks signés et idempotents, réservation, numérotation, registre de stock, VIP, reçu PDF, lien de suivi signé, notifications WhatsApp et email en FR et EN, événement « achat » serveur.</dd>
+      <dt>Langages</dt><dd>PHP (files, transactions, verrous), SQL, JavaScript (tunnel), HTML (modèles de messages et de reçus).</dd>
+      <dt>Tests</dt><dd>Les tests 1 à 5, 10 et 11 de la section 11. Cent paiements simultanés simulés : cent numéros consécutifs.</dd>
+    </dl>
+  </div>
+  <div class="phase">
+    <div class="ph"><b>Phase 4 · Livraison et espace livreur</b><span>Semaines 9 – 11</span></div>
+    <dl>
+      <dt>Contenu</dt><dd>Zones et tarifs, créneaux et capacités, jours fermés, choix du créneau au tunnel, liste de préparation, lots par zone, livreurs et statuts avec motif, application livreur installable (liste du jour hors ligne, appel en un tap, itinéraire, Livrée avec photo, Impossible avec motif), reprogrammation automatique, alertes rouges avec accusé, compteurs remis / livrés / restants.</dd>
+      <dt>Langages</dt><dd>PHP, JavaScript (service worker, géolocalisation, appareil photo), HTML, CSS.</dd>
+      <dt>Tests</dt><dd>Tests 8 et 9 de la section 11 ; un vrai livreur livre une vraie commande de recette.</dd>
+    </dl>
+  </div>
+  <div class="phase">
+    <div class="ph"><b>Phase 5 · Après-vente, VIP, précommandes, avis, collaborations</b><span>Semaines 11 – 13</span></div>
+    <dl>
+      <dt>Contenu</dt><dd>Annulation avec retenue, écran des remboursements, retours en 24 h avec statuts et décision, échanges, réclamations en 7 jours avec notifications à chaque étape, avis après livraison avec validation et ordre, liste d'attente de réassort et notification groupée, précommandes et réassort prioritaire, choix du cadeau VIP et attribution automatique, demandes de collaboration.</dd>
+      <dt>Langages</dt><dd>PHP, SQL, HTML (modèles de messages), JavaScript (téléversement de photos et vidéos avec limites).</dd>
+      <dt>Tests</dt><dd>Tests 4, 7 et 12 de la section 11.</dd>
+    </dl>
+  </div>
+  <div class="phase">
+    <div class="ph"><b>Phase 6 · Administration et bilans</b><span>Semaines 12 – 14</span></div>
+    <dl>
+      <dt>Contenu</dt><dd>Tableau de bord (ventes, commandes, alertes, tunnel), recherche par numéro qui ouvre la fiche, fiche de commande complète avec historique, top ventes et produits à surveiller avec filtres, comparaison de deux périodes, bilan VIP, bilan finances (encaissé, à rembourser, remboursé, retenues, livraison, cadeaux), espace achats réservé, calendrier commercial, contenu du site (pages, FAQ, bannières), exports CSV et PDF, journal d'activité consultable.</dd>
+      <dt>Langages</dt><dd>PHP (Filament), SQL (agrégations), JavaScript (graphiques légers).</dd>
+      <dt>Tests</dt><dd>Chaque chiffre du bilan recalculé à la main sur un jeu de vingt commandes connues.</dd>
+    </dl>
+  </div>
+  <div class="phase">
+    <div class="ph"><b>Phase 7 · Recette, sécurité, performance, mise en ligne</b><span>Semaines 15 – 16</span></div>
+    <dl>
+      <dt>Contenu</dt><dd>Recette complète par la direction sur la liste de la section 11, revue de sécurité (en-têtes, débits, secrets, webhooks, permissions), mesure des performances sur mobile 4G et corrections, restauration d'une sauvegarde sur un serveur vierge, formation de la direction (deux demi-journées) et des livreurs (une heure), chargement du vrai catalogue et des photos, bascule du domaine, surveillance.</dd>
+      <dt>Langages</dt><dd>Bash (sauvegardes, restauration), configuration nginx et Cloudflare, PHP (correctifs).</dd>
+      <dt>Sortie</dt><dd>Site ouvert au public, documentation d'exploitation remise, comptes et codes remis à ALYA.</dd>
+    </dl>
+  </div>
+</section>
+
+<!-- 9 -->
+<section id="s9">
+  <h2><span class="n">9</span>Direction artistique « grande maison »</h2>
+  <p>Le cahier des charges demande du noir, de l'or et des paillettes, un rendu luxueux, chic, féminin, lumineux malgré le fond noir. Les maquettes traduisent cette demande de la façon la plus littérale : de l'or partout, des paillettes sur chaque page, des étincelles dans les titres. Les grandes maisons font l'inverse : le luxe est dans la retenue, la photographie et la typographie ; l'or n'apparaît qu'aux endroits où il compte.</p>
+
+  <h3>9.1 Ce que font les références</h3>
+  <div class="tw compact">
+  <table>
+    <thead><tr><th>Maison</th><th>Ce qu'elle fait de son noir et de son or</th><th>À reprendre pour ALYA</th></tr></thead>
+    <tbody>
+      <tr><td>Tom Ford Beauty</td><td>Fond noir mat, or réservé au logo et au bouton d'achat, capitales Didone, angles vifs, aucun badge</td><td>La palette exacte du cahier des charges, exécutée avec retenue ; le bouton doré unique par écran</td></tr>
+      <tr><td>Pat McGrath Labs</td><td>Noir et or, images de campagne sur peaux réelles, noms de produits en capitales, galerie de textures</td><td>Photographie sur peaux foncées et mates, swatchs réels, textures en gros plan</td></tr>
+      <tr><td>Charlotte Tilbury</td><td>Fond sombre, fiche produit très complète, sélecteur de teinte avec swatch sur lèvres, vidéos courtes</td><td>La fiche produit : sélecteur de teinte, accordéons, avis, « complétez votre rituel »</td></tr>
+      <tr><td>Hourglass</td><td>Noir mat, presque aucune décoration, espaces généreux, typographie fine</td><td>La densité : peu d'éléments par écran, marges larges</td></tr>
+      <tr><td>Fenty Beauty</td><td>Inclusivité des carnations montrée dès la page d'accueil</td><td>Chaque teinte photographiée sur trois ou quatre carnations sénégalaises</td></tr>
+      <tr><td>Dior Beauty</td><td>Hiérarchie typographique, navigation silencieuse, une seule action par section</td><td>Le menu : sept entrées maximum, sans icône, capitales espacées</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>9.2 Ce qui trahit une interface générée dans les maquettes</h3>
+  <p>À bannir du site, sans exception :</p>
+  <ul>
+    <li>Chiffres inventés et invérifiables : « 5000+ clientes satisfaites », « 100+ produits » (il y en a dix), « 98 % de satisfaction », « 24/7 », « visibilité moyenne 78 % », « taux de conversion 3,45 % ».</li>
+    <li>Émojis et étincelles dans l'interface : « Coffret Diamond Glow ✨ », « Bonjour, Livreur 👋 », « Bienvenue, PDG ALYA 👑 », confettis sur la page de paiement.</li>
+    <li>Bandeaux de félicitations (« Vous faites un excellent travail ! ») et messages de remerciement décoratifs.</li>
+    <li>Icônes filaires génériques dans des cercles pour illustrer Qualité, Innovation, Passion, Confiance, Communauté ; barre de réassurance à quatre icônes répétée au bas de chaque page.</li>
+    <li>Badges sur presque chaque vignette (Nouveau, Best-seller, Populaire, Recommandé) et étiquette « Édition limitée » en doublon du titre.</li>
+    <li>Boutons en dégradé d'or, halos lumineux sous les titres, étincelle accrochée à chaque titre de page, particules dorées en fond de chaque écran.</li>
+    <li>Coins arrondis de 10 à 12 px sur tout, cartes bordées pour tout, y compris les simples chiffres.</li>
+    <li>Photos de visages de clientes dans les tableaux d'administration (inutile et sensible), avatars de banque d'images.</li>
+    <li>Incohérences de contenu : « LIVRAISON RARIDE », catégories inexistantes (sérums, accessoires), un livreur qui « crée une nouvelle livraison », une note de livreur attribuée par les clientes.</li>
+  </ul>
+
+  <h3>9.3 Système de design ALYA</h3>
+  <h4>Palette</h4>
+  <p>Un seul or, matifié vers le champagne pour rester lisible sur noir et ne pas virer au jaune sur les écrans de téléphone. Le texte n'est jamais blanc pur : un ivoire, qui adoucit le contraste et évoque le papier des coffrets.</p>
+  <div class="swatches">
+    <div class="sw"><i style="background:#070707"></i><b>Noir profond</b><span>#070707 · fond de page</span></div>
+    <div class="sw"><i style="background:#111111"></i><b>Noir surface</b><span>#111111 · cartes, tiroirs</span></div>
+    <div class="sw"><i style="background:#1A1A1A"></i><b>Noir relief</b><span>#1A1A1A · champs, survols</span></div>
+    <div class="sw"><i style="background:#2A2620"></i><b>Filet</b><span>#2A2620 · bordures 1 px</span></div>
+    <div class="sw"><i style="background:#C8A95A"></i><b>Or champagne</b><span>#C8A95A · accent unique, bouton principal</span></div>
+    <div class="sw"><i style="background:#E9D9AE"></i><b>Or clair</b><span>#E9D9AE · grands titres dorés</span></div>
+    <div class="sw"><i style="background:#7D6432"></i><b>Or sombre</b><span>#7D6432 · filets dorés, états inactifs</span></div>
+    <div class="sw"><i style="background:#F3EDE2"></i><b>Ivoire</b><span>#F3EDE2 · texte principal</span></div>
+    <div class="sw"><i style="background:#8E877B"></i><b>Gris chaud</b><span>#8E877B · texte secondaire</span></div>
+    <div class="sw"><i style="background:#3E7B5C"></i><b>Vert état</b><span>#3E7B5C · livrée, disponible</span></div>
+    <div class="sw"><i style="background:#B8862B"></i><b>Ambre état</b><span>#B8862B · stock faible, en attente</span></div>
+    <div class="sw"><i style="background:#A03A32"></i><b>Rouge état</b><span>#A03A32 · rupture, annulée, alerte</span></div>
+  </div>
+  <p class="small">Contrastes vérifiés sur noir profond : or champagne 8,9:1, ivoire 17:1, gris chaud 5,7:1. Les couleurs d'état ne sont jamais utilisées comme décoration.</p>
+
+  <h4>Typographie</h4>
+  <div class="type-demo">
+    <p class="d1">GLOSS DIAMOND GLOW</p>
+    <p class="d2">Parce que vous méritez tous de briller.</p>
+    <p class="u1">Ajouter au panier · 4 500 FCFA</p>
+    <p class="u2">Un baume-gloss haute brillance, non collant, enrichi en huile de baobab. Texture fondante, tenue six heures, fini miroir.</p>
+  </div>
+  <ul>
+    <li><strong>Titres, prix et compte à rebours : Bodoni Moda</strong>, la Didone dont le logo ALYA est déjà proche. Capitales espacées de 4 % pour les titres de page, bas de casse pour les noms de produits dans le texte.</li>
+    <li><strong>Texte, navigation, boutons, formulaires : Jost</strong>, géométrique, héritier des caractères de la mode, très lisible en petit sur téléphone. Corps 16 px, interligne 1,6 ; étiquettes en capitales de 12 px espacées de 14 %.</li>
+    <li>Deux familles, quatre graisses au total, auto-hébergées (sous-ensemble latin, chargement sans bascule visible). Aucune police ajoutée pour l'administration.</li>
+  </ul>
+
+  <h4>Mise en page</h4>
+  <ul>
+    <li>Grille de 12 colonnes, gouttière 24 px, marges 20 px sur téléphone et 64 px sur ordinateur, largeur maximale 1440 px. Vignettes produits en 2, 3 puis 4 colonnes.</li>
+    <li>Angles vifs partout (rayon 0), sauf les champs de saisie à 2 px. Aucune ombre portée : le relief vient d'un filet de 1 px et d'une différence de noir.</li>
+    <li>Un bouton doré plein par écran au plus (l'action principale) ; les autres actions en filet doré ou en lien souligné. Jamais de dégradé.</li>
+    <li>Icônes fonctionnelles uniquement, en trait fin de 1,25 px, taille 20 px : menu, recherche, compte, sac, cœur, fermer, chevron, plus, moins, coche, alerte. Aucune icône illustrative dans les sections de valeurs ni dans les tuiles de chiffres. Les marques Wave, Orange Money, WhatsApp, Instagram, TikTok et Snapchat utilisent leurs logos officiels, jamais redessinés.</li>
+    <li>Paillettes : elles vivent dans la photographie (arrière-plan de la grande image d'accueil, fond du packshot, écran d'entrée, page de paiement validé), capturées à la prise de vue. Le reste de l'interface est un noir mat. Aucune particule en CSS, aucune étincelle dans un titre.</li>
+  </ul>
+
+  <h4>Mouvement</h4>
+  <ul>
+    <li>Apparition des sections par fondu et montée de 8 px sur 400 ms, depuis un état déjà visible. Survol de vignette : bascule vers la photo de texture en 300 ms. Tiroir du panier : 320 ms. Compte à rebours : chiffres qui se remplacent sans clignoter.</li>
+    <li>Écran d'entrée : tracé du logo 1,2 s, signature en fondu 0,6 s, total 2 s, tap pour passer, conditions de la décision D13.</li>
+    <li>Aucun défilement parallaxe, aucun effet de lumière qui suit la souris ; « réduire les animations » respecté sur tout le site.</li>
+  </ul>
+
+  <h4>Composants de vitrine</h4>
+  <ul>
+    <li><strong>Vignette produit</strong> : photo 4:5 sur noir, nom, une ligne de descriptif, prix (prix barré à gauche si promotion), swatchs de teintes en pastilles de 10 px, action « Ajouter » au survol et toujours visible sur téléphone. Un badge au plus : « Nouveau », « Édition limitée » ou « -10 % ».</li>
+    <li><strong>Fiche produit</strong> : galerie fixe à gauche, informations à droite, sélecteur de teinte avec photo sur lèvres, prix, disponibilité, bouton d'achat fixé en bas sur téléphone, accordéons Description, Effet, Conseils, Ingrédients, blocs libres, avis, « Complétez votre rituel ».</li>
+    <li><strong>Panier</strong> : tiroir depuis la droite après un ajout, page complète pour modifier, note, partage. Le partage produit une vignette avec les produits et le total.</li>
+    <li><strong>Tunnel</strong> : une page, trois étapes visibles, récapitulatif fixe, moyens de paiement avec logos officiels, texte de la retenue de 10 % et case d'acceptation avant le bouton « Payer avec Wave » ou « Payer avec Orange Money ».</li>
+    <li><strong>Édition limitée</strong> : image pleine largeur, nom en Bodoni, compte à rebours en chiffres tabulaires, un bouton « Découvrir ».</li>
+    <li><strong>Pied de page</strong> : quatre colonnes sobres (navigation, informations, contact, newsletter), logos de paiement, réseaux, signature en italique. Pas de barre de réassurance.</li>
+  </ul>
+
+  <h4>Administration et espace livreur</h4>
+  <ul>
+    <li>Même palette, même typographie, mais densité utile : tableaux serrés, chiffres tabulaires, états en pastilles de texte (pas d'icône), aucune tuile décorative. Le tableau de bord montre huit chiffres qui existent vraiment et deux courbes.</li>
+    <li>Espace livreur pensé pour un pouce et le soleil de Dakar : boutons de 56 px, texte 18 px, contraste maximal, liste du jour d'abord, un écran par livraison avec Appeler, Itinéraire, Livrée, Impossible.</li>
+  </ul>
+
+  <h3>9.4 Audit écran par écran</h3>
+  <div class="screens">
+    <div class="scr">
+      <p class="t">Vitrine · Panier <small>Fichier 22 (3)</small></p>
+      <div><h5 class="keep">Garder</h5><ul><li>Structure en deux colonnes, récapitulatif à droite</li><li>Quantité par plus et moins, suppression par ligne</li><li>Note facultative</li><li>Logos de paiement</li></ul></div>
+      <div><h5 class="fix">Corriger</h5><ul><li>Retirer Visa et Mastercard (D2)</li><li>Réduction ligne par ligne, plus de « Vous économisez »</li><li>Barre de livraison offerte désactivée par défaut (D7)</li><li>Étincelle du titre, badge « Paiement 100 % sécurisé », barre de réassurance, particules d'angle</li><li>Photos de gloss avec texture : oui, mais réelles, cadrées identiquement</li></ul></div>
+    </div>
+    <div class="scr">
+      <p class="t">Vitrine · Boutique, coffrets <small>Fichier 23 (1)</small></p>
+      <div><h5 class="keep">Garder</h5><ul><li>Filtres à gauche : catégorie, prix, occasion (Tabaski, Korité, fête des mères sont de vraies occasions sénégalaises)</li><li>Grille de quatre, prix visibles, cœur pour les favoris</li></ul></div>
+      <div><h5 class="fix">Corriger</h5><ul><li>Un badge par vignette au plus, jamais « Best-seller »</li><li>Étincelle après chaque nom</li><li>Encart « Un coffret, beaucoup de bonheur » avec icône cadeau</li><li>Sous-catégories Soins et Découverte sans produits derrière</li><li>Les coffrets deviennent des offres du §30 avec composition affichée</li></ul></div>
+    </div>
+    <div class="scr">
+      <p class="t">Vitrine · À propos <small>Fichier 22 (1)</small></p>
+      <div><h5 class="keep">Garder</h5><ul><li>Grande image de marque, signature en italique, bouton « Notre histoire »</li><li>Le récit de fondation à Dakar, à écrire vraiment</li></ul></div>
+      <div><h5 class="fix">Corriger</h5><ul><li>Supprimer les cinq valeurs à icônes et la section « en chiffres » (tous inventés)</li><li>Remplacer par un portrait de la fondatrice, trois paragraphes, une image d'atelier</li><li>Le texte descriptif générique (« née d'une passion… ») doit être réécrit à la première personne</li></ul></div>
+    </div>
+    <div class="scr">
+      <p class="t">Vitrine · Contact et aide <small>Fichier 23 (2)</small></p>
+      <div><h5 class="keep">Garder</h5><ul><li>Trois colonnes : coordonnées, formulaire, questions fréquentes</li><li>Bouton WhatsApp mis en avant, pièce jointe au formulaire</li></ul></div>
+      <div><h5 class="fix">Corriger</h5><ul><li>Faute « RARIDE » ; FAQ à réécrire (retour 24 h, pas d'espèces, pas de SMS)</li><li>Encart « Merci pour votre confiance » à supprimer</li><li>Le formulaire devient le point d'entrée Réclamation / Retour / Information du §49, avec les champs du §44</li><li>Horaires réels de réponse, pas « 7j/7 »</li></ul></div>
+    </div>
+    <div class="scr">
+      <p class="t">Vitrine · Paiement validé <small>Fichier 23 (3)</small></p>
+      <div><h5 class="keep">Garder</h5><ul><li>Numéro et heure en évidence, récapitulatif, boutons « Voir ma commande » et « Continuer »</li><li>Référence de la transaction affichée</li></ul></div>
+      <div><h5 class="fix">Corriger</h5><ul><li>Numéro sans préfixe (D3), suppression du code « VIP10 »</li><li>Ici se joue le choix du cadeau VIP quand le palier est atteint : c'est le moment d'émotion de la marque, à dessiner avec soin</li><li>Coche verte lumineuse et confettis remplacés par la signature et une photo à paillettes réelles</li><li>Lien de suivi et reçu PDF téléchargeable</li></ul></div>
+    </div>
+    <div class="scr">
+      <p class="t">Vitrine · Créneaux de livraison <small>Fichier 23</small></p>
+      <div><h5 class="keep">Garder</h5><ul><li>Choix de la date puis du créneau, récapitulatif, adresse modifiable</li><li>Phrase « le livreur vous appelle avant d'arriver »</li></ul></div>
+      <div><h5 class="fix">Corriger</h5><ul><li>Dimanche jamais proposé ; samedi seulement pour une reprogrammation (D5)</li><li>Prix retiré des créneaux, porté par la zone</li><li>Badges Populaire et Recommandé supprimés ; un créneau plein s'affiche grisé « complet »</li><li>Adresse dakaroise : quartier, repère, position</li></ul></div>
+    </div>
+    <div class="scr">
+      <p class="t">Administration · Tableau de bord <small>Fichier 22 (4)</small></p>
+      <div><h5 class="keep">Garder</h5><ul><li>Menu latéral par groupes (gestion, livraison, communication, rapports, paramètres)</li><li>Commandes récentes, produits les plus vendus, alertes</li></ul></div>
+      <div><h5 class="fix">Corriger</h5><ul><li>Chiffres réels seulement : ventes, commandes reçues / en attente / livrées, précommandes, remboursements à faire, stock critique, livraisons impossibles, tunnel</li><li>Supprimer visages, « Bienvenue PDG », répartition par catégories inexistantes</li><li>Barre de recherche par numéro de commande en tête (§52)</li><li>Alertes rouges de reprogrammation avec accusé (§35)</li></ul></div>
+    </div>
+    <div class="scr">
+      <p class="t">Administration · Collections et éditions <small>Fichier 22</small></p>
+      <div><h5 class="keep">Garder</h5><ul><li>Liste unique avec type, produits, statut, dates, actions ; onglet Archivées (§10)</li><li>Bouton de création en tête</li></ul></div>
+      <div><h5 class="fix">Corriger</h5><ul><li>« Collections permanentes » n'existe pas ; ajouter début, fin et compte à rebours dans les colonnes</li><li>« Visibilité moyenne 78 % » supprimé</li><li>Dupliquer une édition passée pour la réactiver avec de nouvelles dates</li></ul></div>
+    </div>
+    <div class="scr">
+      <p class="t">Administration · Réclamations <small>Fichier 22 (2)</small></p>
+      <div><h5 class="keep">Garder</h5><ul><li>Filtres par statut, type, période ; numéro de commande cliquable</li><li>Compteurs par statut, export</li></ul></div>
+      <div><h5 class="fix">Corriger</h5><ul><li>Types et statuts du §44 plus Livraison et Rejetée ; priorité interne seulement</li><li>Visages supprimés ; le délai restant sur les 7 jours devient une colonne</li><li>Même écran dupliqué pour les retours (§45) et les échanges (§46) avec leurs statuts propres</li></ul></div>
+    </div>
+    <div class="scr">
+      <p class="t">Livreur · Tableau de bord <small>Fichier 22 (5)</small></p>
+      <div><h5 class="keep">Garder</h5><ul><li>Prochaine livraison en grand avec nom, téléphone, adresse, contenu</li><li>Liste du jour avec états, actions Appeler et Itinéraire</li></ul></div>
+      <div><h5 class="fix">Corriger</h5><ul><li>Supprimer gains, distance, revenus, note, annonces, « nouvelle livraison », bandeau de félicitations (D12)</li><li>Ajouter le sélecteur de statut Disponible / En livraison / Indisponible avec motif (§33)</li><li>Ajouter « Livraison impossible » avec motif et photo (§35) ; « Livrée » avec photo facultative</li><li>Format téléphone : plein écran, gros boutons, hors ligne toléré</li></ul></div>
+    </div>
+  </div>
+
+  <h3>9.5 Brief photographique</h3>
+  <p>À commander en phase 0, livraison avant la semaine 6. Sans ces images, la vitrine ne dépassera pas le niveau des maquettes.</p>
+  <ul>
+    <li><strong>Packshots</strong> : chaque produit et chaque teinte sur noir profond, reflet contrôlé, même angle, même distance, même lumière. Format 4:5 et carré, 2400 px de côté au minimum, fond réel (pas de détourage).</li>
+    <li><strong>Textures</strong> : une coulée de chaque teinte sur noir, en macro, pour la photo de survol et le swatch.</li>
+    <li><strong>Sur lèvres</strong> : chaque teinte sur trois ou quatre carnations sénégalaises, lumière naturelle, sans retouche de peau excessive.</li>
+    <li><strong>Atmosphère</strong> : une série avec paillettes d'or réelles et soie noire, qui servira à l'écran d'entrée, à la grande image d'accueil et à la page de paiement validé ; format 16:9 en 3840 px et 9:16 pour téléphone.</li>
+    <li><strong>Marque</strong> : coffret, carte « merci », portrait de la fondatrice, atelier. Trois images de campagne par édition limitée à venir.</li>
+    <li>Fichiers nommés par produit et teinte, livrés en TIFF ou JPEG qualité maximale ; le site génère lui-même toutes les tailles.</li>
+  </ul>
+</section>
+
+<!-- 10 -->
+<section id="s10">
+  <h2><span class="n">10</span>Exigences mesurables</h2>
+  <div class="tw compact">
+  <table>
+    <thead><tr><th>Exigence</th><th class="num">Cible</th><th>Mesure</th></tr></thead>
+    <tbody>
+      <tr><td>Affichage du contenu principal (LCP), téléphone en 4G</td><td class="num">≤ 2,5 s</td><td>Lighthouse mobile sur la page d'accueil et une fiche produit</td></tr>
+      <tr><td>Stabilité visuelle (CLS)</td><td class="num">&lt; 0,1</td><td>Idem</td></tr>
+      <tr><td>Réactivité (INP)</td><td class="num">&lt; 200 ms</td><td>Idem, sur l'ajout au panier</td></tr>
+      <tr><td>Poids d'une fiche produit au premier chargement</td><td class="num">≤ 1,2 Mo</td><td>Onglet réseau, cache vide</td></tr>
+      <tr><td>Temps de réponse serveur (TTFB)</td><td class="num">&lt; 400 ms</td><td>Depuis Dakar, via Cloudflare</td></tr>
+      <tr><td>Disponibilité mensuelle</td><td class="num">≥ 99,5 %</td><td>Sonde externe toutes les minutes</td></tr>
+      <tr><td>Sauvegardes</td><td class="num">quotidiennes, 30 jours</td><td>Restauration testée chaque mois et consignée</td></tr>
+      <tr><td>Perte de données maximale en cas de sinistre</td><td class="num">24 h</td><td>Découle de la sauvegarde quotidienne</td></tr>
+      <tr><td>Reprise après sinistre</td><td class="num">4 h</td><td>Procédure de restauration chronométrée en phase 7</td></tr>
+      <tr><td>Accessibilité</td><td class="num">contraste ≥ 4,5:1</td><td>Tout texte, tout état de bouton ; navigation clavier complète</td></tr>
+      <tr><td>Compatibilité</td><td class="num">iOS 16+, Android 10+, navigateurs des deux dernières années</td><td>Tests réels sur un iPhone, un Android d'entrée de gamme, une tablette</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- 11 -->
+<section id="s11">
+  <h2><span class="n">11</span>Recette : les tests qui décident de la mise en ligne</h2>
+  <p>Chaque test est rejoué avant chaque mise en production. Un seul échec bloque.</p>
+  <ol>
+    <li><strong>Confirmation reçue deux fois</strong> pour la même transaction : une seule commande, une seule sortie de stock, un seul message WhatsApp.</li>
+    <li><strong>Dernière pièce, deux clientes</strong> : la seconde session de paiement est refusée avant paiement ; aucune n'est remboursée.</li>
+    <li><strong>Confirmation reçue après expiration</strong> de la réservation : commande créée ; si stock insuffisant, alerte rouge et ligne « à rembourser ».</li>
+    <li><strong>Annulation</strong> : statut Annulée, 90 % à rembourser, 10 % retenus au bilan, stock réintégré, cadeau VIP restitué, journal complet, bouton absent après remise au livreur.</li>
+    <li><strong>Cent paiements simultanés</strong> : cent numéros consécutifs sans trou ni doublon.</li>
+    <li><strong>Édition limitée à zéro</strong> : disparaît de la boutique à la seconde, reste en administration, se réactive.</li>
+    <li><strong>Réassort avec précommandes</strong> : 10 précommandes, 20 pièces reçues, 10 servies dans l'ordre des paiements, 10 vendables, liste d'attente prévenue une fois avec le bon nombre.</li>
+    <li><strong>Livraison impossible un vendredi</strong> : reprogrammée samedi sur le créneau le moins chargé de la zone ; un vendredi avec samedi complet : lundi ; jamais dimanche.</li>
+    <li><strong>Samedi</strong> : paiement possible, premier créneau proposé le lundi ; dimanche : idem.</li>
+    <li><strong>Réductions</strong> : promotion produit plus code promo plus offre spéciale dans le même panier : la promotion s'applique ligne par ligne, une seule réduction de commande, la plus avantageuse, avec le message explicatif.</li>
+    <li><strong>VIP</strong> : 74 999 FCFA payés livraison comprise : un cadeau ; 75 000 : deux ; jamais deux fois le même ; jamais un VIP à zéro ; non-choix après 15 minutes : attribution automatique.</li>
+    <li><strong>Panier partagé</strong> : ne réserve rien ; « Ajouter à mon panier » fusionne les quantités ; le lien affiche une vignette correcte sur WhatsApp.</li>
+    <li><strong>Invitée</strong> : commande sans compte, lien de suivi reçu, aucune recherche publique par numéro ne fonctionne.</li>
+    <li><strong>Anglais</strong> : parcours complet en anglais sans un mot de français, y compris WhatsApp, email et reçu.</li>
+    <li><strong>Devises</strong> : prix affiché en euro conforme à la parité fixe ; paiement en FCFA.</li>
+    <li><strong>Sécurité</strong> : webhook non signé rejeté ; cinq mots de passe faux verrouillent ; l'administrateur sans permission ne voit pas l'espace achats ; le journal ne se supprime pas.</li>
+    <li><strong>Exploitation</strong> : sauvegarde de la veille restaurée sur un serveur vierge, site fonctionnel, en moins de quatre heures.</li>
+    <li><strong>Performance</strong> : cibles de la section 10 atteintes sur un Android d'entrée de gamme en 4G.</li>
+  </ol>
+</section>
+
+<!-- 12 -->
+<section id="s12">
+  <h2><span class="n">12</span>À fournir par ALYA</h2>
+  <p>Chaque élément a une phase de besoin. Un retard ici décale la phase, pas le contraire.</p>
+  <ul class="check">
+    <li>Décisions D1 à D16 signées (phase 0)</li>
+    <li>Logo vectoriel, déclinaisons, charte existante (phase 0)</li>
+    <li>RCCM, NINEA, pièce d'identité de la dirigeante pour les comptes marchands (phase 0)</li>
+    <li>Numéro WhatsApp dédié à la marque (phase 0)</li>
+    <li>Accès ou création : domaine, Cloudflare, hébergeur, Meta Business, TikTok, Resend (phase 0)</li>
+    <li>Photos selon le brief 9.5 (phase 2)</li>
+    <li>Fiches des 10 produits : nom, descriptif, effet, conseils, INCI, contenance, prix, teintes, stock (phase 2)</li>
+    <li>Textes de marque : histoire, à propos, signature validée (phase 2)</li>
+    <li>Traductions anglaises de tout ce qui précède (phase 2)</li>
+    <li>Zones de livraison, tarifs, délais, créneaux, capacités (phase 4)</li>
+    <li>Liste des livreurs et de leurs téléphones (phase 4)</li>
+    <li>Paliers VIP et produits VIP avec photos (phase 5)</li>
+    <li>FAQ, politiques, CGV, confidentialité, mentions légales validées par un juriste (phase 7)</li>
+    <li>Modèles de messages WhatsApp validés FR et EN (phase 3)</li>
+    <li>Catégories d'achats et historique à reprendre, s'il existe (phase 6)</li>
+    <li>Deux demi-journées de disponibilité pour la formation (phase 7)</li>
+  </ul>
+</section>
+
+<!-- 13 -->
+<section id="s13">
+  <h2><span class="n">13</span>Risques</h2>
+  <div class="tw">
+  <table>
+    <thead><tr><th>Risque</th><th>Effet</th><th>Parade</th></tr></thead>
+    <tbody>
+      <tr><td>Vérification Meta et approbation des modèles WhatsApp lentes</td><td>Notifications absentes au lancement</td><td>Démarrer en semaine 1 ; l'email et le centre de notifications du site prennent le relais en attendant</td></tr>
+      <tr><td>Ouverture du compte marchand de paiement retardée</td><td>Impossible de tester un paiement réel</td><td>Démarrer en semaine 1 ; l'interface interne de paiement permet de développer avec un adaptateur de test</td></tr>
+      <tr><td>Photos livrées tard ou de qualité insuffisante</td><td>Vitrine au niveau des maquettes, pas des références</td><td>Brief signé en phase 0, séance avant la semaine 6, validation d'un premier lot de trois produits</td></tr>
+      <tr><td>Textes légaux « rédigés après »</td><td>Mise en ligne bloquée</td><td>Juriste engagé en phase 0 ; les pages existent dès la phase 2 avec des textes de travail marqués</td></tr>
+      <tr><td>Retenue de 10 % perçue comme abusive</td><td>Litiges, avis négatifs</td><td>Affichage avant paiement, acceptation horodatée, formulation validée par le juriste, remboursement rapide du reste</td></tr>
+      <tr><td>Données mobiles chères, téléphones d'entrée de gamme</td><td>Abandons</td><td>Cibles de la section 10, images AVIF, écran d'entrée contraint, pas de vidéo en lecture automatique</td></tr>
+      <tr><td>Une seule personne pour tout gérer</td><td>Retards de traitement</td><td>Statuts réduits, alertes groupées, préparation par lot, administrateur secondaire prévu dès le début</td></tr>
+      <tr><td>Réassort insuffisant face aux précommandes</td><td>Clientes payées non servies</td><td>Bilan des précommandes en attente sur le tableau de bord, plafond de précommandes par produit réglable</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<footer>Audit ALYA Cosmetic · rédigé le 7 septembre 2026 à partir du cahier des charges (63 sections) et de 10 maquettes · les décisions D1 à D16 restent à signer par la direction ALYA.</footer>
+</main>
+</div>

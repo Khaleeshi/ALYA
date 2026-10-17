@@ -1,0 +1,17 @@
+# Doublons exacts des maquettes (l'audit en compte 3)
+* - Copie.jpg
+# Système
+Thumbs.db
+desktop.ini
+.DS_Store
+# Projet
+/vendor/
+/node_modules/
+.env
+.env.*
+!.env.example
+/storage/*.key
+/public/build/
+/public/hot
+/public/storage
+.phpunit.result.cache

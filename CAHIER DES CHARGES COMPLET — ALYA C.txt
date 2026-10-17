@@ -1,0 +1,1445 @@
+ CAHIER DES CHARGES COMPLET — ALYA COSMETIC
+
+Bonjour,
+
+Voici le cahier des charges complet du site ALYA Cosmetic.
+
+L’objectif est de créer une boutique en ligne premium, élégante, moderne et entièrement administrable, avec un espace cliente, un espace administration et un espace livreur.
+
+⸻
+
+1. IDENTITÉ VISUELLE ALYA 🖤✨
+
+Le site doit avoir une identité visuelle très élégante et luxueuse.
+
+Couleurs principales
+
+• Noir intense comme couleur dominante.
+• Doré comme couleur principale d’accent.
+• Paillettes dorées utilisées dans les visuels et certains éléments graphiques.
+• Possibilité d’utiliser différentes nuances de doré : doré brillant, champagne doré, doré métallique, etc.
+
+L’ensemble doit donner un rendu :
+
+• luxueux ;
+• chic ;
+• féminin ;
+• sophistiqué ;
+• premium ;
+• moderne ;
+• lumineux malgré le fond noir.
+
+Les paillettes dorées doivent être élégantes et raffinées, pas trop nombreuses ni enfantines.
+
+Le noir doit rester dominant afin que les éléments dorés ressortent.
+
+Animations
+
+Les animations doivent être :
+
+• fluides ;
+• douces ;
+• élégantes ;
+• discrètes ;
+• premium.
+
+Pas d’animations excessives qui ralentissent ou rendent le site chargé.
+
+Son
+
+❌ Pas de musique ou d’instrumentale automatique sur le site.
+
+⸻
+
+2. SIGNATURE DE LA MARQUE
+
+ALYA Cosmetic
+
+Signature :
+
+« Parce que vous méritez tous de briller. »
+
+Cette phrase doit pouvoir apparaître sur l’accueil et dans certains éléments de l’identité du site.
+
+⸻
+
+3. PERFORMANCE DU SITE ⚡
+
+Le site doit être :
+
+• très rapide ;
+• mobile-first ;
+• parfaitement adapté aux iPhone ;
+• adapté Android ;
+• adapté aux tablettes ;
+• adapté aux ordinateurs ;
+• responsive ;
+• sécurisé.
+
+Les visuels peuvent être en très haute qualité, mais ils doivent être optimisés automatiquement afin de ne pas ralentir le site.
+
+⸻
+
+4. ÉCRAN D’ENTRÉE ✨
+
+À l’ouverture du site :
+
+1. apparition élégante du logo ALYA ;
+2. animation douce ;
+3. apparition de :
+
+« Parce que vous méritez tous de briller. »
+
+1. accès à la page d’accueil.
+
+Le tout dans l’univers :
+
+noir + doré + paillettes dorées.
+
+⸻
+
+5. PAGE D’ACCUEIL
+
+Après l’écran d’entrée, la cliente arrive sur la page d’accueil.
+
+Il y aura un grand visuel 4K ALYA.
+
+Après ce visuel :
+
+1. Nos produits
+2. Éditions limitées
+3. Nos collections
+4. Nos offres
+5. Vos retours
+6. Demande de collaboration
+7. Aide / Réclamation / Informations
+
+Les éditions limitées ne sont affichées dans cette section que lorsqu’elles sont actives.
+
+⸻
+
+6. MENU DU SITE
+
+Le menu pourra contenir :
+
+• Accueil
+• Produits
+• Collections
+• Éditions limitées
+• Offres
+• À propos
+• Vos retours
+• Collaboration
+• Aide
+• Compte
+• 🛒 Panier
+
+Le design du menu doit rester cohérent avec l’identité noir et doré.
+
+⸻
+
+7. PRODUITS 💄
+
+Au lancement, ALYA possède 10 formules permanentes.
+
+Chaque fiche produit doit pouvoir contenir :
+
+• plusieurs photos ;
+• nom ;
+• petite description ;
+• effet ;
+• conseils ;
+• ingrédients ;
+• prix ;
+• disponibilité ;
+• stock ;
+• section libre personnalisable ;
+• bouton « Ajouter au panier ».
+
+Tout doit pouvoir être modifié depuis l’administration.
+
+Photos
+
+Je peux ajouter plusieurs photos.
+
+Je peux choisir quelle photo apparaît en premier et modifier l’ordre.
+
+Description
+
+Je rédige moi-même la description.
+
+Effet
+
+Je rédige moi-même l’effet.
+
+Conseils
+
+Je renseigne moi-même les conseils directement sur le site.
+
+Ingrédients
+
+Un emplacement est prévu pour renseigner les ingrédients.
+
+⸻
+
+8. RUPTURE DE STOCK
+
+Lorsqu’un produit permanent arrive à 0 :
+
+• « Rupture de stock »
+• « Ajouter au panier » désactivé
+• « Précommander » disponible
+• « Me prévenir du retour en stock » disponible.
+
+⸻
+
+9. COLLECTIONS ET ÉDITIONS LIMITÉES 💎
+
+Les collections et éditions limitées sont des produits supplémentaires temporaires.
+
+Elles ne remplacent jamais les 10 produits permanents.
+
+Elles peuvent contenir :
+
+• des produits existants ;
+• de nouveaux produits créés spécialement pour la collection.
+
+Une collection peut donc avoir ses propres produits qui disparaîtront lorsque la collection sera terminée.
+
+Administration
+
+Je dois pouvoir :
+
+• créer une collection ;
+• créer de nouveaux produits ;
+• ajouter plusieurs photos ;
+• choisir le visuel principal ;
+• modifier nom ;
+• description ;
+• prix ;
+• stock ;
+• activer ;
+• désactiver ;
+• définir début ;
+• définir fin.
+
+⸻
+
+10. ÉDITION LIMITÉE — MISE EN AVANT
+
+Lorsqu’une édition limitée est active, elle doit être fortement mise en avant.
+
+Elle affiche :
+
+• visuel principal ;
+• nom ;
+• description ;
+• bouton « Découvrir » ;
+• compte à rebours.
+
+Compte à rebours
+
+Affichage :
+
+Jours : Heures : Minutes : Secondes
+
+jusqu’à la date et l’heure définies.
+
+À 0 :
+
+• l’édition disparaît automatiquement de la boutique ;
+• elle reste enregistrée dans l’administration ;
+• je peux la réactiver plus tard.
+
+Rupture
+
+Une édition limitée en rupture :
+
+• reste visible ;
+• affiche « Rupture de stock » ;
+• ne peut pas être précommandée.
+
+⸻
+
+11. PANIER 🛒
+
+La cliente peut :
+
+• ajouter ;
+• supprimer ;
+• modifier les quantités ;
+• voir son total ;
+• partager son panier.
+
+Panier partagé
+
+La personne recevant le lien peut :
+
+Voir le panier
+
+ou
+
+Ajouter à mon panier
+
+C’est elle qui choisit.
+
+Le partage ne réserve aucun produit.
+
+⸻
+
+12. COMPTE CLIENTE
+
+Le compte est facultatif pour commander.
+
+Sans compte
+
+Le panier est temporaire et peut disparaître.
+
+Avec compte
+
+Le panier reste sauvegardé.
+
+La cliente peut retrouver :
+
+• panier ;
+• commandes ;
+• favoris.
+
+Ma commande
+
+Accessible uniquement depuis son compte.
+
+Pas de recherche publique avec le numéro de commande.
+
+Mot de passe oublié
+
+Récupération par email.
+
+⸻
+
+13. FAVORIS ❤️
+
+Une cliente connectée peut :
+
+• ajouter des produits aux favoris ;
+• supprimer des favoris ;
+• retrouver ses favoris.
+
+⸻
+
+14. PARTAGE
+
+Possibilité de partager :
+
+• produits ;
+• collections ;
+• éditions limitées ;
+• panier.
+
+⸻
+
+15. PAIEMENT 💳
+
+Moyens de paiement :
+
+• Wave
+• Orange Money
+
+La cliente effectue le paiement via le système approprié.
+
+Règle essentielle
+
+Le site doit attendre la confirmation réelle du paiement.
+
+Avant confirmation :
+
+❌ pas de commande définitive
+❌ pas de numéro de commande
+❌ pas de stock retiré
+
+Après confirmation :
+
+✅ commande enregistrée
+✅ numéro créé
+✅ stock retiré
+✅ livraison organisée
+✅ VIP calculé
+✅ notification envoyée à ALYA
+✅ confirmation envoyée à la cliente
+
+⸻
+
+16. NUMÉROS DE COMMANDES
+
+Le numéro n’existe qu’après paiement confirmé.
+
+Numérotation :
+
+001
+002
+003
+004…
+
+Pas de préfixe.
+
+⸻
+
+17. FICHE DE COMMANDE
+
+Chaque numéro doit conserver tout ce qui concerne la commande :
+
+• numéro ;
+• date ;
+• heure ;
+• cliente ;
+• téléphone ;
+• email ;
+• produits ;
+• quantités ;
+• prix ;
+• réduction ;
+• promotion ;
+• cadeau VIP ;
+• frais de livraison ;
+• total ;
+• moyen de paiement ;
+• zone ;
+• créneau ;
+• statut ;
+• livreur ;
+• heure de livraison ;
+• annulation éventuelle ;
+• motif ;
+• reprogrammation ;
+• historique.
+
+Dans l’administration :
+
+taper 001
+
+permet d’ouvrir directement toute la commande.
+
+⸻
+
+18. STATUTS ADMINISTRATION
+
+Je veux seulement :
+
+• Reçu
+• En attente de livraison
+• Livrée
+
+Les détails du livreur restent dans son espace.
+
+⸻
+
+19. ANNULATION
+
+La cliente clique :
+
+Annuler ma commande
+
+Le site demande :
+
+Êtes-vous sûre de vouloir annuler la commande ?
+
+Si oui :
+
+« Dommage, à bientôt ❤️ »
+
+-10 %
+
+La cliente perd 10 % du montant payé.
+
+Cette règle doit être :
+
+• affichée avant la validation finale ;
+• clairement expliquée ;
+• intégrée aux politiques ALYA.
+
+Après annulation :
+
+• commande marquée ANNULÉE ;
+• notification immédiate à ALYA ;
+• remboursement selon la règle ;
+• 10 % retenus ;
+• stock réintégré.
+
+⸻
+
+20. STOCK 📦
+
+Le système gère automatiquement les stocks.
+
+Paiement confirmé
+
+Stock :
+
+stock actuel − quantité commandée
+
+Annulation
+
+Stock :
+
+stock actuel + quantité annulée
+
+Panier
+
+Aucun changement.
+
+Paiement échoué
+
+Aucun changement.
+
+Je peux également modifier le stock manuellement.
+
+⸻
+
+21. ALERTES STOCK
+
+• 5 pièces ou moins → 🟠 Stock faible
+• 3 pièces ou moins → 🔴 Stock critique
+• À 3 ou moins → À réapprovisionner en priorité
+
+⸻
+
+22. PRÉCOMMANDES
+
+Uniquement pour les produits permanents.
+
+Si un produit est en rupture :
+
+Précommander
+
+La précommande bénéficie de -10 %.
+
+La cliente paie immédiatement.
+
+Elle est enregistrée séparément d’une commande normale.
+
+Restock
+
+Les précommandes sont prioritaires.
+
+Exemple :
+
+10 précommandes + 20 nouvelles pièces :
+
+→ 10 réservées aux précommandes
+→ 10 disponibles à la vente
+
+⸻
+
+23. RETOUR EN STOCK
+
+La cliente peut demander :
+
+Me prévenir du retour en stock
+
+avec :
+
+• WhatsApp ;
+• email.
+
+Quand le produit revient :
+
+→ toutes les personnes inscrites sont prévenues en même temps.
+
+La notification peut préciser :
+
+50 pièces disponibles
+
+L’administration voit la liste d’attente.
+
+⸻
+
+24. VIP 👑
+
+Collection spéciale :
+
+VIP
+
+Les gloss VIP sont différents des 10 formules principales.
+
+Ils sont :
+
+• gratuits ;
+• non achetables ;
+• réservés aux commandes éligibles ;
+• stockés séparément.
+
+Barème
+
+Le seuil est calculé sur le montant réellement payé après réduction, livraison comprise.
+
+50 000 à <75 000 FCFA
+→ 1 gloss VIP
+
+75 000 à <100 000 FCFA
+→ 2 gloss VIP
+
+100 000 FCFA et plus
+→ 3 gloss VIP ou plus selon les paliers définis.
+
+Les paliers sont entièrement modifiables depuis l’administration.
+
+Choix
+
+Après paiement confirmé :
+
+« Veuillez choisir votre cadeau »
+
+La cliente choisit immédiatement.
+
+Si elle ne choisit pas :
+
+→ le système choisit automatiquement.
+
+Le système choisit en priorité les gloss VIP ayant le plus de stock disponible.
+
+Les doublons sont interdits.
+
+Un gloss VIP à 0 n’est jamais proposé.
+
+⸻
+
+25. RUBRIQUE VIP PUBLIQUE
+
+La rubrique VIP est visible par tout le monde.
+
+Les personnes non éligibles voient :
+
+Collection VIP
+Des créations exclusivement réservées aux commandes éligibles.
+
+Les produits ne sont pas achetables.
+
+Le barème est affiché.
+
+⸻
+
+26. BILAN VIP
+
+Afficher :
+
+• clientes VIP ;
+• cadeaux distribués ;
+• cadeaux par référence ;
+• stock restant ;
+• valeur totale des cadeaux offerts.
+
+⸻
+
+27. PROMOTIONS 🏷️
+
+Les promotions utilisent uniquement des pourcentages :
+
+• -10 %
+• -15 %
+• -20 %
+• etc.
+
+Je choisis au cas par cas les produits concernés.
+
+Cela peut concerner :
+
+• produits permanents ;
+• collections ;
+• éditions limitées.
+
+Dates
+
+Je définis :
+
+• début ;
+• heure ;
+• fin ;
+• heure.
+
+À la fin :
+
+→ désactivation automatique.
+
+Affichage
+
+Partout où le produit apparaît :
+
+Prix initial Prix réduit — -10 %
+
+⸻
+
+28. CALCUL DU PANIER
+
+Exemple :
+
+Pink Glow : -10 %
+Diamond Shine : prix normal
+
+Le panier affiche :
+
+Sous-total produits
+Réduction : -XXX FCFA
+Livraison : XXX FCFA
+Total : XXX FCFA
+
+La réduction s’applique uniquement au produit concerné.
+
+Les frais de livraison ne sont jamais réduits.
+
+⸻
+
+29. CODES PROMO
+
+Possibilité de créer :
+
+• code ;
+• pourcentage ;
+• date début ;
+• date fin ;
+• nombre d’utilisations ;
+• produits concernés.
+
+Une seule réduction par commande.
+
+⸻
+
+30. OFFRES SPÉCIALES
+
+Je peux créer :
+
+• achat de plusieurs produits ;
+• packs ;
+• avantages spéciaux.
+
+Je définis :
+
+• produits ;
+• quantité ;
+• avantage ;
+• dates ;
+• utilisations ;
+• activation.
+
+Une seule offre/réduction par commande.
+
+⸻
+
+31. LIVRAISON 🚚
+
+Les créneaux seront configurables par moi dans l’administration.
+
+Je dois pouvoir :
+
+• créer ;
+• modifier ;
+• désactiver ;
+• définir les capacités ;
+• affecter les livreurs.
+
+Après préparation physique :
+
+Séparer en zones
+
+permet de créer facilement les lots de livraison.
+
+⸻
+
+32. ESPACE LIVREUR
+
+Chaque livreur possède son propre espace.
+
+Il voit :
+
+• commandes ;
+• numéros ;
+• téléphones ;
+• zones ;
+• créneaux ;
+• nombre de commandes.
+
+Il vient récupérer son lot.
+
+L’administration voit :
+
+• nombre remis ;
+• nombre livré ;
+• nombre restant.
+
+⸻
+
+33. STATUT LIVREUR
+
+• 🟢 Disponible
+• 🟠 En livraison
+• ⚫ Indisponible
+
+Je peux voir son statut.
+
+S’il est indisponible :
+
+→ motif visible.
+
+Sans motif :
+
+→ je le contacte.
+
+⸻
+
+34. LIVRAISON CONFIRMÉE
+
+Le livreur coche :
+
+Livrée
+
+L’administration reçoit :
+
+Livreur X — commande 001 — zone X — XXhXX
+
+Le système vérifie :
+
+• commande ;
+• zone ;
+• créneau ;
+• livreur.
+
+⸻
+
+35. LIVRAISON IMPOSSIBLE
+
+Motifs :
+
+• cliente injoignable ;
+• cliente absente ;
+• problème d’accès ;
+• autre.
+
+La cliente ne repaie pas.
+
+Le système la replace automatiquement sur :
+
+un créneau vide ou moins chargé du jour suivant.
+
+L’administration reçoit une alerte rouge :
+
+🔴 Commande 001
+Téléphone XXX
+Motif : cliente injoignable
+Reprogrammée : XXh–XXh
+
+Je clique :
+
+J’ai pris connaissance
+
+Cela apparaît aussi dans le bilan.
+
+⸻
+
+36. JOURS
+
+Les créneaux sont configurables.
+
+Règles :
+
+Samedi
+
+Pas de nouvelles commandes.
+
+Uniquement les livraisons prévues/reprogrammées.
+
+Dimanche
+
+ALYA ne travaille pas.
+
+⸻
+
+37. RETARD
+
+En cas de retard :
+
+ALYA contacte personnellement la cliente pour :
+
+• expliquer la cause ;
+• donner un nouveau délai.
+
+⸻
+
+38. BILAN 📊
+
+Le bilan affiche :
+
+Ventes
+
+• commandes ;
+• produits vendus ;
+• chiffre d’affaires ;
+• périodes.
+
+Commandes
+
+• reçues ;
+• en attente ;
+• livrées ;
+• annulées ;
+• précommandes.
+
+Annulations
+
+• nombre ;
+• montant ;
+• 10 % retenus.
+
+Réclamations
+
+• nombre ;
+• statuts.
+
+Livraisons
+
+• réussies ;
+• impossibles ;
+• reprogrammées.
+
+Finances
+
+• total encaissé ;
+• remboursements ;
+• 10 % retenus ;
+• valeur des produits ;
+• frais de livraison ;
+• valeur des cadeaux VIP.
+
+⸻
+
+39. TOP VENTES 🔥
+
+Classement automatique :
+
+🥇 produit le plus vendu
+🥈 deuxième
+🥉 troisième
+
+Filtres :
+
+• aujourd’hui ;
+• semaine ;
+• mois ;
+• année ;
+• période personnalisée.
+
+⸻
+
+40. PRODUITS À SURVEILLER
+
+Classement des produits les moins vendus avec les mêmes filtres.
+
+⸻
+
+41. COMPARAISON DES PÉRIODES
+
+Comparer deux périodes :
+
+• commandes ;
+• produits ;
+• chiffre d’affaires ;
+• annulations ;
+• réclamations ;
+• livraisons ;
+• précommandes.
+
+⸻
+
+42. ESPACE ACHATS 🧾
+
+Accessible uniquement à moi.
+
+Pour chaque période :
+
+• achat ;
+• catégorie ;
+• quantité ;
+• prix unitaire ;
+• coût total ;
+• date ;
+• fournisseur ;
+• note.
+
+Les catégories sont personnalisables.
+
+Ce système sert uniquement à enregistrer mes achats et leurs coûts.
+
+⸻
+
+43. AVIS ⭐
+
+Après qu’une commande est Livrée, la cliente peut laisser :
+
+• note 1 à 5 ;
+• commentaire ;
+• photo/vidéo facultative.
+
+Une commande = un avis.
+
+Elle peut laisser un nouvel avis après chaque commande livrée.
+
+Tous les avis doivent être validés par ALYA.
+
+Affichage :
+
+• note ;
+• prénom ;
+• date.
+
+Je choisis l’ordre des avis.
+
+Pas de réponse publique d’ALYA.
+
+⸻
+
+44. RÉCLAMATIONS
+
+Formulaire :
+
+• prénom ;
+• nom ;
+• téléphone ;
+• numéro commande ;
+• type ;
+• description ;
+• photo/vidéo.
+
+Types :
+
+• Produit ;
+• Remboursement ;
+• Échange ;
+• Autre.
+
+Délai :
+
+1 semaine après réception.
+
+Statuts :
+
+• En attente ;
+• En cours ;
+• Résolue.
+
+Notifications automatiques à chaque étape.
+
+⸻
+
+45. RETOURS
+
+Une demande de retour est possible dans les :
+
+24 heures après réception.
+
+Motifs :
+
+• produit défectueux ;
+• mauvais produit ;
+• produit endommagé ;
+• autre.
+
+Photo/vidéo possible.
+
+Statuts :
+
+• En attente ;
+• Accepté ;
+• Refusé ;
+• Retour reçu.
+
+Le produit doit être récupéré et vérifié avant remboursement.
+
+Après vérification, ALYA peut décider :
+
+• remboursement total ;
+• remboursement partiel ;
+• échange ;
+• refus.
+
+Les frais de retour sont décidés au cas par cas.
+
+Le retour accepté ne réintègre pas automatiquement le stock.
+
+⸻
+
+46. ÉCHANGES
+
+Les échanges sont traités au cas par cas.
+
+ALYA décide :
+
+• produit ;
+• livraison ;
+• frais ;
+• créneau ;
+• modalités.
+
+⸻
+
+47. REMBOURSEMENTS
+
+Possibilités :
+
+• total ;
+• partiel ;
+• aucun.
+
+Le remboursement est effectué sur le même moyen de paiement que la commande.
+
+⸻
+
+48. COLLABORATIONS 🤝
+
+Page dédiée pour envoyer une demande.
+
+Administration :
+
+• type ;
+• date ;
+• produits ;
+• quantité ;
+• notes ;
+• statut.
+
+Statuts :
+
+• En attente ;
+• En cours ;
+• Acceptée ;
+• Refusée.
+
+⸻
+
+49. AIDE
+
+Contenu :
+
+• FAQ ;
+• Réclamation ;
+• Retour ;
+• Informations ;
+• WhatsApp.
+
+WhatsApp sert pour les demandes nécessitant une discussion.
+
+Si une cliente veut discuter personnellement :
+
+→ ALYA répond elle-même.
+
+⸻
+
+50. NOTIFICATIONS 📲
+
+Administration
+
+Notifications immédiates pour :
+
+• nouvelle commande payée ;
+• annulation ;
+• nouvelle réclamation ;
+• nouveau retour ;
+• livraison ;
+• livraison impossible ;
+• reprogrammation ;
+• restock/précommande ;
+• événements importants.
+
+Cliente
+
+Notifications :
+
+• paiement confirmé ;
+• commande validée ;
+• annulation ;
+• précommande ;
+• retour en stock ;
+• livraison ;
+• retour ;
+• réclamation.
+
+WhatsApp automatique doit être intégré via une solution WhatsApp Business/API adaptée.
+
+⸻
+
+51. ADMINISTRATION
+
+Je dois pouvoir gérer directement :
+
+Produits
+
+• produits ;
+• photos ;
+• descriptions ;
+• effets ;
+• conseils ;
+• ingrédients ;
+• prix ;
+• stocks.
+
+Collections
+
+• création ;
+• modification ;
+• activation ;
+• désactivation.
+
+Éditions limitées
+
+• produits ;
+• stock ;
+• photos ;
+• compte à rebours ;
+• activation ;
+• désactivation.
+
+Promotions
+
+• pourcentage ;
+• produits ;
+• dates.
+
+Offres
+
+• conditions ;
+• avantages ;
+• dates.
+
+VIP
+
+• produits VIP ;
+• stock ;
+• paliers ;
+• cadeaux.
+
+Commandes
+
+• consultation ;
+• recherche ;
+• statuts ;
+• annulation.
+
+Livraison
+
+• zones ;
+• créneaux ;
+• livreurs ;
+• lots.
+
+Clientes
+
+• comptes ;
+• commandes ;
+• historique.
+
+Réclamations
+
+• traitement ;
+• statuts.
+
+Retours
+
+• acceptation ;
+• refus ;
+• suivi.
+
+Avis
+
+• validation ;
+• ordre.
+
+Contenu
+
+• photos ;
+• textes ;
+• FAQ ;
+• collections ;
+• éditions ;
+• pages.
+
+⸻
+
+52. RECHERCHE DES COMMANDES
+
+Une barre spéciale :
+
+N° de commande
+
+Je tape :
+
+001
+
+→ toute la fiche de la commande apparaît immédiatement.
+
+⸻
+
+53. HISTORIQUE
+
+Toutes les commandes restent conservées.
+
+Les commandes annulées restent visibles avec :
+
+🔴 ANNULÉE
+
+⸻
+
+54. JOURNAL D’ACTIVITÉ
+
+Le système enregistre :
+
+• qui ;
+• action ;
+• date ;
+• heure.
+
+Y compris les modifications automatiques de stock.
+
+Exemple :
+
+Système → stock diminué après paiement commande 001
+ALYA → stock ajouté
+Admin → commande reçue
+Livreur → commande livrée
+
+⸻
+
+55. SÉCURITÉ 🔐
+
+Compte administrateur principal :
+
+• mot de passe ;
+• récupération email ;
+• double authentification ;
+• accès complet.
+
+Les administrateurs secondaires ont uniquement les permissions qui leur sont accordées.
+
+L’espace Achats reste exclusivement accessible à ALYA.
+
+⸻
+
+56. DEVISES 💱
+
+Le site doit pouvoir afficher les prix dans toutes les devises disponibles.
+
+Le FCFA reste le prix officiel.
+
+Les autres devises sont des conversions indicatives.
+
+Le système doit gérer automatiquement les taux de conversion.
+
+Le paiement reste effectué en :
+
+FCFA
+
+via Wave ou Orange Money.
+
+⸻
+
+57. LANGUES 🌍
+
+Le site sera disponible en :
+
+🇫🇷 Français
+
+🇬🇧 Anglais
+
+La cliente peut changer de langue.
+
+⸻
+
+58. LIVRAISON INTERNATIONALE
+
+Au lancement :
+
+🇸🇳 Sénégal uniquement
+
+Mais le site doit être construit de manière à permettre l’ajout de l’international plus tard.
+
+⸻
+
+59. RÉSEAUX SOCIAUX
+
+Le site intégrera :
+
+• Instagram ;
+• TikTok ;
+• Snapchat.
+
+⸻
+
+60. FOOTER
+
+Le footer contiendra :
+
+• logo ALYA ;
+• signature ;
+• Instagram ;
+• TikTok ;
+• Snapchat ;
+• WhatsApp ;
+• email professionnel ;
+• navigation ;
+• politiques ;
+• conditions générales ;
+• confidentialité ;
+• moyens de paiement ;
+• copyright.
+
+Design :
+
+noir + doré + touches de paillettes dorées.
+
+⸻
+
+61. POLITIQUES DE L’ENTREPRISE 📜
+
+Les politiques seront rédigées après.
+
+Elles devront notamment intégrer :
+
+• règle des -10 % ;
+• annulation ;
+• remboursement ;
+• retours 24 h ;
+• réclamations 7 jours ;
+• échanges ;
+• livraison ;
+• paiement ;
+• VIP ;
+• conditions générales ;
+• confidentialité.
+
+Les politiques seront accessibles depuis le site.
+
+⸻
+
+62. LOGIQUE FONDAMENTALE DU SITE
+
+Le fonctionnement principal doit toujours respecter :
+
+Panier → Validation → Paiement → Confirmation réelle → Commande enregistrée → Numéro de commande → Stock mis à jour → Livraison
+
+Une commande non payée et non confirmée ne doit jamais être considérée comme une commande définitive.
+
+Le numéro de commande n’existe qu’après paiement confirmé.
+
+Le stock n’est retiré qu’après paiement confirmé.
+
+⸻
+
+63. OBJECTIF FINAL
+
+Je veux que le site ALYA Cosmetic soit une boutique en ligne premium avec une identité très forte :
+
+NOIR 🖤 + DORÉ ✨ + PAILLETTES DORÉES ✨
+
+mais également un véritable système de gestion permettant à ALYA de gérer elle-même :
+
+Produits → Stocks → Commandes → Paiements → Clientes → Promotions → Offres → VIP → Précommandes → Collections → Éditions limitées → Livraisons → Livreurs → Retours → Réclamations → Avis → Collaborations → Bilans → Contenu du site.
+
+Le système doit être conçu pour pouvoir évoluer avec ALYA et permettre l’ajout futur de nouveaux produits, collections, éditions limitées et de la livraison internationale.
+
+Merci de prendre en compte l’ensemble de ces éléments dans la conception et de me signaler uniquement les points nécessitant une décision technique avant le développement.
