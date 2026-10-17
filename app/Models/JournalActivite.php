@@ -9,7 +9,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 /**
- * Ligne du journal d'activité (CDC §54) : qui a fait quoi, sur quoi, quand.
+ * Ligne du journal d'activité (cahier §12.3) : qui a fait quoi, sur quoi, quand.
  * Ajout seul : toute modification ou suppression lève JournalImmuable, et la
  * base de données refuse aussi les UPDATE et DELETE directs.
  *

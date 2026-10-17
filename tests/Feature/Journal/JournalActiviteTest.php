@@ -15,9 +15,9 @@ it('signe « Système » une action sans personne connectée', function () {
         ->and($ligne->cree_le)->not->toBeNull();
 });
 
-it('signe « ALYA » pour la dirigeante et « Administrateur · prénom » sinon', function () {
-    $this->actingAs(dirigeante(), 'personnel');
-    expect(JournalActivite::consigner('test', 'Action de la dirigeante')->auteur_libelle)->toBe('ALYA');
+it('signe chaque ligne du rôle et du prénom de son auteur', function () {
+    $this->actingAs(proprietaire(['prenom' => 'Ndeye']), 'personnel');
+    expect(JournalActivite::consigner('test', 'Action de la propriétaire')->auteur_libelle)->toBe('Propriétaire · Ndeye');
 
     $this->actingAs(administrateur(['prenom' => 'Moussa']), 'personnel');
     expect(JournalActivite::consigner('test', "Action de l'administrateur")->auteur_libelle)->toBe('Administrateur · Moussa');

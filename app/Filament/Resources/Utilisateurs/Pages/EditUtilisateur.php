@@ -40,7 +40,7 @@ class EditUtilisateur extends EditRecord
         if (! $utilisateur->is(auth('personnel')->user())) {
             $role = $this->data['role'];
             $utilisateur->syncRoles([$role]);
-            $utilisateur->syncPermissions($role === Roles::DIRIGEANTE ? [] : ($this->data['permissions_supplementaires'] ?? []));
+            $utilisateur->syncPermissions($role === Roles::PROPRIETAIRE ? [] : ($this->data['permissions_supplementaires'] ?? []));
         }
 
         $apres = $this->etat();

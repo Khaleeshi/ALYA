@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'ALYA Cosmetic'),
+    'name' => env('APP_NAME', 'AMANI Cosmetics'),
 
     /*
     |--------------------------------------------------------------------------
@@ -61,9 +61,9 @@ return [
     |
     | Here you may specify the default timezone for your application, which
     | will be used by the PHP date and date-time functions. The timezone
-    | ALYA vit à l'heure de Dakar (UTC+0, sans heure d'été). Toutes les
+    | AMANI vit à l'heure de Dakar (UTC+0, sans heure d'été). Toutes les
     | échéances (promotions, éditions limitées, créneaux) sont calculées par le
-    | serveur dans ce fuseau (audit 4.2 et 6.10).
+    | serveur dans ce fuseau.
     |
     */
 
@@ -80,7 +80,7 @@ return [
     |
     */
 
-    // Français par défaut, anglais complet (CDC §57, audit 6.12).
+    // Français au lancement (cahier §1.2). L'anglais est prêt mais fermé : config/boutique.php.
     'locale' => 'fr',
 
     'fallback_locale' => 'fr',

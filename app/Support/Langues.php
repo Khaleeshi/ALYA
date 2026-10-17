@@ -7,20 +7,40 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /**
- * Le site existe en français (par défaut) et en anglais, chacun sous son
- * préfixe : /fr/connexion, /en/login. Les morceaux d'adresse sont traduits
- * dans lang/{fr,en}/chemins.php ; les routes portent le nom « fr.connexion »,
- * « en.connexion », etc.
+ * Chaque langue ouverte a son préfixe : /fr/connexion, /en/login. Les morceaux
+ * d'adresse sont traduits dans lang/{fr,en}/chemins.php ; les routes portent
+ * le nom « fr.connexion », « en.connexion », etc.
+ *
+ * Au lancement, seul le français est ouvert (config/boutique.php) ; l'anglais
+ * est prêt et s'ouvre par un réglage, sans toucher au code.
  */
 final class Langues
 {
-    public const DISPONIBLES = ['fr', 'en'];
+    /** Langues dont les textes existent dans lang/. */
+    public const PREVUES = ['fr', 'en'];
 
     public const PAR_DEFAUT = 'fr';
 
+    /**
+     * Langues ouvertes au public.
+     *
+     * @return list<string>
+     */
+    public static function ouvertes(): array
+    {
+        $langues = array_values(array_intersect(self::PREVUES, (array) config('boutique.langues', [self::PAR_DEFAUT])));
+
+        return $langues === [] ? [self::PAR_DEFAUT] : $langues;
+    }
+
     public static function estDisponible(?string $langue): bool
     {
-        return in_array($langue, self::DISPONIBLES, true);
+        return in_array($langue, self::ouvertes(), true);
+    }
+
+    public static function plusieurs(): bool
+    {
+        return count(self::ouvertes()) > 1;
     }
 
     /**
@@ -40,7 +60,7 @@ final class Langues
      */
     public static function routes(Closure $definir): void
     {
-        foreach (self::DISPONIBLES as $langue) {
+        foreach (self::ouvertes() as $langue) {
             Route::prefix($langue)
                 ->name($langue.'.')
                 ->middleware('langue:'.$langue)
@@ -67,8 +87,8 @@ final class Langues
     }
 
     /**
-     * Adresse de la page affichée, dans l'autre langue. Sert au sélecteur
-     * FR / EN et, plus tard, aux balises hreflang.
+     * Adresse de la page affichée, dans une autre langue ouverte. Sert au
+     * sélecteur de langue et aux balises hreflang.
      */
     public static function pageEquivalente(string $langue): string
     {

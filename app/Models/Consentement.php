@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * Accord donné ou retiré par une cliente (audit 4.4). Les messages liés à une
+ * Accord donné ou retiré par une cliente (cahier §4.2 et §15). Les messages liés à une
  * commande partent toujours ; seules les offres et nouveautés demandent un accord.
  *
  * @property string $type

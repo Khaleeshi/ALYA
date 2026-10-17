@@ -7,7 +7,7 @@ use App\Support\Acces\Permissions;
 
 /**
  * Gestion du personnel : réservée à la permission utilisateurs.gerer
- * (la dirigeante par défaut). On ne supprime jamais un compte : on le
+ * (la propriétaire par défaut). On ne supprime jamais un compte : on le
  * désactive, pour que le journal garde un auteur.
  */
 class UtilisateurPolicy
@@ -29,8 +29,8 @@ class UtilisateurPolicy
 
     public function update(Utilisateur $personne, Utilisateur $utilisateur): bool
     {
-        // Seule une dirigeante modifie le compte d'une dirigeante.
-        if ($utilisateur->estDirigeante() && ! $personne->estDirigeante()) {
+        // Seule une propriétaire modifie le compte d'une propriétaire.
+        if ($utilisateur->estProprietaire() && ! $personne->estProprietaire()) {
             return false;
         }
 

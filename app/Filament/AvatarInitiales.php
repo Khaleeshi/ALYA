@@ -6,9 +6,9 @@ use Filament\AvatarProviders\Contracts\AvatarProvider;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Avatar du personnel : ses initiales en or sur noir, générées sur place.
+ * Avatar du personnel : ses initiales en bronze sur nude, générées sur place.
  * Remplace le service externe de Filament (aucune donnée envoyée ailleurs,
- * aucune photo de visage dans l'administration, audit 9.2).
+ * aucune photo dans l'administration).
  */
 class AvatarInitiales implements AvatarProvider
 {
@@ -21,8 +21,8 @@ class AvatarInitiales implements AvatarProvider
 
         $svg = <<<SVG
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-                <rect width="64" height="64" fill="#111111"/>
-                <text x="32" y="41" text-anchor="middle" font-family="Georgia, serif" font-size="24" letter-spacing="1" fill="#c8a95a">{$initiales}</text>
+                <rect width="64" height="64" fill="#f5e8d7"/>
+                <text x="32" y="41" text-anchor="middle" font-family="Georgia, serif" font-size="24" letter-spacing="1" fill="#85552c">{$initiales}</text>
             </svg>
             SVG;
 

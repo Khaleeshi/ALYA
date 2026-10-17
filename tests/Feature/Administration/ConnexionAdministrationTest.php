@@ -21,9 +21,9 @@ function connexionAdministration(string $email, string $motDePasse)
 }
 
 it('demande le code de double authentification après un mot de passe juste', function () {
-    $dirigeante = dirigeante(['email' => 'pdg@alya.sn', 'app_authentication_secret' => $this->secret]);
+    $proprietaire = proprietaire(['email' => 'pdg@amani.test', 'app_authentication_secret' => $this->secret]);
 
-    connexionAdministration('pdg@alya.sn', 'mot-de-passe-du-personnel')
+    connexionAdministration('pdg@amani.test', 'mot-de-passe-du-personnel')
         ->assertHasNoFormErrors()
         ->assertNoRedirect();
 
@@ -31,23 +31,23 @@ it('demande le code de double authentification après un mot de passe juste', fu
 });
 
 it('ouvre l\'administration avec le bon code de double authentification', function () {
-    $dirigeante = dirigeante(['email' => 'pdg@alya.sn', 'app_authentication_secret' => $this->secret]);
+    $proprietaire = proprietaire(['email' => 'pdg@amani.test', 'app_authentication_secret' => $this->secret]);
 
-    connexionAdministration('pdg@alya.sn', 'mot-de-passe-du-personnel')
+    connexionAdministration('pdg@amani.test', 'mot-de-passe-du-personnel')
         ->set('data.multiFactor.app.code', codeDoubleAuthentification($this->secret))
         ->call('authenticate')
         ->assertRedirect();
 
-    $this->assertAuthenticatedAs($dirigeante, 'personnel');
+    $this->assertAuthenticatedAs($proprietaire, 'personnel');
 
-    expect(JournalActivite::where('action', 'personnel.connexion')->sole()->auteur_libelle)->toBe('ALYA')
-        ->and($dirigeante->fresh()->derniere_connexion_le)->not->toBeNull();
+    expect(JournalActivite::where('action', 'personnel.connexion')->sole()->auteur_libelle)->toBe('Propriétaire · '.$proprietaire->prenom)
+        ->and($proprietaire->fresh()->derniere_connexion_le)->not->toBeNull();
 });
 
 it('refuse un mauvais code de double authentification', function () {
-    dirigeante(['email' => 'pdg@alya.sn', 'app_authentication_secret' => $this->secret]);
+    proprietaire(['email' => 'pdg@amani.test', 'app_authentication_secret' => $this->secret]);
 
-    connexionAdministration('pdg@alya.sn', 'mot-de-passe-du-personnel')
+    connexionAdministration('pdg@amani.test', 'mot-de-passe-du-personnel')
         ->set('data.multiFactor.app.code', '000000')
         ->call('authenticate')
         ->assertHasFormErrors();
@@ -56,35 +56,35 @@ it('refuse un mauvais code de double authentification', function () {
 });
 
 it('impose de configurer la double authentification à un compte qui ne l\'a pas encore', function () {
-    administrateur(['email' => 'admin@alya.sn']);
+    administrateur(['email' => 'admin@amani.test']);
 
-    connexionAdministration('admin@alya.sn', 'mot-de-passe-du-personnel')->assertRedirect();
+    connexionAdministration('admin@amani.test', 'mot-de-passe-du-personnel')->assertRedirect();
 
-    $this->actingAs(Utilisateur::firstWhere('email', 'admin@alya.sn'), 'personnel')
+    $this->actingAs(Utilisateur::firstWhere('email', 'admin@amani.test'), 'personnel')
         ->get('/administration')
         ->assertRedirect();
 });
 
 it('verrouille la connexion après cinq échecs, même avec le bon mot de passe ensuite', function () {
-    dirigeante(['email' => 'pdg@alya.sn', 'app_authentication_secret' => $this->secret]);
+    proprietaire(['email' => 'pdg@amani.test', 'app_authentication_secret' => $this->secret]);
 
     foreach (range(1, VerrouillageConnexion::ESSAIS) as $essai) {
-        connexionAdministration('pdg@alya.sn', 'mauvais-'.$essai)->assertHasFormErrors();
+        connexionAdministration('pdg@amani.test', 'mauvais-'.$essai)->assertHasFormErrors();
     }
 
-    connexionAdministration('pdg@alya.sn', 'mot-de-passe-du-personnel')
+    connexionAdministration('pdg@amani.test', 'mot-de-passe-du-personnel')
         ->assertNotified(__('auth.throttle', ['seconds' => 900, 'minutes' => 15]));
 
     expect(JournalActivite::where('action', 'connexion.verrouillage')->sole()->donnees)
-        ->toMatchArray(['espace' => 'administration', 'identifiant' => 'pdg@alya.sn']);
+        ->toMatchArray(['espace' => 'administration', 'identifiant' => 'pdg@amani.test']);
 });
 
 it('refuse les comptes désactivés et les livreurs', function () {
-    Utilisateur::factory()->dirigeante()->inactif()->create(['email' => 'ancienne@alya.sn']);
-    Utilisateur::factory()->livreur()->create(['email' => 'livreur@alya.sn']);
+    Utilisateur::factory()->proprietaire()->inactif()->create(['email' => 'ancienne@amani.test']);
+    Utilisateur::factory()->livreur()->create(['email' => 'livreur@amani.test']);
 
-    connexionAdministration('ancienne@alya.sn', 'mot-de-passe-du-personnel')->assertHasFormErrors(['email']);
-    connexionAdministration('livreur@alya.sn', 'mot-de-passe-du-personnel')->assertHasFormErrors(['email']);
+    connexionAdministration('ancienne@amani.test', 'mot-de-passe-du-personnel')->assertHasFormErrors(['email']);
+    connexionAdministration('livreur@amani.test', 'mot-de-passe-du-personnel')->assertHasFormErrors(['email']);
 
     $this->assertGuest('personnel');
 });

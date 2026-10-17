@@ -1,10 +1,12 @@
 <?php
 
 use App\Models\Utilisateur;
+use App\Support\Sms\EnvoiSms;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Features\SupportTesting\Testable;
 use Livewire\Livewire;
 use PragmaRX\Google2FA\Google2FA;
+use Tests\Fixtures\SmsFactice;
 use Tests\TestCase;
 
 pest()->extend(TestCase::class)
@@ -27,9 +29,20 @@ function secretDoubleAuthentification(): string
     return app(Google2FA::class)->generateSecretKey();
 }
 
-function dirigeante(array $attributs = []): Utilisateur
+/**
+ * Remplace l'envoi de SMS par une boîte en mémoire et la renvoie.
+ */
+function smsFactice(): SmsFactice
 {
-    return Utilisateur::factory()->dirigeante()->create($attributs);
+    $sms = new SmsFactice;
+    app()->instance(EnvoiSms::class, $sms);
+
+    return $sms;
+}
+
+function proprietaire(array $attributs = []): Utilisateur
+{
+    return Utilisateur::factory()->proprietaire()->create($attributs);
 }
 
 function administrateur(array $attributs = []): Utilisateur

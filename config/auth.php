@@ -10,8 +10,9 @@ return [
     | Deux populations, deux portes
     |--------------------------------------------------------------------------
     |
-    | « web » : les clientes de la boutique (table clientes), servies par Fortify.
-    | « personnel » : la dirigeante, les administrateurs et les livreurs
+    | « web » : les clientes de la boutique (table clientes), connectées par
+    | téléphone et code SMS (App\Http\Controllers\Comptes).
+    | « personnel » : la propriétaire, les administrateurs et les livreurs
     | (table utilisateurs), servis par l'administration Filament et, plus tard,
     | par l'espace livreur. Une session ouverte d'un côté n'ouvre jamais l'autre.
     |
@@ -19,7 +20,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'clientes',
+        'passwords' => 'utilisateurs',
     ],
 
     'guards' => [
@@ -51,18 +52,12 @@ return [
     | Mots de passe oubliés
     |--------------------------------------------------------------------------
     |
-    | Lien valable 60 minutes, une demande par minute au plus.
+    | Personnel seulement (les clientes n'ont pas de mot de passe) : lien
+    | valable 30 minutes, une demande par minute au plus.
     |
     */
 
     'passwords' => [
-        'clientes' => [
-            'provider' => 'clientes',
-            'table' => 'password_reset_tokens',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
-
         'utilisateurs' => [
             'provider' => 'utilisateurs',
             'table' => 'password_reset_tokens_personnel',

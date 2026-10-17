@@ -21,7 +21,7 @@ beforeEach(function () {
  */
 function photoDeTest(int $largeur, int $hauteur): string
 {
-    $chemin = tempnam(sys_get_temp_dir(), 'alya').'.jpg';
+    $chemin = tempnam(sys_get_temp_dir(), 'amani').'.jpg';
 
     $image = new Imagick;
     $image->newPseudoImage($largeur, $hauteur, 'gradient:#070707-#c8a95a');
@@ -74,7 +74,7 @@ it('prépare une balise picture avec AVIF, WebP et les dimensions de l\'original
         ->toMediaCollection()
         ->refresh();
 
-    $html = Blade::render('<x-alya.image :media="$media" alt="Gloss" sizes="50vw" />', ['media' => $media]);
+    $html = Blade::render('<x-amani.image :media="$media" alt="Gloss" sizes="50vw" />', ['media' => $media]);
 
     expect($html)
         ->toContain('type="image/avif"')

@@ -4,27 +4,27 @@ use App\Models\JournalActivite;
 use App\Models\Utilisateur;
 use App\Support\Acces\Roles;
 
-it('crée le premier compte de la dirigeante depuis le serveur', function () {
-    $this->artisan('alya:creer-personnel')
+it('crée le premier compte de la propriétaire depuis le serveur', function () {
+    $this->artisan('amani:creer-personnel')
         ->expectsQuestion('Prénom', 'Ndeye')
         ->expectsQuestion('Nom', 'Fall')
-        ->expectsQuestion('Email', 'pdg@alyacosmetic.sn')
-        ->expectsQuestion('Rôle', Roles::DIRIGEANTE)
+        ->expectsQuestion('Email', 'pdg@amani.test')
+        ->expectsQuestion('Rôle', Roles::PROPRIETAIRE)
         ->expectsQuestion('Mot de passe (12 caractères au moins, lettres et chiffres)', 'BrillanceDakar2026')
         ->assertSuccessful();
 
-    $dirigeante = Utilisateur::firstWhere('email', 'pdg@alyacosmetic.sn');
+    $proprietaire = Utilisateur::firstWhere('email', 'pdg@amani.test');
 
-    expect($dirigeante->estDirigeante())->toBeTrue()
+    expect($proprietaire->estProprietaire())->toBeTrue()
         ->and(JournalActivite::where('action', 'personnel.creation')->exists())->toBeTrue();
 });
 
 it('refuse un mot de passe trop court', function () {
-    $this->artisan('alya:creer-personnel')
+    $this->artisan('amani:creer-personnel')
         ->expectsQuestion('Prénom', 'Ndeye')
         ->expectsQuestion('Nom', 'Fall')
-        ->expectsQuestion('Email', 'pdg@alyacosmetic.sn')
-        ->expectsQuestion('Rôle', Roles::DIRIGEANTE)
+        ->expectsQuestion('Email', 'pdg@amani.test')
+        ->expectsQuestion('Rôle', Roles::PROPRIETAIRE)
         ->expectsQuestion('Mot de passe (12 caractères au moins, lettres et chiffres)', 'court')
         ->assertFailed();
 

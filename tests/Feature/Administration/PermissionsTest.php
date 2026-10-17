@@ -5,15 +5,15 @@ use App\Support\Acces\Permissions;
 use App\Support\Acces\Roles;
 use Spatie\Permission\Models\Role;
 
-it('donne toutes les permissions à la dirigeante', function () {
-    $dirigeante = dirigeante();
+it('donne toutes les permissions à la propriétaire', function () {
+    $proprietaire = proprietaire();
 
     foreach (Permissions::toutes() as $permission) {
-        expect($dirigeante->can($permission))->toBeTrue("La dirigeante devrait avoir {$permission}");
+        expect($proprietaire->can($permission))->toBeTrue("La propriétaire devrait avoir {$permission}");
     }
 });
 
-it("réserve l'espace achats, les remboursements et la gestion du personnel à la dirigeante", function () {
+it("réserve l'espace achats, les remboursements et la gestion du personnel à la propriétaire", function () {
     $administrateur = administrateur();
 
     expect($administrateur->can(Permissions::ACHATS_GERER))->toBeFalse()
@@ -23,7 +23,7 @@ it("réserve l'espace achats, les remboursements et la gestion du personnel à l
         ->and($administrateur->can(Permissions::JOURNAL_VOIR))->toBeTrue();
 });
 
-it("ouvre l'espace achats à un administrateur quand la dirigeante le lui accorde", function () {
+it("ouvre l'espace achats à un administrateur quand la propriétaire le lui accorde", function () {
     $administrateur = administrateur();
     $administrateur->givePermissionTo(Permissions::ACHATS_GERER);
 
@@ -38,17 +38,17 @@ it("ne donne au livreur que l'espace livreur", function () {
         ->and($livreur->canAccessPanel(filament()->getPanel('administration')))->toBeFalse();
 });
 
-it('retire tout à une dirigeante dont le compte est désactivé', function () {
-    $dirigeante = Utilisateur::factory()->dirigeante()->inactif()->create();
+it('retire tout à une propriétaire dont le compte est désactivé', function () {
+    $proprietaire = Utilisateur::factory()->proprietaire()->inactif()->create();
 
-    expect($dirigeante->can(Permissions::ACHATS_GERER))->toBeFalse()
-        ->and($dirigeante->canAccessPanel(filament()->getPanel('administration')))->toBeFalse();
+    expect($proprietaire->can(Permissions::ACHATS_GERER))->toBeFalse()
+        ->and($proprietaire->canAccessPanel(filament()->getPanel('administration')))->toBeFalse();
 });
 
-it("montre la gestion du personnel à la dirigeante et la refuse à l'administrateur", function () {
+it("montre la gestion du personnel à la propriétaire et la refuse à l'administrateur", function () {
     $secret = secretDoubleAuthentification();
 
-    $this->actingAs(dirigeante(['app_authentication_secret' => $secret]), 'personnel')
+    $this->actingAs(proprietaire(['app_authentication_secret' => $secret]), 'personnel')
         ->get('/administration/personnel')
         ->assertOk();
 
@@ -68,5 +68,5 @@ it("montre le journal à l'administrateur, sans aucun bouton pour le modifier", 
 
 it('connaît exactement les trois rôles du personnel', function () {
     expect(Role::where('guard_name', Roles::GARDE)->pluck('name')->sort()->values()->all())
-        ->toBe(['administrateur', 'dirigeante', 'livreur']);
+        ->toBe(['administrateur', 'livreur', 'proprietaire']);
 });

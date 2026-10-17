@@ -10,14 +10,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Carbon;
 
 /**
- * Cliente de la boutique (garde « web »).
+ * Cliente de la boutique (garde « web »). Son compte repose sur son numéro
+ * de téléphone, vérifié par un code SMS : il n'y a pas de mot de passe.
  *
  * @property int $id
  * @property string $prenom
  * @property string $nom
  * @property string $telephone
+ * @property ?Carbon $telephone_verifie_le
  * @property ?string $email
  * @property string $langue
  */
@@ -33,20 +36,17 @@ class Cliente extends Authenticatable implements HasLocalePreference
         'nom',
         'telephone',
         'email',
-        'password',
         'langue',
     ];
 
     protected $hidden = [
-        'password',
         'remember_token',
     ];
 
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'telephone_verifie_le' => 'datetime',
         ];
     }
 
@@ -81,7 +81,7 @@ class Cliente extends Authenticatable implements HasLocalePreference
     }
 
     /**
-     * Langue des emails et messages envoyés à la cliente.
+     * Langue des messages envoyés à la cliente.
      */
     public function preferredLocale(): string
     {

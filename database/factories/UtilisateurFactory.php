@@ -27,9 +27,9 @@ class UtilisateurFactory extends Factory
         ];
     }
 
-    public function dirigeante(): static
+    public function proprietaire(): static
     {
-        return $this->afterCreating(fn (Utilisateur $utilisateur) => $utilisateur->assignRole(Roles::DIRIGEANTE));
+        return $this->afterCreating(fn (Utilisateur $utilisateur) => $utilisateur->assignRole(Roles::PROPRIETAIRE));
     }
 
     public function administrateur(): static

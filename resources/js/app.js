@@ -1,8 +1,8 @@
 // Polices auto-hébergées : déclarées dans le manifeste Vite pour pouvoir être
-// préchargées par la mise en page (voir resources/views/components/alya/polices.blade.php).
+// préchargées par la mise en page (voir resources/views/components/amani/polices.blade.php).
 import.meta.glob(['../fonts/*.woff2']);
 
-// Apparition des sections : fondu et montée de 8 px sur 400 ms (audit 9.3).
+// Apparition des sections : fondu et montée de 8 px sur 400 ms, discrète (cahier §2.3).
 // Seuls les éléments encore hors de l'écran au chargement sont concernés, pour
 // ne jamais retarder ce qui est déjà visible ; « réduire les animations » est respecté.
 function preparerApparitions() {

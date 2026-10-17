@@ -3,17 +3,17 @@
 namespace App\Support\Acces;
 
 /**
- * Rôles du personnel (garde « personnel »).
+ * Rôles du personnel (garde « personnel »), cahier AMANI §12.3.
  */
 final class Roles
 {
-    /** La PDG d'ALYA : voit et peut tout, y compris l'espace achats (§42) et les remboursements (D16). */
-    public const DIRIGEANTE = 'dirigeante';
+    /** L'administrateur principal (la propriétaire d'AMANI) : voit et peut tout, y compris les achats et les remboursements. */
+    public const PROPRIETAIRE = 'proprietaire';
 
-    /** Administrateur secondaire : la gestion courante, sans les espaces réservés. */
+    /** Compte professionnel nominatif : la gestion courante, sans les espaces réservés. */
     public const ADMINISTRATEUR = 'administrateur';
 
-    /** Livreur : son espace de livraison uniquement (phase 4). */
+    /** Livreur : uniquement les livraisons qui lui sont attribuées, hors administration. */
     public const LIVREUR = 'livreur';
 
     public const GARDE = 'personnel';
@@ -24,7 +24,7 @@ final class Roles
     public static function libelles(): array
     {
         return [
-            self::DIRIGEANTE => 'Dirigeante',
+            self::PROPRIETAIRE => 'Propriétaire',
             self::ADMINISTRATEUR => 'Administrateur',
             self::LIVREUR => 'Livreur',
         ];
@@ -37,6 +37,6 @@ final class Roles
      */
     public static function administration(): array
     {
-        return [self::DIRIGEANTE, self::ADMINISTRATEUR];
+        return [self::PROPRIETAIRE, self::ADMINISTRATEUR];
     }
 }

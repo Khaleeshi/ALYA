@@ -8,7 +8,7 @@ use Spatie\MediaLibrary\MediaCollections\Events\MediaHasBeenAddedEvent;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /**
- * Chaîne d'images ALYA (audit 7.2) : chaque photo déposée est déclinée en
+ * Chaîne d'images AMANI : chaque photo déposée est déclinée en
  * cinq largeurs, en AVIF et en WebP, dans la file « medias ».
  *
  * Les largeurs vont de 400 px (vignette sur téléphone) à 2400 px (le minimum
@@ -72,7 +72,7 @@ final class DeclinaisonsImages
     /**
      * Retient la taille de l'original dès son dépôt : elle sert à ne produire
      * que les largeurs utiles et à réserver la place de l'image dans la page
-     * (pas de saut de mise en page, audit section 10).
+     * (pas de saut de mise en page au chargement).
      */
     public static function lireDimensions(MediaHasBeenAddedEvent $evenement): void
     {

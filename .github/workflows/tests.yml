@@ -15,7 +15,7 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_ROOT_PASSWORD: racine
-          MYSQL_DATABASE: alya_tests
+          MYSQL_DATABASE: amani_tests
         ports:
           - 3306:3306
         options: >-
@@ -59,7 +59,7 @@ jobs:
           DB_CONNECTION: mysql
           DB_HOST: 127.0.0.1
           DB_PORT: 3306
-          DB_DATABASE: alya_tests
+          DB_DATABASE: amani_tests
           DB_USERNAME: root
           DB_PASSWORD: racine
         run: vendor/bin/pest

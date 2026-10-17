@@ -8,7 +8,7 @@ use App\Support\Acces\Permissions;
 
 /**
  * Le journal se consulte avec la permission journal.voir. Personne ne le
- * crée à la main, ne le modifie ni ne le supprime, pas même la dirigeante.
+ * crée à la main, ne le modifie ni ne le supprime, pas même la propriétaire.
  */
 class JournalActivitePolicy
 {

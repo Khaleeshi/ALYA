@@ -1,0 +1,66 @@
+/*
+ * Système de design AMANI : jetons, d'après le cahier (§2.2) et les maquettes
+ * de docs/maquettes-amani. Toute couleur, police, marge ou forme de la
+ * vitrine vient d'ici. L'administration reprend la même palette dans
+ * AdministrationPanelProvider.
+ *
+ * Lisibilité : l'or du cahier (#C6A15B) est trop clair pour du texte sur
+ * crème (contraste 2,2). Il sert aux ornements, étoiles et barres ; les textes
+ * dorés, icônes et boutons utilisent le bronze, lisible (4,3 à 5,9).
+ */
+
+@theme {
+    --color-*: initial;
+    --color-transparent: transparent;
+    --color-current: currentColor;
+
+    /* Fonds */
+    --color-page: #fcf8f3; /* fond de page (maquettes) */
+    --color-creme: #f8f3ec; /* « fond clair » du cahier : bandes, sections */
+    --color-blanc: #fffdfa; /* cartes, champs, en-tête */
+    --color-nude: #e8d5be; /* « fond principal » du cahier : bannières */
+    --color-nude-pale: #f5e8d7; /* sélection, bouton secondaire, pastille du menu */
+    --color-filet: #eadccb; /* bordures fines */
+
+    /* Or et bruns */
+    --color-or: #c6a15b; /* accent du cahier : ornements, étoiles, barres */
+    --color-bronze: #9c6b3f; /* texte doré, icônes, signature manuscrite */
+    --color-bronze-fonce: #85552c; /* départ du dégradé des boutons, prix mis en avant */
+    --color-cacao: #7e5537; /* bandeau de service, badges, compteur du panier */
+    --color-brun: #493729; /* texte principal (cahier) */
+    --color-taupe: #6f5b4c; /* texte secondaire */
+
+    /* États (lisibles en texte sur fond clair) */
+    --color-vert: #2f6b4a;
+    --color-ambre: #8f6418;
+    --color-rouge: #a13d33;
+    --color-etoile: #e3a33b;
+
+    /* Polices */
+    --font-*: initial;
+    --font-titre: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --font-texte: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+    --font-script: 'Great Vibes', 'Brush Script MT', cursive;
+
+    /* Formes : coins légèrement arrondis (cahier §2.3), boutons en pilule. */
+    --radius-*: initial;
+    --radius-badge: 4px;
+    --radius-champ: 8px;
+    --radius-carte: 12px;
+    --radius-bloc: 20px;
+    --radius-full: 9999px;
+
+    /* Ombres délicates. */
+    --shadow-*: initial;
+    --shadow-carte: 0 1px 2px rgb(73 55 41 / 0.05), 0 8px 24px rgb(73 55 41 / 0.06);
+    --shadow-survol: 0 2px 4px rgb(73 55 41 / 0.06), 0 14px 32px rgb(73 55 41 / 0.1);
+    --shadow-flottant: 0 16px 48px rgb(73 55 41 / 0.18);
+
+    /* Grille : marges 16 px sur téléphone, 40 px sur ordinateur, 1320 px au plus. */
+    --spacing-marge: 16px;
+    --spacing-marge-large: 40px;
+    --container-page: 1320px;
+
+    /* Mouvement discret (cahier §2.3). */
+    --ease-amani: cubic-bezier(0.2, 0, 0, 1);
+}

@@ -157,6 +157,7 @@ return [
     'url' => 'Le format de l\'URL de :attribute n\'est pas valide.',
     'uuid' => 'Le champ :attribute doit être un UUID valide.',
     'telephone' => 'Indiquez un numéro joignable, par exemple 77 123 45 67 ou +33 6 12 34 56 78.',
+    'telephone_senegal' => 'Indiquez un numéro sénégalais, par exemple 77 123 45 67.',
     'attributes' => [
         'identifiant' => 'email ou téléphone',
         'prenom' => 'prénom',

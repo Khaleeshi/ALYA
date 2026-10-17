@@ -16,14 +16,14 @@ use function Laravel\Prompts\text;
 
 /**
  * Crée un compte du personnel depuis le serveur. Sert surtout au tout premier
- * compte (la dirigeante) : les suivants se créent dans l'administration.
+ * compte (la propriétaire) : les suivants se créent dans l'administration.
  * Le mot de passe est saisi à la main, jamais écrit dans le code.
  */
 class CreerPersonnel extends Command
 {
-    protected $signature = 'alya:creer-personnel';
+    protected $signature = 'amani:creer-personnel';
 
-    protected $description = 'Crée un compte du personnel (dirigeante, administrateur ou livreur)';
+    protected $description = 'Crée un compte du personnel (propriétaire, administrateur ou livreur)';
 
     public function handle(): int
     {
@@ -33,7 +33,7 @@ class CreerPersonnel extends Command
             'prenom' => text('Prénom', required: true),
             'nom' => text('Nom', required: true),
             'email' => text('Email', required: true),
-            'role' => select('Rôle', Roles::libelles(), default: Roles::DIRIGEANTE),
+            'role' => select('Rôle', Roles::libelles(), default: Roles::PROPRIETAIRE),
             'password' => password('Mot de passe (12 caractères au moins, lettres et chiffres)', required: true),
         ];
 

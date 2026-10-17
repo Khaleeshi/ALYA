@@ -54,7 +54,7 @@ class UtilisateurForm
                             ->label('Rôle')
                             ->options(Roles::libelles())
                             ->descriptions([
-                                Roles::DIRIGEANTE => 'Voit et peut tout, y compris les achats et les remboursements.',
+                                Roles::PROPRIETAIRE => 'Voit et peut tout, y compris les achats et les remboursements.',
                                 Roles::ADMINISTRATEUR => 'Gestion courante : catalogue, commandes, livraisons, après-vente, contenus, bilans, journal.',
                                 Roles::LIVREUR => "Espace livreur uniquement, sans accès à l'administration.",
                             ])
@@ -74,7 +74,7 @@ class UtilisateurForm
                             ))
                             ->columns(2)
                             ->dehydrated(false)
-                            ->hidden(fn (Get $get): bool => in_array($get('role'), [null, Roles::DIRIGEANTE], true)),
+                            ->hidden(fn (Get $get): bool => in_array($get('role'), [null, Roles::PROPRIETAIRE], true)),
 
                         Toggle::make('actif')
                             ->label('Compte actif')

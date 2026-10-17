@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 /*
- * Journal d'activité (CDC §54, audit 4.8) : ajout seul, horodatage serveur,
- * aucune modification ni suppression, même par la dirigeante.
+ * Journal des actions sensibles (cahier §12.3 et §15) : ajout seul, horodatage serveur,
+ * aucune modification ni suppression, même par la propriétaire.
  * Le modèle refuse déjà toute modification ; les déclencheurs ci-dessous
  * ferment aussi la porte au niveau de la base de données.
  */

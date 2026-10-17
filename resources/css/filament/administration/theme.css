@@ -1,72 +1,43 @@
 @import '../../../../vendor/filament/filament/resources/css/theme.css';
-@import '../../alya/polices.css';
+@import '../../amani/polices.css';
 
 @source '../../../../app/Filament/**/*';
 @source '../../../../resources/views/filament/**/*';
+@source '../../../../resources/views/components/amani/logo.blade.php';
 
 /*
- * Thème ALYA de l'administration (audit 9.3) : même palette et mêmes polices
- * que la vitrine, densité utile. Les couleurs viennent du fournisseur du
- * panneau (AdministrationPanelProvider) ; ici, les formes et la typographie.
+ * Thème AMANI de l'administration : même palette et mêmes polices que la
+ * vitrine (les couleurs viennent d'AdministrationPanelProvider), titres en
+ * Playfair Display, densité utile pour le travail quotidien.
  */
 
 @theme {
-    /* Le texte n'est jamais blanc pur : l'ivoire ALYA. */
-    --color-white: #f3ede2;
-
-    /* Angles vifs. */
-    --radius-xs: 0px;
-    --radius-sm: 0px;
-    --radius-md: 0px;
-    --radius-lg: 0px;
-    --radius-xl: 0px;
-    --radius-2xl: 0px;
-    --radius-3xl: 0px;
-
-    /* Aucune ombre portée. */
-    --shadow-2xs: 0 0 #0000;
-    --shadow-xs: 0 0 #0000;
-    --shadow-sm: 0 0 #0000;
-    --shadow-md: 0 0 #0000;
-    --shadow-lg: 0 0 #0000;
-    --shadow-xl: 0 0 #0000;
-    --shadow-2xl: 0 0 #0000;
-
-    --font-titre: 'Bodoni Moda', Didot, 'Bodoni 72', Georgia, serif;
+    --font-titre: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --color-brun: #493729;
 }
 
-/* Champs de saisie : 2 px, comme sur la vitrine. */
-.fi-input-wrp,
-.fi-select-input,
-.fi-fo-file-upload {
-    border-radius: 2px;
+/* Marque et titres en Playfair Display (le logo reprend le composant de la vitrine). */
+@utility titre {
+    font-family: var(--font-titre);
+    font-weight: 400;
+    line-height: 1.15;
 }
 
-/* Titres de page et marque en Bodoni. */
 .fi-header-heading,
 .fi-simple-header-heading,
-.fi-modal-heading {
+.fi-modal-heading,
+.fi-section-header-heading {
     font-family: var(--font-titre);
-    font-weight: 400;
-    letter-spacing: 0.01em;
-}
-
-.fi-logo {
-    font-family: var(--font-titre);
-    font-weight: 400;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-}
-
-/* Étiquettes de colonnes en capitales espacées. */
-.fi-ta-header-cell-label {
-    font-size: 11px;
     font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+    letter-spacing: 0;
 }
 
-/* Chiffres tabulaires dans les tableaux. */
+/* Fond crème comme la vitrine. */
+.fi-body {
+    background-color: #fcf8f3;
+}
+
+/* Chiffres alignés dans les tableaux. */
 .fi-ta-cell {
     font-variant-numeric: tabular-nums;
 }

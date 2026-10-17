@@ -1,52 +1,39 @@
 <?php
 
-// Écrans de compte des clientes.
+// Compte cliente : téléphone, code SMS, création du compte (cahier §6.2).
 return [
     'connexion' => [
         'titre' => 'Connexion',
-        'intro' => 'Retrouvez vos commandes, vos favoris et vos cadeaux VIP.',
-        'identifiant' => 'Email ou téléphone',
-        'mot_de_passe' => 'Mot de passe',
+        'intro' => 'Entrez votre numéro de téléphone : nous vous envoyons un code par SMS. Première visite ? Votre compte se crée juste après.',
+        'telephone' => 'Numéro de téléphone',
+        'envoyer' => 'Recevoir mon code',
+        'pourquoi' => 'Un compte est nécessaire pour commander : il garde vos commandes, vos favoris, vos points fidélité et vos demandes de retour.',
+    ],
+
+    'code' => [
+        'titre' => 'Code de vérification',
+        'intro' => 'Saisissez le code à 6 chiffres reçu par SMS au :telephone.',
+        'code' => 'Code reçu par SMS',
         'se_souvenir' => 'Rester connectée sur cet appareil',
-        'envoyer' => 'Se connecter',
-        'oublie' => 'Mot de passe oublié',
-        'pas_de_compte' => 'Pas encore de compte ?',
-        'creer' => 'Créer un compte',
+        'envoyer' => 'Valider',
+        'renvoyer' => 'Renvoyer le code',
+        'changer' => 'Changer de numéro',
+        'envoye' => 'Un code vient d’être envoyé au :telephone. Il expire dans 10 minutes.',
+        'invalide' => 'Ce code est incorrect ou a expiré. Vérifiez le SMS ou demandez un nouveau code.',
+        'attendre' => 'Patientez :secondes secondes avant de demander un nouveau code.',
+        'trop_envois' => 'Trop de codes demandés. Réessayez dans :minutes minutes.',
     ],
 
     'inscription' => [
-        'titre' => 'Créer un compte',
-        'intro' => 'Le compte est facultatif : vous pouvez aussi commander sans compte.',
+        'titre' => 'Créer votre compte',
+        'intro' => 'Votre numéro :telephone est vérifié. Encore quelques informations.',
         'prenom' => 'Prénom',
         'nom' => 'Nom',
-        'telephone' => 'Téléphone',
-        'telephone_aide' => 'Le numéro sur lequel vous recevez WhatsApp. Exemple : 77 123 45 67.',
         'email' => 'Email',
-        'email_aide' => 'Il sert à recevoir vos reçus et à retrouver votre mot de passe.',
-        'mot_de_passe' => 'Mot de passe',
-        'mot_de_passe_aide' => 'Au moins 8 caractères, avec des lettres et des chiffres.',
-        'confirmation' => 'Confirmez le mot de passe',
-        'messages_commande' => 'Les messages liés à vos commandes (confirmation, livraison) vous sont toujours envoyés.',
-        'offres' => "J'accepte de recevoir les offres et nouveautés ALYA par WhatsApp et par email.",
+        'email_aide' => 'Pour recevoir aussi vos confirmations par email, si vous le souhaitez.',
+        'messages_commande' => 'Le suivi de vos commandes s’affiche toujours dans votre compte.',
+        'offres' => 'J’accepte de recevoir les offres et nouveautés AMANI.',
         'envoyer' => 'Créer mon compte',
-        'deja_un_compte' => 'Déjà un compte ?',
-        'se_connecter' => 'Se connecter',
-    ],
-
-    'oubli' => [
-        'titre' => 'Mot de passe oublié',
-        'intro' => "Indiquez l'email de votre compte : nous vous envoyons un lien pour choisir un nouveau mot de passe.",
-        'email' => 'Email',
-        'envoyer' => 'Recevoir le lien',
-        'retour' => 'Retour à la connexion',
-    ],
-
-    'reinitialisation' => [
-        'titre' => 'Nouveau mot de passe',
-        'email' => 'Email',
-        'mot_de_passe' => 'Nouveau mot de passe',
-        'confirmation' => 'Confirmez le mot de passe',
-        'envoyer' => 'Enregistrer le mot de passe',
     ],
 
     'mon_compte' => [
@@ -55,10 +42,11 @@ return [
         'coordonnees' => 'Mes coordonnées',
         'telephone' => 'Téléphone',
         'email' => 'Email',
-        'langue' => 'Langue des messages',
+        'non_renseigne' => 'Non renseigné',
         'deconnexion' => 'Se déconnecter',
     ],
 
-    'lien_envoye' => 'Si un compte existe avec cet email, le lien vient de lui être envoyé. Pensez à regarder dans les courriers indésirables.',
-    'mot_de_passe_change' => 'Votre mot de passe a été changé. Vous pouvez vous connecter.',
+    'sms' => [
+        'code' => 'AMANI Cosmetics : votre code de connexion est :code. Il expire dans :minutes minutes. Ne le communiquez à personne.',
+    ],
 ];

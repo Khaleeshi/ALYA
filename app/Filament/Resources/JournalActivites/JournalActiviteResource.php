@@ -15,7 +15,7 @@ use Filament\Tables\Table;
 use UnitEnum;
 
 /**
- * Journal d'activité (CDC §54) : lecture seule, aucune création, modification
+ * Journal d'activité (cahier §12.3) : lecture seule, aucune création, modification
  * ni suppression possible.
  */
 class JournalActiviteResource extends Resource

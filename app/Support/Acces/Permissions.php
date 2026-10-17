@@ -3,9 +3,9 @@
 namespace App\Support\Acces;
 
 /**
- * Permissions fines du personnel. La dirigeante les a toutes (voir
+ * Permissions fines du personnel. La propriétaire les a toutes (voir
  * AppServiceProvider) ; les autres rôles reçoivent celles de PAR_ROLE, et la
- * dirigeante peut en accorder une de plus à une personne précise
+ * propriétaire peut en accorder une de plus à une personne précise
  * (par exemple l'espace achats à un administrateur, §42).
  */
 final class Permissions
@@ -70,7 +70,7 @@ final class Permissions
     }
 
     /**
-     * Permissions données par défaut à chaque rôle. La dirigeante n'apparaît
+     * Permissions données par défaut à chaque rôle. La propriétaire n'apparaît
      * pas : elle a tout.
      *
      * @var array<string, list<string>>

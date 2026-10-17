@@ -157,6 +157,7 @@ return [
     'url' => 'The :attribute field must be a valid URL.',
     'uuid' => 'The :attribute field must be a valid UUID.',
     'telephone' => 'Please enter a reachable number, for example 77 123 45 67 or +33 6 12 34 56 78.',
+    'telephone_senegal' => 'Please enter a Senegalese number, for example 77 123 45 67.',
     'attributes' => [
         'identifiant' => 'email or phone',
         'prenom' => 'first name',

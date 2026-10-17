@@ -25,9 +25,10 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 /**
- * Administration ALYA (/administration) : dirigeante et administrateurs.
- * Garde « personnel », double authentification par application obligatoire
- * pour tout compte (audit 4.8), même palette et mêmes polices que la vitrine.
+ * Administration AMANI (/administration) : propriétaire et administrateurs.
+ * Garde « personnel ». Le cahier (§12.3) impose la double authentification à
+ * l'administrateur principal ; elle est ici obligatoire pour tout compte.
+ * Même palette et mêmes polices que la vitrine.
  */
 class AdministrationPanelProvider extends PanelProvider
 {
@@ -56,32 +57,35 @@ class AdministrationPanelProvider extends PanelProvider
             ->profile(isSimple: false)
             ->multiFactorAuthentication(
                 AppAuthentication::make()
-                    ->brandName('ALYA Cosmetic')
+                    ->brandName('AMANI Cosmetics')
                     ->recoverable(),
                 isRequired: true,
             )
-            ->brandName('ALYA')
+            ->brandName('AMANI Cosmetics')
+            ->brandLogo(fn () => view('filament.marque'))
+            ->brandLogoHeight('2.6rem')
             ->defaultAvatarProvider(AvatarInitiales::class)
-            ->darkMode(true, isForced: true)
-            // Palette de l'audit 9.3. Les gris sont les noirs ALYA (950 = noir
-            // profond, 900 = surface, 800 = relief, 700 = filet) remontant vers l'ivoire.
+            ->darkMode(false)
+            // Palette du cahier AMANI et des maquettes. En thème clair, Filament
+            // peint ses boutons en 600 (survol 500) et ses liens en 600, à condition
+            // que le texte blanc y reste lisible (contraste 4,5) : 600 et 500 sont
+            // donc les deux bronzes, l'or (400) reste pour les accents.
+            // Les gris sont les bruns AMANI, du fond de page (50) au texte (800).
             ->colors([
                 'primary' => [
-                    // En sombre, Filament peint ses boutons en 600 (survol 500) et ses liens en 400 :
-                    // ces trois teintes restent sur l'or champagne, le survol tire vers l'or clair.
-                    50 => '#f8f3e6', 100 => '#f1e7cc', 200 => '#e9d9ae', 300 => '#dcc386',
-                    400 => '#c8a95a', 500 => '#d6bd78', 600 => '#c8a95a', 700 => '#7d6432',
-                    800 => '#5c4a26', 900 => '#3d321b', 950 => '#241e11',
+                    50 => '#fbf6ee', 100 => '#f5e8d7', 200 => '#eadcc4', 300 => '#dcc386',
+                    400 => '#c6a15b', 500 => '#9c6b3f', 600 => '#85552c', 700 => '#734826',
+                    800 => '#5e3b20', 900 => '#46301c', 950 => '#2e1d12',
                 ],
                 'gray' => [
-                    50 => '#f3ede2', 100 => '#ebe5d9', 200 => '#d6d0c4', 300 => '#b3ada1',
-                    400 => '#8e877b', 500 => '#6c665b', 600 => '#4a453c', 700 => '#2a2620',
-                    800 => '#1a1a1a', 900 => '#111111', 950 => '#070707',
+                    50 => '#fcf8f3', 100 => '#f5eee4', 200 => '#eadccb', 300 => '#d6c3ae',
+                    400 => '#a8927e', 500 => '#7a6555', 600 => '#6f5b4c', 700 => '#5a4738',
+                    800 => '#493729', 900 => '#3a2b20', 950 => '#2a1f17',
                 ],
-                'success' => Color::hex('#3e7b5c'),
-                'warning' => Color::hex('#b8862b'),
-                'danger' => Color::hex('#a03a32'),
-                'info' => Color::hex('#8e877b'),
+                'success' => Color::hex('#2f6b4a'),
+                'warning' => Color::hex('#8f6418'),
+                'danger' => Color::hex('#a13d33'),
+                'info' => Color::hex('#6f5b4c'),
             ])
             ->font('Jost', provider: LocalFontProvider::class)
             ->viteTheme('resources/css/filament/administration/theme.css')

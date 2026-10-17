@@ -7,7 +7,6 @@ use App\Support\Securite\VerrouillageConnexion;
 use Filament\Auth\Http\Responses\Contracts\LoginResponse;
 use Filament\Auth\Pages\Login;
 use Filament\Notifications\Notification;
-use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\ValidationException;
 
 /**
@@ -20,10 +19,13 @@ class Connexion extends Login
     public function authenticate(): ?LoginResponse
     {
         $email = (string) ($this->data['email'] ?? '');
-        $cle = VerrouillageConnexion::cle('personnel', $email, request()->ip());
+        $cle = VerrouillageConnexion::cle('administration', $email, request()->ip());
 
-        if (RateLimiter::tooManyAttempts($cle, VerrouillageConnexion::ESSAIS)) {
-            $this->notifierVerrouillage(RateLimiter::availableIn($cle));
+        if (VerrouillageConnexion::estVerrouille($cle)) {
+            Notification::make()
+                ->title(VerrouillageConnexion::message($cle))
+                ->danger()
+                ->send();
 
             return null;
         }
@@ -31,9 +33,7 @@ class Connexion extends Login
         try {
             $reponse = parent::authenticate();
         } catch (ValidationException $exception) {
-            RateLimiter::hit($cle, VerrouillageConnexion::DUREE_SECONDES);
-
-            if (RateLimiter::tooManyAttempts($cle, VerrouillageConnexion::ESSAIS)) {
+            if (VerrouillageConnexion::echec($cle)) {
                 JournaliserAuthentification::consignerVerrouillage('administration', $email);
             }
 
@@ -41,17 +41,9 @@ class Connexion extends Login
         }
 
         if ($reponse !== null) {
-            RateLimiter::clear($cle);
+            VerrouillageConnexion::reussite($cle);
         }
 
         return $reponse;
-    }
-
-    protected function notifierVerrouillage(int $secondes): void
-    {
-        Notification::make()
-            ->title(__('auth.throttle', ['seconds' => $secondes, 'minutes' => (int) ceil($secondes / 60)]))
-            ->danger()
-            ->send();
     }
 }

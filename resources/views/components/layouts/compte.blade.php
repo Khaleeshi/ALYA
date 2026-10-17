@@ -1,22 +1,22 @@
 {{--
-    Écrans de compte : une colonne étroite, un titre, un seul bouton doré.
+    Écrans de compte : une carte blanche centrée, un titre en Playfair.
 --}}
 @props(['titre', 'intro' => null])
 
-<x-layouts.vitrine :titre="$titre">
-    <div class="conteneur flex justify-center py-16 lg:py-24">
-        <div class="w-full max-w-md">
-            <h1 class="titre-page text-3xl text-ivoire lg:text-4xl">{{ $titre }}</h1>
+<x-layouts.vitrine :titre="$titre" :reassurance="false">
+    <div class="conteneur flex justify-center py-12 lg:py-20">
+        <div class="w-full max-w-md rounded-bloc bg-blanc p-6 shadow-carte sm:p-10">
+            <h1 class="titre text-[32px] text-brun">{{ $titre }}</h1>
 
             @if ($intro)
-                <p class="mt-4 text-gris">{{ $intro }}</p>
+                <p class="mt-3 text-[15px] text-taupe">{{ $intro }}</p>
             @endif
 
             @if (session('statut'))
-                <p class="mt-8 border-l border-or py-2 pl-4 text-sm text-ivoire" role="status">{{ session('statut') }}</p>
+                <x-amani.notice icone="coche" class="mt-6" role="status">{{ session('statut') }}</x-amani.notice>
             @endif
 
-            <div class="mt-10">
+            <div class="mt-8">
                 {{ $slot }}
             </div>
         </div>

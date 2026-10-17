@@ -1,43 +1,41 @@
 <?php
 
 use App\Http\Middleware\DefinirLangue;
-use App\Models\Cliente;
+use App\Support\Langues;
 use Illuminate\Support\Arr;
 
-it('envoie l\'adresse nue vers le français par défaut', function () {
+it("envoie l'adresse nue vers le français", function () {
     $this->get('/')->assertRedirect('/fr');
 });
 
-it('se souvient de la langue choisie', function () {
+it("garde l'anglais fermé au lancement (cahier §1.2)", function () {
+    expect(Langues::ouvertes())->toBe(['fr'])
+        ->and(Langues::plusieurs())->toBeFalse();
+
+    $this->get('/en')->assertNotFound();
+    $this->get('/en/login')->assertNotFound();
+});
+
+it("ignore une langue retenue qui n'est pas ouverte", function () {
     $this->withUnencryptedCookie(DefinirLangue::COOKIE, 'en')
         ->get('/')
-        ->assertRedirect('/en');
+        ->assertRedirect('/fr');
 });
 
-it('retient la langue sur le compte de la cliente connectée', function () {
-    $cliente = Cliente::factory()->create(['langue' => 'fr']);
-
-    $this->actingAs($cliente, 'web')->get('/en');
-
-    expect($cliente->fresh()->langue)->toBe('en');
+it("n'affiche ni sélecteur de langue ni balises hreflang avec une seule langue", function () {
+    $this->get('/fr')
+        ->assertDontSee('hreflang', false)
+        ->assertDontSee('English');
 });
 
-it('affiche chaque page dans la langue de son adresse, avec ses équivalents', function () {
-    $this->get('/en/login')
-        ->assertOk()
-        ->assertSee('<html lang="en">', false)
-        ->assertSee('Sign in')
-        ->assertSee('hreflang="fr" href="'.url('/fr/connexion').'"', false)
-        ->assertDontSee('Mot de passe');
+it("ouvre l'anglais par un simple réglage", function () {
+    config(['boutique.langues' => ['fr', 'en']]);
 
-    $this->get('/fr/connexion')
-        ->assertOk()
-        ->assertSee('<html lang="fr">', false)
-        ->assertSee('Mot de passe')
-        ->assertSee('hreflang="en" href="'.url('/en/login').'"', false);
+    expect(Langues::ouvertes())->toBe(['fr', 'en'])
+        ->and(Langues::chemin('connexion', 'en'))->toBe('login');
 });
 
-it('a une traduction anglaise pour chaque texte français de la vitrine', function (string $fichier) {
+it('garde une traduction anglaise prête pour chaque texte français', function (string $fichier) {
     $francais = array_keys(Arr::dot(require lang_path("fr/{$fichier}.php")));
     $anglais = array_keys(Arr::dot(require lang_path("en/{$fichier}.php")));
 

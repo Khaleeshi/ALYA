@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\Hash;
 
 beforeEach(function () {
     Filament::setCurrentPanel('administration');
-    $this->dirigeante = dirigeante(['prenom' => 'Ndeye', 'app_authentication_secret' => secretDoubleAuthentification()]);
-    $this->actingAs($this->dirigeante, 'personnel');
+    $this->proprietaire = proprietaire(['prenom' => 'Ndeye', 'app_authentication_secret' => secretDoubleAuthentification()]);
+    $this->actingAs($this->proprietaire, 'personnel');
 });
 
 it('crée un administrateur avec une permission en plus et le note au journal', function () {
@@ -20,7 +20,7 @@ it('crée un administrateur avec une permission en plus et le note au journal', 
         ->fillForm([
             'prenom' => 'Moussa',
             'nom' => 'Ba',
-            'email' => 'Moussa@alya.sn',
+            'email' => 'Moussa@amani.test',
             'telephone' => '78 000 11 22',
             'role' => Roles::ADMINISTRATEUR,
             'permissions_supplementaires' => [Permissions::ACHATS_GERER],
@@ -30,7 +30,7 @@ it('crée un administrateur avec une permission en plus et le note au journal', 
         ->call('create')
         ->assertHasNoFormErrors();
 
-    $moussa = Utilisateur::firstWhere('email', 'moussa@alya.sn');
+    $moussa = Utilisateur::firstWhere('email', 'moussa@amani.test');
 
     expect($moussa->hasRole(Roles::ADMINISTRATEUR))->toBeTrue()
         ->and($moussa->telephone)->toBe('+221780001122')
@@ -38,7 +38,7 @@ it('crée un administrateur avec une permission en plus et le note au journal', 
         ->and(Hash::check('MotDePasseSolide2026', $moussa->password))->toBeTrue();
 
     $ligne = JournalActivite::where('action', 'personnel.creation')->sole();
-    expect($ligne->auteur_libelle)->toBe('ALYA')
+    expect($ligne->auteur_libelle)->toBe('Propriétaire · Ndeye')
         ->and($ligne->description)->toContain('Moussa Ba');
 });
 
@@ -47,7 +47,7 @@ it('exige un mot de passe de douze caractères au moins', function () {
         ->fillForm([
             'prenom' => 'Moussa',
             'nom' => 'Ba',
-            'email' => 'moussa@alya.sn',
+            'email' => 'moussa@amani.test',
             'role' => Roles::ADMINISTRATEUR,
             'password' => 'court1',
         ])
@@ -72,11 +72,11 @@ it("désactive un compte et note qui l'a fait", function () {
         ->and($ligne->donnees['apres']['actif'])->toBeFalse();
 });
 
-it('ne laisse pas la dirigeante changer son propre rôle', function () {
-    livewire(EditUtilisateur::class, ['record' => $this->dirigeante->getRouteKey()])
+it('ne laisse pas la propriétaire changer son propre rôle', function () {
+    livewire(EditUtilisateur::class, ['record' => $this->proprietaire->getRouteKey()])
         ->fillForm(['role' => Roles::LIVREUR, 'prenom' => 'Ndèye'])
         ->call('save');
 
-    expect($this->dirigeante->fresh()->hasRole(Roles::DIRIGEANTE))->toBeTrue()
-        ->and($this->dirigeante->fresh()->prenom)->toBe('Ndèye');
+    expect($this->proprietaire->fresh()->hasRole(Roles::PROPRIETAIRE))->toBeTrue()
+        ->and($this->proprietaire->fresh()->prenom)->toBe('Ndèye');
 });

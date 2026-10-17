@@ -18,7 +18,7 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
- * Membre du personnel : dirigeante, administrateur ou livreur (garde « personnel »).
+ * Membre du personnel : propriétaire, administrateur ou livreur (garde « personnel »).
  *
  * @property int $id
  * @property string $prenom
@@ -69,21 +69,17 @@ class Utilisateur extends Authenticatable implements FilamentUser, HasAppAuthent
         return $this->nom_complet;
     }
 
-    public function estDirigeante(): bool
+    public function estProprietaire(): bool
     {
-        return $this->hasRole(Roles::DIRIGEANTE);
+        return $this->hasRole(Roles::PROPRIETAIRE);
     }
 
     /**
-     * Nom qui signe les lignes du journal d'activité : « ALYA » pour la
-     * dirigeante, « Administrateur · Awa » ou « Livreur · Moussa » sinon.
+     * Nom qui signe les lignes du journal d'activité : « Propriétaire · Ndeye »,
+     * « Administrateur · Awa » ou « Livreur · Moussa ».
      */
     public function libelleJournal(): string
     {
-        if ($this->estDirigeante()) {
-            return 'ALYA';
-        }
-
         $role = $this->getRoleNames()->first();
 
         return (Roles::libelles()[$role] ?? 'Personnel').' · '.$this->prenom;

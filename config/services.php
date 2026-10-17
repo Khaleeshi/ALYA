@@ -28,6 +28,14 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    // Codes de connexion des clientes (cahier §6.2). « journal » écrit le SMS
+    // dans storage/logs au lieu de l'envoyer : développement et recette
+    // seulement, refusé en production. Le prestataire réel reste à choisir.
+    'sms' => [
+        'pilote' => env('SMS_PILOTE', 'journal'),
+        'expediteur' => env('SMS_EXPEDITEUR', 'AMANI'),
+    ],
+
     'slack' => [
         'notifications' => [
             'bot_user_oauth_token' => env('SLACK_BOT_USER_OAUTH_TOKEN'),

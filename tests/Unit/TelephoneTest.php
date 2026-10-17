@@ -32,3 +32,10 @@ it('refuse les numéros incomplets ou impossibles', function (?string $saisie) {
 it('affiche un numéro sénégalais par groupes de chiffres', function () {
     expect(Telephone::afficher('+221771234567'))->toBe('+221 77 123 45 67');
 });
+
+it('reconnaît les numéros sénégalais, seuls admis pour un compte cliente', function () {
+    expect(Telephone::estSenegalais('77 123 45 67'))->toBeTrue()
+        ->and(Telephone::estSenegalais('+221 33 820 00 00'))->toBeTrue()
+        ->and(Telephone::estSenegalais('+33 6 12 34 56 78'))->toBeFalse()
+        ->and(Telephone::estSenegalais('77 12'))->toBeFalse();
+});

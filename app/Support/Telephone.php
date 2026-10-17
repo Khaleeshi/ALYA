@@ -49,6 +49,15 @@ final class Telephone
     }
 
     /**
+     * Le site vend au Sénégal uniquement (cahier §1.2) : le compte d'une
+     * cliente et ses codes SMS utilisent un numéro sénégalais.
+     */
+    public static function estSenegalais(?string $saisie): bool
+    {
+        return str_starts_with((string) self::normaliser($saisie), self::INDICATIF_SENEGAL);
+    }
+
+    /**
      * « +221771234567 » devient « +221 77 123 45 67 ».
      */
     public static function afficher(string $numero): string
