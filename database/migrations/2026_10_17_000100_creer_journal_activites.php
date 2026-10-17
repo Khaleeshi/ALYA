@@ -41,12 +41,21 @@ return new class extends Migration
         match (DB::getDriverName()) {
             'mysql', 'mariadb' => $this->declencheursMysql($message),
             'sqlite' => $this->declencheursSqlite($message),
+            'pgsql' => $this->declencheursPostgres($message),
             default => null,
         };
     }
 
     public function down(): void
     {
+        if (DB::getDriverName() === 'pgsql') {
+            // Les déclencheurs partent avec la table ; la fonction, non.
+            Schema::dropIfExists('journal_activites');
+            DB::unprepared('DROP FUNCTION IF EXISTS journal_activites_immuable()');
+
+            return;
+        }
+
         DB::unprepared('DROP TRIGGER IF EXISTS journal_activites_sans_modification');
         DB::unprepared('DROP TRIGGER IF EXISTS journal_activites_sans_suppression');
         Schema::dropIfExists('journal_activites');
@@ -56,6 +65,14 @@ return new class extends Migration
     {
         DB::unprepared("CREATE TRIGGER journal_activites_sans_modification BEFORE UPDATE ON journal_activites FOR EACH ROW SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = '{$message}'");
         DB::unprepared("CREATE TRIGGER journal_activites_sans_suppression BEFORE DELETE ON journal_activites FOR EACH ROW SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = '{$message}'");
+    }
+
+    /** PostgreSQL (base de recette sur Vercel) : une fonction qui refuse, appelée avant chaque modification ou suppression. */
+    private function declencheursPostgres(string $message): void
+    {
+        DB::unprepared("CREATE OR REPLACE FUNCTION journal_activites_immuable() RETURNS trigger AS $$ BEGIN RAISE EXCEPTION '{$message}'; END; $$ LANGUAGE plpgsql");
+        DB::unprepared('CREATE TRIGGER journal_activites_sans_modification BEFORE UPDATE ON journal_activites FOR EACH ROW EXECUTE FUNCTION journal_activites_immuable()');
+        DB::unprepared('CREATE TRIGGER journal_activites_sans_suppression BEFORE DELETE ON journal_activites FOR EACH ROW EXECUTE FUNCTION journal_activites_immuable()');
     }
 
     private function declencheursSqlite(string $message): void

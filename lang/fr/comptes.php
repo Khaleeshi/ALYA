@@ -11,6 +11,7 @@ return [
     ],
 
     'code' => [
+        'recette' => 'Version d’essai, aucun SMS envoyé :',
         'titre' => 'Code de vérification',
         'intro' => 'Saisissez le code à 6 chiffres reçu par SMS au :telephone.',
         'code' => 'Code reçu par SMS',

@@ -36,6 +36,7 @@ Ordre de priorité en cas de contradiction : le cahier AMANI, puis les maquettes
 - Stock : ne change que par `App\Support\Catalogue\Stock::ajuster()` (mouvement noté, jamais négatif) ; modifier `variantes.stock` autrement lève une exception. Les prix, le stock et la mise en ligne vont au journal. Un produit déjà publié ne se supprime pas : il s'archive.
 - Données d'essai : `php artisan db:seed --class=CatalogueDemonstrationSeeder` (refusé en production).
 - Photos : un modèle qui porte des photos implémente `HasMedia` et utilise le trait `App\Models\Concerns\AvecPhotos` ; l'affichage passe par `<x-amani.image>`.
+- Version d'essai sur Vercel : `vercel.json`, `api/index.php`, `deploiement/vercel/` (réglages et construction), `php artisan amani:preparer-recette`. La base y est PostgreSQL (Neon) : le code doit marcher sur MySQL, SQLite et PostgreSQL (colonnes JSON du catalogue en `jsonb`, pas de requête propre à un seul moteur sans branche pour les autres) ; GitHub teste les trois.
 - Système de design : jetons dans `resources/css/amani/jetons.css`, composants dans `resources/views/components/amani/`, vitrine des composants sur `/systeme-de-design` (hors production).
 
 ## Règles de travail

@@ -2,6 +2,13 @@
 @php($numero = \App\Support\Telephone::afficher($telephone))
 
 <x-layouts.compte :titre="__('comptes.code.titre')" :intro="__('comptes.code.intro', ['telephone' => $numero])">
+    {{-- Recette seulement : aucun SMS ne part, le message s'affiche ici (config/services.php). --}}
+    @if (session('recette.sms') && ! app()->isProduction())
+        <x-amani.notice icone="info" class="mb-6">
+            <strong class="text-brun">{{ __('comptes.code.recette') }}</strong> {{ session('recette.sms') }}
+        </x-amani.notice>
+    @endif
+
     <form method="POST" action="{{ route_langue('connexion.verifier') }}" class="flex flex-col gap-6" novalidate>
         @csrf
 

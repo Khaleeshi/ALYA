@@ -40,6 +40,12 @@ class UtilisateurResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'nom_complet';
 
+    /** « nom_complet » n'est pas une colonne : la recherche du haut porte sur ses morceaux. */
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['prenom', 'nom', 'email'];
+    }
+
     public static function form(Schema $schema): Schema
     {
         return UtilisateurForm::configure($schema);

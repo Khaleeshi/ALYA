@@ -1,0 +1,18 @@
+{
+    "$schema": "https://openapi.vercel.sh/vercel.json",
+    "framework": null,
+    "installCommand": "echo \"Dépendances installées par le module PHP (composer install, puis composer run vercel)\"",
+    "buildCommand": "echo \"Styles et base de données préparés par composer run vercel\"",
+    "outputDirectory": "public",
+    "functions": {
+        "api/index.php": {
+            "runtime": "vercel-php@0.7.4",
+            "memory": 1024,
+            "maxDuration": 30,
+            "excludeFiles": "{node_modules/**,tests/**,docs/**,storage/logs/**,.github/**}"
+        }
+    },
+    "routes": [
+        { "src": "/(.*)", "dest": "/api/index.php" }
+    ]
+}

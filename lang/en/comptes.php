@@ -11,6 +11,7 @@ return [
     ],
 
     'code' => [
+        'recette' => 'Trial version, no SMS sent:',
         'titre' => 'Verification code',
         'intro' => 'Enter the 6-digit code texted to :telephone.',
         'code' => 'Code received by text',

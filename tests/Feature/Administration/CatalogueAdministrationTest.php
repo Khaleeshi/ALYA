@@ -15,6 +15,7 @@ use Filament\Actions\DeleteAction;
 use Filament\Actions\Testing\TestAction;
 use Filament\Facades\Filament;
 use Filament\Forms\Components\Repeater;
+use Filament\Livewire\GlobalSearch;
 
 beforeEach(function () {
     Filament::setCurrentPanel('administration');
@@ -158,4 +159,15 @@ it('ne supprime pas une catégorie qui a des produits', function () {
         ->callAction(TestAction::make(DeleteAction::class)->table($vide));
 
     expect(Categorie::pluck('id')->all())->toBe([$this->categorie->id]);
+});
+
+it('retrouve produits et personnel depuis la recherche du haut', function () {
+    Produit::factory()->create(['nom' => ['fr' => 'Gloss Éclat']]);
+    administrateur(['prenom' => 'Moussa', 'nom' => 'Ba']);
+
+    livewire(GlobalSearch::class)
+        ->set('search', 'ECLAT')
+        ->assertSee('Gloss Éclat')
+        ->set('search', 'Moussa')
+        ->assertSee('Moussa Ba');
 });

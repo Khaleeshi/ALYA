@@ -78,6 +78,9 @@
         ],
         "pre-package-uninstall": [
             "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
+        ],
+        "vercel": [
+            "@php deploiement/vercel/construire.php"
         ]
     },
     "extra": {
@@ -92,6 +95,9 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true,
             "php-http/discovery": true
+        },
+        "platform": {
+            "ext-posix": "8.3"
         }
     },
     "minimum-stability": "stable",

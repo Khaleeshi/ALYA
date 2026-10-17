@@ -35,6 +35,25 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Recette (version d'essai en ligne, par exemple sur Vercel)
+    |--------------------------------------------------------------------------
+    |
+    | Compte de la propriétaire créé par RecetteSeeder s'il n'existe pas.
+    | Jamais en production : le premier compte s'y crée à la main
+    | (php artisan amani:creer-personnel).
+    |
+    */
+
+    'recette' => [
+        'proprietaire' => [
+            'email' => env('RECETTE_PROPRIETAIRE_EMAIL'),
+            'mot_de_passe' => env('RECETTE_PROPRIETAIRE_MOT_DE_PASSE'),
+            'prenom' => env('RECETTE_PROPRIETAIRE_PRENOM', 'Propriétaire'),
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Navigation
     |--------------------------------------------------------------------------
     |

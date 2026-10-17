@@ -1,0 +1,21 @@
+# Ce qui n'est pas envoyé à Vercel : il le reconstruit (vendor, node_modules,
+# public/build) ou n'en a pas besoin pour faire tourner le site.
+/vendor
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/public/css/filament
+/public/js/filament
+/public/fonts/filament
+/storage/logs/*
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/app/*
+/tests
+/docs
+/.env
+/.env.*
+!/.env.example
+/database/*.sqlite
