@@ -1,0 +1,65 @@
+name: Tests
+
+# Les tests de la phase 1 (et des suivantes) tournent à chaque envoi sur
+# GitHub, sur MySQL 8 comme en production. Un seul échec bloque.
+on:
+  push:
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-24.04
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: racine
+          MYSQL_DATABASE: amani_tests
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -pracine"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Encodeur AV1 pour que ImageMagick sache écrire l'AVIF.
+      - name: Paquets système
+        run: sudo apt-get update && sudo apt-get install -y libheif-plugin-aomenc
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: imagick, intl, pdo_mysql, redis, gd, zip
+          coverage: none
+
+      - name: Dépendances PHP
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Feuilles de style et scripts
+        run: npm ci && npm run build
+
+      - name: Réglages
+        run: cp .env.example .env && php artisan key:generate
+
+      - name: Mise en forme du code
+        run: vendor/bin/pint --test
+
+      - name: Tests
+        env:
+          DB_CONNECTION: mysql
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
+          DB_DATABASE: amani_tests
+          DB_USERNAME: root
+          DB_PASSWORD: racine
+        run: vendor/bin/pest

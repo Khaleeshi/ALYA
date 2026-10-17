@@ -1,17 +1,43 @@
 # Doublons exacts des maquettes (l'audit en compte 3)
 * - Copie.jpg
+
 # Système
 Thumbs.db
 desktop.ini
 .DS_Store
-# Projet
-/vendor/
-/node_modules/
+
+# Secrets : seul .env.example est versionné
 .env
 .env.*
 !.env.example
+/auth.json
 /storage/*.key
+
+# Dépendances et fichiers générés
+/vendor/
+/node_modules/
 /public/build/
 /public/hot
 /public/storage
+/storage/pail
+*.log
+
+# Tests
 .phpunit.result.cache
+/.phpunit.cache
+
+# Éditeurs
+/.fleet
+/.idea
+/.nova
+/.vscode
+/.zed
+.phpactor.json
+
+# Fichiers de Filament publiés à l'installation (composer install → filament:upgrade)
+/public/css/filament
+/public/js/filament
+/public/fonts/filament
+
+# Sauvegarde locale de Redis
+dump.rdb
