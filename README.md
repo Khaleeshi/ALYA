@@ -51,7 +51,7 @@ vendor/bin/pest          # tous les tests (base SQLite en mémoire)
 vendor/bin/pint          # mise en forme du code
 ```
 
-Sur GitHub, chaque envoi relance les tests sur MySQL 8 et vérifie la mise en forme.
+Sur GitHub, chaque envoi relance les tests sur MySQL 8 (production) et sur PostgreSQL (version d'essai sur Vercel), et vérifie la mise en forme.
 
 ## Environnements
 
@@ -61,7 +61,18 @@ Sur GitHub, chaque envoi relance les tests sur MySQL 8 et vérifie la mise en fo
 | `recette` | Validation par AMANI avant chaque mise en production. La page `/systeme-de-design` y est ouverte. |
 | `production` | Le site public. Le SMS de démonstration y est refusé. |
 
-Le déploiement (serveur, nom de domaine, sauvegardes) sera branché quand l'hébergement sera choisi (cahier §16).
+Le déploiement de production (serveur, nom de domaine, sauvegardes) sera branché quand l'hébergement sera choisi (cahier §16).
+
+## Version d'essai sur Vercel
+
+Vercel construit le site à chaque envoi sur GitHub et donne un lien pour le voir. C'est une **recette** (`APP_ENV=recette`), pas la production.
+
+- Le module [vercel-php](https://github.com/vercel-community/php) (PHP 8.3) fait tourner Laravel : `vercel.json`, `api/index.php`.
+- À la construction, `composer run vercel` lance `deploiement/vercel/construire.php` : fichiers de Filament, styles (Vite), puis `php artisan amani:preparer-recette` (base à jour, catalogue d'essai, compte de la propriétaire). Les réglages non secrets sont dans `deploiement/vercel/reglages.php`.
+- Base de données : PostgreSQL Neon, créée dans Vercel (Storage) et reliée au projet ; son adresse arrive seule par `DATABASE_URL_UNPOOLED`.
+- À régler dans Vercel (Settings → Environment Variables) : `APP_KEY`, `RECETTE_PROPRIETAIRE_EMAIL`, `RECETTE_PROPRIETAIRE_MOT_DE_PASSE` (12 caractères au moins), `RECETTE_PROPRIETAIRE_PRENOM` (facultatif).
+- Aucun SMS ne part : le code de connexion des clientes s'affiche à l'écran.
+- Limites : le disque de Vercel est en lecture seule (sauf `/tmp`) et le module n'a ni Imagick ni GD. On n'y envoie donc pas de photos ; pas de files de travaux ni de Horizon.
 
 ## Ce qu'AMANI doit fournir pour la suite
 

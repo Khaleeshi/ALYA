@@ -22,9 +22,9 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->json('nom');
+            $table->jsonb('nom');
             $table->string('slug', 120)->unique();
-            $table->json('description')->nullable();
+            $table->jsonb('description')->nullable();
             $table->unsignedSmallInteger('position')->default(0);
             $table->boolean('en_ligne')->default(true);
             $table->timestamps();
@@ -32,12 +32,12 @@ return new class extends Migration
 
         Schema::create('gammes', function (Blueprint $table) {
             $table->id();
-            $table->json('nom');
+            $table->jsonb('nom');
             $table->string('slug', 120)->unique();
             // permanente, saisonniere ou edition_limitee
             $table->string('type', 20);
-            $table->json('accroche')->nullable();
-            $table->json('description')->nullable();
+            $table->jsonb('accroche')->nullable();
+            $table->jsonb('description')->nullable();
             $table->unsignedSmallInteger('position')->default(0);
             $table->boolean('en_ligne')->default(true);
             // Dates d'affichage facultatives (collections saisonnières, éditions limitées).
@@ -51,21 +51,21 @@ return new class extends Migration
         Schema::create('produits', function (Blueprint $table) {
             $table->id();
             $table->foreignId('categorie_id')->constrained('categories')->restrictOnDelete();
-            $table->json('nom');
+            $table->jsonb('nom');
             $table->string('slug', 160)->unique();
             // produit ou coffret
             $table->string('nature', 20)->default('produit');
-            $table->json('accroche')->nullable();
-            $table->json('description')->nullable();
+            $table->jsonb('accroche')->nullable();
+            $table->jsonb('description')->nullable();
             // Une ligne par bienfait, une ligne par conseil.
-            $table->json('bienfaits')->nullable();
-            $table->json('conseils')->nullable();
+            $table->jsonb('bienfaits')->nullable();
+            $table->jsonb('conseils')->nullable();
             // Liste complète des ingrédients, telle qu'imprimée sur l'emballage.
-            $table->json('composition')->nullable();
+            $table->jsonb('composition')->nullable();
             // Mots-clés de recherche que la cliente ne voit pas.
-            $table->json('mots_cles')->nullable();
-            $table->json('meta_titre')->nullable();
-            $table->json('meta_description')->nullable();
+            $table->jsonb('mots_cles')->nullable();
+            $table->jsonb('meta_titre')->nullable();
+            $table->jsonb('meta_description')->nullable();
             $table->unsignedInteger('prix');
             // Coût interne facultatif, jamais montré aux clientes.
             $table->unsignedInteger('cout_interne')->nullable();
@@ -90,7 +90,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('produit_id')->constrained('produits')->cascadeOnDelete();
             // Nom de la couleur ou du format ; vide pour un produit sans choix.
-            $table->json('nom')->nullable();
+            $table->jsonb('nom')->nullable();
             // Référence interne (code article), unique.
             $table->string('reference', 60)->unique();
             // Pastille de couleur sur la fiche (#RRGGBB).
@@ -120,16 +120,16 @@ return new class extends Migration
 
         Schema::create('ingredients', function (Blueprint $table) {
             $table->id();
-            $table->json('nom');
+            $table->jsonb('nom');
             $table->string('slug', 120)->unique();
             // Une phrase courte sous la photo : « Nourrit et protège ».
-            $table->json('bienfait')->nullable();
+            $table->jsonb('bienfait')->nullable();
             $table->timestamps();
         });
 
         Schema::create('effets', function (Blueprint $table) {
             $table->id();
-            $table->json('nom');
+            $table->jsonb('nom');
             $table->string('slug', 120)->unique();
             $table->unsignedSmallInteger('position')->default(0);
             $table->timestamps();
@@ -140,7 +140,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('produit_id')->constrained('produits')->cascadeOnDelete();
             $table->string('icone', 40);
-            $table->json('texte');
+            $table->jsonb('texte');
             $table->unsignedSmallInteger('position')->default(0);
             $table->timestamps();
         });

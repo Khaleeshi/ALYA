@@ -26,6 +26,12 @@ return Application::configure(basePath: dirname(__DIR__))
 
         // Le cookie de langue n'a rien de secret : il reste lisible.
         $middleware->encryptCookies(except: [DefinirLangue::COOKIE]);
+
+        // Sur Vercel, le site est derrière ses serveurs : l'adresse d'origine
+        // (https, nom de domaine) arrive dans les en-têtes X-Forwarded-*.
+        if (env('VERCEL')) {
+            $middleware->trustProxies(at: '*');
+        }
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

@@ -34,6 +34,9 @@ return [
     'sms' => [
         'pilote' => env('SMS_PILOTE', 'journal'),
         'expediteur' => env('SMS_EXPEDITEUR', 'AMANI'),
+        // Recette seulement (jamais en production) : le SMS du pilote « journal »
+        // s'affiche aussi à l'écran, pour essayer la connexion sans téléphone.
+        'afficher_en_recette' => (bool) env('SMS_AFFICHER_EN_RECETTE', false),
     ],
 
     'slack' => [

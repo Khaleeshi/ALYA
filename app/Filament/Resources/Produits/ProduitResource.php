@@ -14,6 +14,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 use UnitEnum;
 
 /**
@@ -42,6 +43,17 @@ class ProduitResource extends Resource
     protected static ?string $recordRouteKeyName = 'id';
 
     protected static ?string $recordTitleAttribute = 'nom';
+
+    /** Recherche du haut de l'administration : la même que la boutique (sans accents ni majuscules). */
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['texte_recherche'];
+    }
+
+    protected static function applyGlobalSearchAttributeConstraints(Builder $query, string $search): void
+    {
+        $query->recherche($search);
+    }
 
     public static function form(Schema $schema): Schema
     {

@@ -86,7 +86,9 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => env('DB_URL'),
+            // Sur Vercel, la base Neon donne son adresse complète dans DATABASE_URL_UNPOOLED
+            // (connexion directe, sans le regroupeur, plus sûre pour les requêtes préparées).
+            'url' => env('DB_URL', env('DATABASE_URL_UNPOOLED', env('POSTGRES_URL_NON_POOLING', env('DATABASE_URL')))),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '5432'),
             'database' => env('DB_DATABASE', 'laravel'),
