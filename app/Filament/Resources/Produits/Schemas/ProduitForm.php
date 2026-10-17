@@ -205,6 +205,17 @@ class ProduitForm
                             Toggle::make('edition_limitee')
                                 ->label('Édition limitée')
                                 ->helperText('Badge « Édition limitée » et page des éditions limitées.'),
+                            ToggleButtons::make('affichage_nouveautes')
+                                ->label('Nouveautés de l’accueil')
+                                ->options([
+                                    Produit::NOUVEAUTE_AUTO => 'Automatique',
+                                    Produit::NOUVEAUTE_TOUJOURS => 'Toujours',
+                                    Produit::NOUVEAUTE_JAMAIS => 'Jamais',
+                                ])
+                                ->inline()
+                                ->default(Produit::NOUVEAUTE_AUTO)
+                                ->required()
+                                ->helperText('Automatique : les dernières mises en ligne. « Toujours » le place en tête, « Jamais » l’en retire.'),
                         ]),
 
                     Section::make('Prix')

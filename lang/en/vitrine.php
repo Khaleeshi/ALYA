@@ -189,5 +189,11 @@ return [
     'accueil_page' => [
         'sur_titre' => 'AMANI Cosmetics',
         'texte' => 'The shop opens soon.',
+        'accroche' => 'Skincare and make-up that reveal your natural glow.',
+        'bouton' => 'Discover the collection',
+        'categories' => 'Our categories',
+        'nouveautes' => 'New arrivals',
+        'collections' => 'Our collections',
+        'coffrets' => 'Gift sets',
     ],
 ];

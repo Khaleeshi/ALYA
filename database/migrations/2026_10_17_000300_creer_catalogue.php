@@ -77,6 +77,8 @@ return new class extends Migration
             $table->string('statut', 20)->default('brouillon');
             // Première mise en ligne : sert aux nouveautés.
             $table->timestamp('publie_le')->nullable();
+            // Nouveautés de l'accueil (cahier §5.1) : auto, toujours ou jamais.
+            $table->string('affichage_nouveautes', 10)->default('auto');
             // Texte sans accents ni majuscules (noms, mots-clés, couleurs) pour la recherche.
             $table->text('texte_recherche')->nullable();
             $table->timestamps();

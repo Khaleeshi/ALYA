@@ -190,5 +190,11 @@ return [
     'accueil_page' => [
         'sur_titre' => 'AMANI Cosmetics',
         'texte' => 'La boutique ouvre bientôt.',
+        'accroche' => 'Des soins et du maquillage qui révèlent votre éclat naturel.',
+        'bouton' => 'Découvrir la collection',
+        'categories' => 'Nos catégories',
+        'nouveautes' => 'Nos nouveautés',
+        'collections' => 'Nos collections',
+        'coffrets' => 'Coffrets cadeaux',
     ],
 ];

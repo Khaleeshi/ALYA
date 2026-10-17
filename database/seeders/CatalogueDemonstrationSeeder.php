@@ -71,6 +71,7 @@ class CatalogueDemonstrationSeeder extends Seeder
             Atout::create(['produit_id' => $glossAmani->id, 'icone' => $icone, 'texte' => ['fr' => $texte], 'position' => $rang]);
         }
         $permanents->produits()->attach($glossAmani);
+        $glossAmani->update(['affichage_nouveautes' => Produit::NOUVEAUTE_TOUJOURS]);
 
         $baume = $this->produit($gloss, 'Baume Douceur', 3500, ['accroche' => 'Un baume fondant qui nourrit et protège vos lèvres.'], ['Naturel' => [30, '#e6c1a8'], 'Rosé' => [14, '#e4a2a0']]);
         $baume->effets()->attach([$effets['Hydratation']->id]);
@@ -94,9 +95,9 @@ class CatalogueDemonstrationSeeder extends Seeder
         $poudre = $this->produit($maquillage, 'Poudre Soleil', 8000, ['accroche' => 'Un teint hâlé et lumineux.'], ['Doré' => [7, '#c58b52'], 'Bronze' => [11, '#9c6b3f']]);
         $poudre->effets()->attach([$effets['Éclat']->id, $effets['Tenue longue durée']->id]);
 
-        $this->produit($maquillage, 'Coffret Lèvres Parfaites', 15000, ['accroche' => 'Le cadeau idéal pour sublimer vos lèvres.'], ['' => [6, null]], ['nature' => Produit::NATURE_COFFRET]);
-        $this->produit($skincare, 'Coffret Routine Éclat', 25000, ['accroche' => 'Une routine complète pour une peau rayonnante.'], ['' => [4, null]], ['nature' => Produit::NATURE_COFFRET]);
-        $this->produit($maquillage, 'Coffret Beauté Luxe', 35000, ['accroche' => 'Un coffret élégant pour toutes les occasions.'], ['' => [2, null]], ['nature' => Produit::NATURE_COFFRET]);
+        $this->produit($maquillage, 'Coffret Lèvres Parfaites', 15000, ['accroche' => 'Le cadeau idéal pour sublimer vos lèvres.'], ['' => [6, null]], ['nature' => Produit::NATURE_COFFRET, 'affichage_nouveautes' => Produit::NOUVEAUTE_JAMAIS]);
+        $this->produit($skincare, 'Coffret Routine Éclat', 25000, ['accroche' => 'Une routine complète pour une peau rayonnante.'], ['' => [4, null]], ['nature' => Produit::NATURE_COFFRET, 'affichage_nouveautes' => Produit::NOUVEAUTE_JAMAIS]);
+        $this->produit($maquillage, 'Coffret Beauté Luxe', 35000, ['accroche' => 'Un coffret élégant pour toutes les occasions.'], ['' => [2, null]], ['nature' => Produit::NATURE_COFFRET, 'affichage_nouveautes' => Produit::NOUVEAUTE_JAMAIS]);
 
         Produit::all()->each->actualiserTexteRecherche();
     }

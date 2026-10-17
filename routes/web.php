@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Boutique\AccueilController;
 use App\Http\Controllers\Boutique\BoutiqueController;
 use App\Http\Controllers\Boutique\CollectionsController;
 use App\Http\Controllers\Boutique\ProduitController;
@@ -22,7 +23,7 @@ Langues::routes(function (string $langue): void {
     $chemin = fn (string $cle): string => Langues::chemin($cle, $langue);
     $code = $chemin('connexion').'/'.$chemin('code');
 
-    Route::view('/', 'vitrine.accueil')->name('accueil');
+    Route::get('/', AccueilController::class)->name('accueil');
 
     // Catalogue (cahier §3 et §5) : les adresses de produits et de collections portent leur slug.
     Route::get($chemin('boutique'), [BoutiqueController::class, 'index'])->name('boutique');

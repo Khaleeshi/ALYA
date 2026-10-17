@@ -48,6 +48,7 @@ use Spatie\Translatable\HasTranslations;
  * @property ?Carbon $campagne_fin_le
  * @property string $statut
  * @property ?Carbon $publie_le
+ * @property string $affichage_nouveautes
  * @property ?string $texte_recherche
  */
 class Produit extends Model implements HasMedia
@@ -71,6 +72,12 @@ class Produit extends Model implements HasMedia
     public const ARCHIVE = 'archive';
 
     public const PHOTOS = 'photos';
+
+    public const NOUVEAUTE_AUTO = 'auto';
+
+    public const NOUVEAUTE_TOUJOURS = 'toujours';
+
+    public const NOUVEAUTE_JAMAIS = 'jamais';
 
     protected $table = 'produits';
 
@@ -107,6 +114,7 @@ class Produit extends Model implements HasMedia
         'campagne_debut_le',
         'campagne_fin_le',
         'statut',
+        'affichage_nouveautes',
     ];
 
     /**
@@ -255,6 +263,22 @@ class Produit extends Model implements HasMedia
             ->where(fn (Builder $q) => $q->whereNull('campagne_debut_le')->orWhere('campagne_debut_le', '<=', $maintenant))
             ->where(fn (Builder $q) => $q->whereNull('campagne_fin_le')->orWhere('campagne_fin_le', '>=', $maintenant))
             ->whereHas('categorie', fn (Builder $q) => $q->where('en_ligne', true));
+    }
+
+    /**
+     * Nouveautés de l'accueil (cahier §5.1) : les plus récentes mises en ligne,
+     * avec l'ajustement de l'administration (« toujours » passe devant,
+     * « jamais » est écarté).
+     *
+     * @param  Builder<self>  $requete
+     */
+    public function scopeNouveautes(Builder $requete): void
+    {
+        $requete->visibles()
+            ->where('affichage_nouveautes', '!=', self::NOUVEAUTE_JAMAIS)
+            ->orderByRaw('case when affichage_nouveautes = ? then 0 else 1 end', [self::NOUVEAUTE_TOUJOURS])
+            ->orderByDesc('publie_le')
+            ->orderByDesc('id');
     }
 
     /**
