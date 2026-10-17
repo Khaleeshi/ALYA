@@ -80,7 +80,8 @@ final class Navigation
                 'cle' => $cle,
                 'libelle' => __($prefixeTexte.$cle),
                 'url' => route_langue($route),
-                'actif' => $courante === $langue.'.'.$route,
+                // « Boutique » reste en surbrillance sur ses pages filles (catégorie, fiche produit).
+                'actif' => $courante === $langue.'.'.$route || str_starts_with((string) $courante, $langue.'.'.$route.'.'),
             ];
         }
 

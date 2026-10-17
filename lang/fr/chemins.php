@@ -9,4 +9,9 @@ return [
     'inscription' => 'inscription',
     'mon-compte' => 'mon-compte',
     'mon-profil' => 'mon-compte/profil',
+    'boutique' => 'boutique',
+    'produit' => 'produit',
+    'collections' => 'collections',
+    'editions-limitees' => 'editions-limitees',
+    'coffrets' => 'coffrets-cadeaux',
 ];

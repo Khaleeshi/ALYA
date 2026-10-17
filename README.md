@@ -10,13 +10,15 @@ Le cahier des charges et les maquettes du thème choisi sont dans [`docs/`](docs
 |---|---|
 | Laravel 12, MySQL 8, Redis, files de travaux (Horizon sur `/administration/files`) | `config/`, `bootstrap/` |
 | Compte cliente par téléphone sénégalais et code SMS : code à 6 chiffres valable 10 minutes, usage unique, envois limités, verrouillage 15 minutes après 5 codes faux, création du compte au premier passage | `app/Http/Controllers/Comptes/`, `app/Support/Comptes/`, `resources/views/comptes/` |
+| Boutique (`/fr/boutique`) : recherche, tri, filtres (prix, disponibilité, édition limitée, effet, ingrédients), pages catégorie, fiche produit, collections, éditions limitées, coffrets, accueil avec nouveautés | `app/Http/Controllers/Boutique/`, `app/Support/Catalogue/FiltresBoutique.php`, `resources/views/vitrine/` |
+| Catalogue dans l'administration : produits et leurs couleurs ou formats, photos, collections, catégories, ingrédients clés, effets ; stock suivi mouvement par mouvement, alertes de stock faible | `app/Filament/Resources/`, `app/Support/Catalogue/Stock.php` |
 | Espace cliente (`/fr/mon-compte`) : accueil, menu latéral, modification du profil (le numéro de téléphone ne change pas depuis le profil) | `resources/views/components/layouts/espace-client.blade.php`, `app/Http/Controllers/Comptes/ProfilController.php` |
 | Administration (`/administration`) : double authentification obligatoire, rôles propriétaire / administrateur / livreur, permissions fines, gestion du personnel, tableau de bord avec actions rapides, menu latéral sombre de la maquette | `app/Filament/`, `app/Support/Acces/` |
 | Journal des actions sensibles, impossible à modifier ou supprimer (même en base) | `app/Models/JournalActivite.php` |
 | Chaîne d'images : chaque photo déclinée en 5 largeurs (400 à 2400 px), en AVIF et en WebP | `app/Support/Medias/DeclinaisonsImages.php` |
 | Français au lancement, anglais prêt mais fermé (`BOUTIQUE_LANGUES`) | `app/Support/Langues.php`, `lang/` |
-| Système de design AMANI d'après les maquettes : couleurs, polices auto-hébergées, 38 composants Blade | `resources/css/amani/`, `resources/views/components/amani/`, page `/systeme-de-design` |
-| 91 tests automatiques, rejoués sur GitHub à chaque envoi | `tests/`, `.github/workflows/tests.yml` |
+| Système de design AMANI d'après les maquettes : couleurs, polices auto-hébergées, 42 composants Blade | `resources/css/amani/`, `resources/views/components/amani/`, page `/systeme-de-design` |
+| 133 tests automatiques, rejoués sur GitHub à chaque envoi | `tests/`, `.github/workflows/tests.yml` |
 
 ## Installer le projet sur un poste de développement
 
@@ -27,6 +29,7 @@ Sur Ubuntu 24.04, l'écriture des images AVIF demande en plus le paquet `libheif
 composer setup                       # dépendances, .env, clé, base, rôles, lien de stockage, compilation
 php artisan amani:creer-personnel    # crée le compte de la propriétaire (mot de passe saisi à la main)
 composer dev                         # serveur, files de travaux, journaux et Vite en même temps
+php artisan db:seed --class=CatalogueDemonstrationSeeder   # facultatif : catalogue d'essai (jamais en production)
 ```
 
 Puis ouvrir http://localhost:8000 (boutique), http://localhost:8000/administration (administration) et http://localhost:8000/systeme-de-design (bibliothèque de composants).

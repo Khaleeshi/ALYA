@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Boutique\AccueilController;
+use App\Http\Controllers\Boutique\BoutiqueController;
+use App\Http\Controllers\Boutique\CollectionsController;
+use App\Http\Controllers\Boutique\ProduitController;
 use App\Http\Controllers\Comptes\ConnexionController;
 use App\Http\Controllers\Comptes\InscriptionController;
 use App\Http\Controllers\Comptes\ProfilController;
@@ -19,7 +23,16 @@ Langues::routes(function (string $langue): void {
     $chemin = fn (string $cle): string => Langues::chemin($cle, $langue);
     $code = $chemin('connexion').'/'.$chemin('code');
 
-    Route::view('/', 'vitrine.accueil')->name('accueil');
+    Route::get('/', AccueilController::class)->name('accueil');
+
+    // Catalogue (cahier §3 et §5) : les adresses de produits et de collections portent leur slug.
+    Route::get($chemin('boutique'), [BoutiqueController::class, 'index'])->name('boutique');
+    Route::get($chemin('boutique').'/{categorie}', [BoutiqueController::class, 'categorie'])->name('boutique.categorie');
+    Route::get($chemin('produit').'/{produit}', [ProduitController::class, 'show'])->name('boutique.produit');
+    Route::get($chemin('collections'), [CollectionsController::class, 'index'])->name('collections');
+    Route::get($chemin('collections').'/{gamme}', [CollectionsController::class, 'show'])->name('collections.gamme');
+    Route::get($chemin('editions-limitees'), [BoutiqueController::class, 'editionsLimitees'])->name('editions-limitees');
+    Route::get($chemin('coffrets'), [BoutiqueController::class, 'coffrets'])->name('coffrets');
 
     // Compte cliente : téléphone, code SMS, puis création du compte si besoin.
     Route::middleware('guest:web')->group(function () use ($chemin, $code): void {

@@ -4,6 +4,7 @@
     titre : titre de la page (complété par « · AMANI Cosmetics »).
     liens : menu principal ; par défaut, les pages existantes de config/boutique.php.
     reassurance : affiche la bande de réassurance au-dessus du pied de page.
+    Slot « tete » : balises en plus dans <head> (adresse canonique, données structurées).
 --}}
 @props([
     'titre' => null,
@@ -29,6 +30,7 @@
     @if ($description)
         <meta name="description" content="{{ $description }}">
     @endif
+    {{ $tete ?? '' }}
 
     @if (Langues::plusieurs() && request()->route()?->getName() && Str::startsWith(request()->route()->getName(), Langues::ouvertes()))
         @foreach (Langues::ouvertes() as $langue)

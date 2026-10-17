@@ -2,8 +2,9 @@
     Carte de catégorie ou de collection (maquettes 1 et 3) : grande carte aux
     coins arrondis, titre en Playfair, une phrase, bouton « Découvrir → ».
     photo : média Spatie ; sans photo, un dégradé nude en attendant.
+    badge : petit texte au-dessus du titre (« Édition limitée »).
 --}}
-@props(['titre', 'texte' => null, 'url', 'photo' => null, 'action' => null])
+@props(['titre', 'texte' => null, 'url', 'photo' => null, 'action' => null, 'badge' => null])
 
 <article {{ $attributes->class('group relative isolate flex min-h-44 overflow-hidden rounded-carte bg-gradient-to-br from-nude-pale via-nude-pale to-nude shadow-carte') }}>
     @if ($photo)
@@ -11,6 +12,9 @@
     @endif
 
     <div class="flex max-w-[60%] flex-col justify-center gap-2 p-6">
+        @if ($badge)
+            <x-amani.badge ton="bronze" class="mb-1 self-start">{{ $badge }}</x-amani.badge>
+        @endif
         <h3 class="titre text-2xl tracking-[0.06em] text-brun uppercase">{{ $titre }}</h3>
         @if ($texte)
             <p class="text-sm leading-snug text-brun/85">{{ $texte }}</p>

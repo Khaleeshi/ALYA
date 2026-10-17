@@ -15,7 +15,7 @@ Ordre de priorité en cas de contradiction : le cahier AMANI, puis les maquettes
 
 - Marque : AMANI Cosmetics (ALYA Group). Signature : « Parce que vous méritez tous de briller. » L'emblème (lotus ou couronne) attend le logo officiel ; en attendant, le composant `<x-amani.logo>` écrit la marque en lettres.
 - Pile : Laravel 12, PHP 8.3, MySQL 8, Redis, vitrine Blade + Tailwind CSS 4 + Alpine.js, Livewire 3, administration Filament 4. Un seul dépôt, un seul déploiement.
-- Tables et code métier nommés en français. Les colonnes imposées par le framework gardent leur nom (`password`, `remember_token`, `created_at`…).
+- Tables et code métier nommés en français. Les colonnes imposées par le framework gardent leur nom (`password`, `remember_token`, `created_at`…). Jamais de colonne qui porte le nom d'une propriété d'Eloquent (`visible`, `hidden`, `table`, `casts`…) : elle serait masquée dans les modèles ; d'où `en_ligne` pour les catégories et collections.
 - Fuseau Africa/Dakar, FCFA (XOF) seule monnaie de paiement, Sénégal uniquement.
 - Français seul au lancement (cahier §1.2) ; l'anglais est prêt dans `lang/en` mais fermé (`BOUTIQUE_LANGUES=fr`).
 - Comptes clientes sans mot de passe : téléphone sénégalais + code SMS (cahier §6.2). Le compte est obligatoire pour commander.
@@ -32,6 +32,9 @@ Ordre de priorité en cas de contradiction : le cahier AMANI, puis les maquettes
 - Navigation : `config/boutique.php` (menu, aide, espace client, réseaux) ; un lien n'apparaît que si sa page existe.
 - Espace client : les pages connectées utilisent `<x-layouts.espace-client>` (menu latéral, avatar, encart `cote` à droite). Le profil (`ProfilController`) ne change jamais le numéro de téléphone, qui sert à se connecter.
 - Administration : tableau de bord `App\Filament\Pages\TableauDeBord`, actions rapides dans le widget `Raccourcis` (n'y mettre que des actions qui existent et que la personne a le droit de faire), menu latéral sombre dans `resources/css/filament/administration/theme.css`.
+- Catalogue : `Categorie`, `Gamme` (les « collections » : le mot Collection est pris par Laravel), `Produit`, `Variante` (couleur ou format ; un produit sans choix a une variante sans nom), `Ingredient`, `Effet`, `Atout`. Textes traduisibles en JSON (`nom.fr` dans les formulaires Filament, via `App\Filament\Support\ChampsTraduits`) ; adresses (slug) communes aux langues. Une cliente ne voit que `Produit::visibles()`.
+- Stock : ne change que par `App\Support\Catalogue\Stock::ajuster()` (mouvement noté, jamais négatif) ; modifier `variantes.stock` autrement lève une exception. Les prix, le stock et la mise en ligne vont au journal. Un produit déjà publié ne se supprime pas : il s'archive.
+- Données d'essai : `php artisan db:seed --class=CatalogueDemonstrationSeeder` (refusé en production).
 - Photos : un modèle qui porte des photos implémente `HasMedia` et utilise le trait `App\Models\Concerns\AvecPhotos` ; l'affichage passe par `<x-amani.image>`.
 - Système de design : jetons dans `resources/css/amani/jetons.css`, composants dans `resources/views/components/amani/`, vitrine des composants sur `/systeme-de-design` (hors production).
 

@@ -3,8 +3,13 @@
 namespace App\Providers;
 
 use App\Listeners\JournaliserAuthentification;
+use App\Models\Categorie;
 use App\Models\Cliente;
+use App\Models\Gamme;
+use App\Models\Ingredient;
+use App\Models\Produit;
 use App\Models\Utilisateur;
+use App\Models\Variante;
 use App\Support\Acces\Permissions;
 use App\Support\Langues;
 use App\Support\Medias\DeclinaisonsImages;
@@ -39,6 +44,11 @@ class AppServiceProvider extends ServiceProvider
         Relation::morphMap([
             'cliente' => Cliente::class,
             'utilisateur' => Utilisateur::class,
+            'categorie' => Categorie::class,
+            'gamme' => Gamme::class,
+            'produit' => Produit::class,
+            'variante' => Variante::class,
+            'ingredient' => Ingredient::class,
         ]);
 
         // La propriétaire a toutes les permissions du personnel, y compris celles
