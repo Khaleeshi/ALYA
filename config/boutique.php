@@ -19,6 +19,22 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Catalogue
+    |--------------------------------------------------------------------------
+    |
+    | nouveaute_jours : durée du badge « Nouveau » après la première mise en
+    | ligne. par_page : produits par page de la boutique (quatre par ligne
+    | sur grand écran, cahier §5.2).
+    |
+    */
+
+    'catalogue' => [
+        'nouveaute_jours' => (int) env('BOUTIQUE_NOUVEAUTE_JOURS', 30),
+        'par_page' => 24,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Navigation
     |--------------------------------------------------------------------------
     |
