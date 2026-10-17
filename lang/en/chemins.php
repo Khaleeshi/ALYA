@@ -14,4 +14,5 @@ return [
     'collections' => 'collections',
     'editions-limitees' => 'limited-editions',
     'coffrets' => 'gift-sets',
+    'panier' => 'bag',
 ];

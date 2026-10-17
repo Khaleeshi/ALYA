@@ -35,6 +35,22 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Panier
+    |--------------------------------------------------------------------------
+    |
+    | quantite_max : exemplaires d'une même couleur par commande, en plus de
+    | la limite du stock. cookie_jours : durée du panier d'une visiteuse sans
+    | compte (cahier §6.1 : le panier ne réserve pas le stock).
+    |
+    */
+
+    'panier' => [
+        'quantite_max' => 10,
+        'cookie_jours' => 30,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Navigation
     |--------------------------------------------------------------------------
     |

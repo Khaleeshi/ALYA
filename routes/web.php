@@ -3,6 +3,7 @@
 use App\Http\Controllers\Boutique\AccueilController;
 use App\Http\Controllers\Boutique\BoutiqueController;
 use App\Http\Controllers\Boutique\CollectionsController;
+use App\Http\Controllers\Boutique\PanierController;
 use App\Http\Controllers\Boutique\ProduitController;
 use App\Http\Controllers\Comptes\ConnexionController;
 use App\Http\Controllers\Comptes\InscriptionController;
@@ -33,6 +34,15 @@ Langues::routes(function (string $langue): void {
     Route::get($chemin('collections').'/{gamme}', [CollectionsController::class, 'show'])->name('collections.gamme');
     Route::get($chemin('editions-limitees'), [BoutiqueController::class, 'editionsLimitees'])->name('editions-limitees');
     Route::get($chemin('coffrets'), [BoutiqueController::class, 'coffrets'])->name('coffrets');
+
+    // Panier (cahier §6.1) : sans compte comme avec ; le compte sera demandé pour commander.
+    Route::get($chemin('panier'), [PanierController::class, 'index'])->name('panier');
+    Route::middleware('throttle:panier')->group(function () use ($chemin): void {
+        Route::post($chemin('panier'), [PanierController::class, 'ajouter'])->name('panier.ajouter');
+        Route::delete($chemin('panier'), [PanierController::class, 'vider'])->name('panier.vider');
+        Route::patch($chemin('panier').'/{ligne}', [PanierController::class, 'modifier'])->whereNumber('ligne')->name('panier.modifier');
+        Route::delete($chemin('panier').'/{ligne}', [PanierController::class, 'retirer'])->whereNumber('ligne')->name('panier.retirer');
+    });
 
     // Compte cliente : téléphone, code SMS, puis création du compte si besoin.
     Route::middleware('guest:web')->group(function () use ($chemin, $code): void {

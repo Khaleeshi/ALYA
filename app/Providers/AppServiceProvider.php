@@ -13,6 +13,7 @@ use App\Models\Variante;
 use App\Support\Acces\Permissions;
 use App\Support\Langues;
 use App\Support\Medias\DeclinaisonsImages;
+use App\Support\Panier\GestionPanier;
 use App\Support\Sms\EnvoiSms;
 use App\Support\Sms\SmsJournal;
 use Illuminate\Cache\RateLimiting\Limit;
@@ -31,6 +32,9 @@ class AppServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        // Un panier par requête, partagé par les pages, l'en-tête et la fusion à la connexion.
+        $this->app->scoped(GestionPanier::class);
+
         // Prestataire SMS des codes de connexion (config/services.php).
         $this->app->singleton(EnvoiSms::class, fn (): EnvoiSms => match (config('services.sms.pilote')) {
             'journal' => new SmsJournal,
@@ -69,6 +73,7 @@ class AppServiceProvider extends ServiceProvider
         // En plus des limites propres aux codes SMS : 20 envois de formulaire
         // de compte par minute et par adresse IP.
         RateLimiter::for('comptes', fn (Request $request) => Limit::perMinute(20)->by($request->ip()));
+        RateLimiter::for('panier', fn (Request $request) => Limit::perMinute(60)->by($request->ip()));
 
         // Contenus traduisibles : un champ anglais vide retombe sur le français.
         Translatable::fallback(fallbackLocale: Langues::PAR_DEFAUT);

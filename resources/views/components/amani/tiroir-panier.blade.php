@@ -6,11 +6,13 @@
     Contenu : des <x-amani.ligne-panier> dans le slot ; le slot « pied » reçoit
     le sous-total et le bouton principal.
     evenement : nom de l'événement qui l'ouvre (un seul tiroir par événement).
+    ouvert : ouvert dès l'affichage (juste après un ajout au panier).
+    message : phrase en tête du tiroir (« … est dans votre panier »).
 --}}
-@props(['evenement' => 'ouvrir-panier'])
+@props(['evenement' => 'ouvrir-panier', 'ouvert' => false, 'message' => null])
 
 <div
-    x-data="{ ouvert: false }"
+    x-data="{ ouvert: @js((bool) $ouvert) }"
     x-on:{{ $evenement }}.window="ouvert = true"
     x-on:keydown.escape.window="ouvert = false"
     {{ $attributes }}
@@ -47,6 +49,12 @@
         </header>
 
         <div class="flex-1 overflow-y-auto px-6 py-6">
+            @if ($message)
+                <p class="mb-5 flex items-start gap-2 rounded-champ bg-nude-pale px-4 py-3 text-sm text-brun" role="status">
+                    <x-amani.icone nom="coche" :taille="18" class="mt-px shrink-0 text-vert" />
+                    {{ $message }}
+                </p>
+            @endif
             @if ($slot->isEmpty())
                 <p class="text-taupe">{{ __('vitrine.panier.vide') }}</p>
             @else

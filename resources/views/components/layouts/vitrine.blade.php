@@ -16,8 +16,12 @@
 @use('App\Support\Langues')
 @use('App\Support\Navigation')
 
+@inject('gestionPanier', 'App\Support\Panier\GestionPanier')
+
 @php
     $liens ??= Navigation::principale();
+    $lignesPanier = $gestionPanier->actuel()?->lignesCompletes() ?? collect();
+    $disponiblesPanier = $lignesPanier->filter->estDisponible();
 @endphp
 
 <!DOCTYPE html>
@@ -47,7 +51,7 @@
     <a href="#contenu" class="sr-only rounded-full bg-brun px-5 py-3 text-sm text-blanc focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60]">{{ __('vitrine.aller_au_contenu') }}</a>
 
     <x-amani.bandeau-service :liens="Navigation::aide()" />
-    <x-amani.en-tete :liens="$liens" />
+    <x-amani.en-tete :liens="$liens" :nombre-articles="$lignesPanier->sum('quantite')" />
 
     <main id="contenu" class="flex-1">
         {{ $slot }}
@@ -59,7 +63,21 @@
 
     <x-amani.pied-de-page :liens="Navigation::principale()" :aide="Navigation::aide()" :reseaux="Navigation::reseaux()" />
 
-    <x-amani.tiroir-panier />
+    <x-amani.tiroir-panier :ouvert="session('panier.ouvrir', false)" :message="session('panier.ouvrir') ? session('panier.message') : null">
+        @foreach ($lignesPanier as $ligne)
+            <x-amani.ligne-panier-produit :ligne="$ligne" />
+        @endforeach
+
+        @if ($lignesPanier->isNotEmpty())
+            <x-slot:pied>
+                <div class="mb-5 flex items-baseline justify-between">
+                    <span class="text-taupe">{{ __('vitrine.panier.sous_total') }}</span>
+                    <x-amani.prix :montant="$disponiblesPanier->sum(fn ($ligne) => $ligne->total())" class="text-xl" />
+                </div>
+                <x-amani.bouton :pleine-largeur="true" :href="route_langue('panier')">{{ __('vitrine.panier.voir') }}</x-amani.bouton>
+            </x-slot:pied>
+        @endif
+    </x-amani.tiroir-panier>
 
     @livewireScripts
 </body>

@@ -72,15 +72,16 @@
                 <a href="{{ route_langue('favoris') }}" class="{{ $icone }} hidden sm:inline-flex" aria-label="{{ __('vitrine.favoris') }}"><x-amani.icone nom="coeur" /></a>
             @endif
 
-            <button
-                type="button"
-                x-on:click="$dispatch('ouvrir-panier')"
+            {{-- Ouvre le tiroir du panier ; sans JavaScript, mène à la page du panier. --}}
+            <a
+                href="{{ $routeExiste('panier') ? route_langue('panier') : '#' }}"
+                x-on:click.prevent="$dispatch('ouvrir-panier')"
                 class="{{ $icone }} relative -mr-2"
                 aria-label="{{ trans_choice('vitrine.panier.ouvrir', $nombreArticles, ['nombre' => $nombreArticles]) }}"
             >
                 <x-amani.icone nom="sac" />
                 <span class="chiffres absolute top-0.5 right-0.5 flex size-[18px] items-center justify-center rounded-full bg-cacao text-[10px] font-semibold text-blanc" aria-hidden="true">{{ $nombreArticles }}</span>
-            </button>
+            </a>
         </div>
     </div>
 
